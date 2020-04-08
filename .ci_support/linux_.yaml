@@ -17,7 +17,7 @@ docker_image:
 expat:
 - '2.2'
 krb5:
-- '1.16'
+- 1.17.1
 libcurl:
 - '7.64'
 libuuid:
@@ -51,9 +51,8 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 python:
-- '2.7'
-- '3.6'
-- '3.7'
-- '3.8'
+- 3.6.* *_cpython
+- 3.7.* *_cpython
+- 3.8.* *_cpython
 sqlite:
 - '3'

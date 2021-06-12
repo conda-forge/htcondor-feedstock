@@ -27,12 +27,16 @@ source:
     - man-directory.patch
     # don't rebuild condor_utils for python bindings
     - python-link-condor_utils.patch
+    # use conda openssl libraries
+    - osx-openssl.patch  # [osx]
+    # remove unused variable on macos
+    - unused-onestring.patch  # [osx]
 
 build:
   error_overdepending: true
   error_overlinking: true
   number: 0
-  skip: true  # [not linux]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -48,12 +52,12 @@ requirements:
     - {{ cdt('libselinux') }}  # [linux]
     - boost
     - expat
-    - gct
+    - gct  # [linux]
     - krb5
     - libcurl
-    - libuuid  # [unix]
+    - libuuid  # [linux]
     - libxml2
-    - munge
+    - munge  # [linux]
     - openldap
     - openssl
     - pcre
@@ -117,20 +121,20 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
       host:
-        - gct
+        - gct  # [linux]
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - krb5
         - libuuid  # [linux]
-        - munge
+        - munge  # [linux]
         - openssl
         - pcre
         - voms
         - libgomp  # [linux]
       run:
-        - gct
+        - gct  # [linux]
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - krb5
-        - munge
+        - munge  # [linux]
         - openssl
         - pcre
         - voms
@@ -158,7 +162,7 @@ outputs:
         - {{ cdt('libselinux') }}  # [linux]
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
-        - libuuid  # [unix]
+        - libuuid  # [linux]
         - libgomp  # [linux]
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
@@ -209,8 +213,8 @@ outputs:
     script: install-python.sh
     build:
       ignore_run_exports:
-        - gct
-        - libuuid
+        - gct  # [linux]
+        - libuuid  # [linux]
         - pcre
         - python
     requirements:
@@ -221,11 +225,11 @@ outputs:
         - pkg-config  # [unix]
       host:
         - boost
-        - gct
+        - gct  # [linux]
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
-        - libuuid  # [unix]
-        - munge
+        - libuuid  # [linux]
+        - munge  # [linux]
         - pcre
         - python
         - setuptools

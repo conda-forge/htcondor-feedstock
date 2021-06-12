@@ -6,13 +6,19 @@ rm -rf ${_builddir}
 mkdir -pv ${_builddir}
 pushd ${_builddir}
 
-# add globus header directory to include path
-CFLAGS="$(pkg-config --cflags-only-I globus-common) ${CFLAGS} "
-CXXFLAGS="$(pkg-config --cflags-only-I globus-common) ${CXXFLAGS}"
-
-# link libdl
+# platform-specific options
 if [ "$(uname)" == "Linux" ]; then
 	export LDFLAGS="-ldl -lrt ${LDFLAGS}"
+
+	WITH_GLOBUS="TRUE"
+	WITH_MUNGE="TRUE"
+
+	# add globus header directory to include path
+	CFLAGS="$(pkg-config --cflags-only-I globus-common) ${CFLAGS} "
+	CXXFLAGS="$(pkg-config --cflags-only-I globus-common) ${CXXFLAGS}"
+else
+	WITH_GLOBUS="FALSE"
+	WITH_MUNGE="FALSE"
 fi
 
 # configure
@@ -38,9 +44,9 @@ cmake $SRC_DIR \
 	-DWITH_BOINC:BOOL=FALSE \
 	-DWITH_CREAM:BOOL=FALSE \
 	-DWITH_GANGLIA:BOOL=TRUE \
-	-DWITH_GLOBUS:BOOL=TRUE \
+	-DWITH_GLOBUS:BOOL=${WITH_GLOBUS} \
 	-DWITH_KRB5:BOOL=TRUE \
-	-DWITH_MUNGE:BOOL=TRUE \
+	-DWITH_MUNGE:BOOL=${WITH_MUNGE} \
 	-DWITH_PYTHON_BINDINGS:BOOL=FALSE \
 	-DWITH_SCITOKENS:BOOL=FALSE \
 	-DWITH_VOMS:BOOL=TRUE
@@ -54,7 +60,7 @@ cmake --build . --parallel ${CPU_COUNT} --target install
 # -- create the condor_config file
 
 CONDOR_CONFIG_LOCATION="etc/condor/condor_config"
-install -m=0644 -T ${RECIPE_DIR}/condor_config ${PREFIX}/${CONDOR_CONFIG_LOCATION}
+install -m 0644 ${RECIPE_DIR}/condor_config ${PREFIX}/${CONDOR_CONFIG_LOCATION}
 
 # -- create activate/deactivate scripts
 

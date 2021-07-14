@@ -30,6 +30,9 @@ source:
     # enable scitokens without dlopen
     # ref: https://github.com/htcondor/htcondor/pull/187
     - scitokens-no-dlopen.patch
+    # fix PerfCounter when building w/o cgroups
+    # ref: https://github.com/htcondor/htcondor/commit/f459be
+    - perf-counter.patch
 
 build:
   error_overdepending: true

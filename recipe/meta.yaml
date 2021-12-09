@@ -69,7 +69,7 @@ requirements:
     - pcre
     - scitokens-cpp >=0.5.0
     - sqlite
-    - voms  # [linux]
+    - voms  # [not win]
 
 outputs:
   - name: htcondor-classads
@@ -143,7 +143,7 @@ outputs:
         - openssl
         - pcre
         - scitokens-cpp >=0.5.0
-        - voms  # [linux]
+        - voms  # [not win]
       run:
         - gct  # [linux]
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
@@ -152,7 +152,7 @@ outputs:
         - munge  # [linux]
         - openssl
         - pcre
-        - voms  # [linux]
+        - voms  # [not win]
     files:
       - lib/libcondor_utils*
     test:
@@ -188,12 +188,14 @@ outputs:
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
         - openssl
+        - voms  # [osx and arm64]
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl
         - libuuid  # [linux]
         - llvm-openmp  # [osx]
+        - voms  # [osx and arm64]
     files:
       - bin/condor*
       - bin/*gahp

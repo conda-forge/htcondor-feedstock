@@ -1,0 +1,31 @@
+From 6d3213350418bf0b855e7d6f2e4eae695e84554e Mon Sep 17 00:00:00 2001
+From: Jason Patton <jpatton@cs.wisc.edu>
+Date: Fri, 10 Dec 2021 16:42:49 -0600
+Subject: [PATCH 08/10] backport gh-362
+
+(cherry picked from commit af2cb38976b6d5b7d12a4ff54b731e2a9731d80e)
+---
+ externals/bundles/voms/2.0.13/CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/externals/bundles/voms/2.0.13/CMakeLists.txt b/externals/bundles/voms/2.0.13/CMakeLists.txt
+index f51e94db72..0aa24a1567 100644
+--- a/externals/bundles/voms/2.0.13/CMakeLists.txt
++++ b/externals/bundles/voms/2.0.13/CMakeLists.txt
+@@ -135,8 +135,11 @@ if ( WITH_VOMS )
+ 	else(NOT PROPER)
+ 
+ 		find_multiple( "vomsapi" VOMS_FOUND)
+-		find_so_name( LIBVOMSAPI_SO ${VOMS_FOUND} )
+-		set( LIBVOMSAPI_SO ${LIBVOMSAPI_SO} PARENT_SCOPE )
++
++		if (DLOPEN_VOMS_LIBS)
++			find_so_name( LIBVOMSAPI_SO ${VOMS_FOUND} )
++			set( LIBVOMSAPI_SO ${LIBVOMSAPI_SO} PARENT_SCOPE )
++		endif(DLOPEN_VOMS_LIBS)
+ 
+ 	endif(NOT PROPER)
+ 
+-- 
+2.20.1
+

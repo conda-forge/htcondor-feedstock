@@ -14,27 +14,25 @@ source:
   sha256: b21f12adbf8612233d1ce19d32c9a075ac07da3c0c2f9c22036135deba33a627
   patches:
     # don't build daemons
-    - no-daemons.patch
+    - 0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
-    - python-archlib.patch
+    - 0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
     # set install paths
-    - paths.patch
-    # don't link libpython
-    - python-no-libpython.patch
-    # fix man directory
-    - man-directory.patch
+    - 0003-cmake-set-install-paths-for-conda-builds.patch
     # set section 7 for classads manpage
-    - man-classads.patch
+    - 0004-man-set-section-7-for-classads-man-page.patch
+    # don't link libpython
+    - 0005-python-don-t-link-against-libpython.patch
     # don't rebuild condor_utils for python bindings
-    - python-link-condor_utils.patch
+    - 0006-python-link-against-libcondor_utils-as-external.patch
+    # https://github.com/htcondor/htcondor/pull/307
+    - 0007-backport-gh-307.patch
+    # https://github.com/htcondor/htcondor/pull/362
+    - 0008-backport-gh-362.patch
     # use conda openssl libraries
-    - osx-openssl.patch  # [osx]
-    # remove unused variable on macos
-    - unused-onestring.patch  # [osx]
+    - 0009-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
-    - no-macosx_rewrite_libs.patch  # [osx]
-    # fix for compiling with voms on OSX
-    - voms-osx.patch  # [osx]
+    - 0010-osx-don-t-run-macosx_rewrite_libs.patch
 
 build:
   error_overdepending: true

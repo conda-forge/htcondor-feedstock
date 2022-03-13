@@ -1,9 +1,13 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 boost:
 - 1.74.0
 c_compiler:
 - gcc
 c_compiler_version:
 - '10'
+cdt_arch:
+- aarch64
 cdt_name:
 - cos7
 channel_sources:
@@ -15,7 +19,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '10'
 docker_image:
-- condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-aarch64
 expat:
 - '2'
 krb5:
@@ -56,7 +60,7 @@ python:
 sqlite:
 - '3'
 target_platform:
-- linux-64
+- linux-aarch64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

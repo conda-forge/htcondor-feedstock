@@ -5,7 +5,7 @@ boost:
 c_compiler:
 - clang
 c_compiler_version:
-- '11'
+- '12'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '11'
+- '12'
 expat:
 - '2'
 krb5:
@@ -23,7 +23,7 @@ libcurl:
 libxml2:
 - '2.9'
 llvm_openmp:
-- '11'
+- '12'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openssl:

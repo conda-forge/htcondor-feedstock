@@ -25,14 +25,10 @@ source:
     - 0005-python-don-t-link-against-libpython.patch
     # don't rebuild condor_utils for python bindings
     - 0006-python-link-against-libcondor_utils-as-external.patch
-    # https://github.com/htcondor/htcondor/pull/307
-    - 0007-backport-gh-307.patch
-    # https://github.com/htcondor/htcondor/pull/362
-    - 0008-backport-gh-362.patch
     # use conda openssl libraries
-    - 0009-osx-use-pre-installed-openssl-libraries.patch
+    - 0007-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
-    - 0010-osx-don-t-run-macosx_rewrite_libs.patch
+    - 0008-osx-don-t-run-macosx_rewrite_libs.patch
 
 build:
   error_overdepending: true

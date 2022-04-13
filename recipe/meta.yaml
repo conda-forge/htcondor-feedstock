@@ -180,14 +180,14 @@ outputs:
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
         - openssl
-        - voms  # [(osx and arm64) or ppc64le or aarch64]
+        - voms  # [ppc64le or aarch64]
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl
         - libuuid  # [linux]
         - llvm-openmp  # [osx]
-        - voms  # [(osx and arm64) or ppc64le or aarch64]
+        - voms  # [ppc64le or aarch64]
     files:
       - bin/condor*
       - bin/*gahp

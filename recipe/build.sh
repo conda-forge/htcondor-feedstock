@@ -94,3 +94,7 @@ else
 fi
 unset CONDA_BACKUP_CONDOR_CONFIG
 EOF
+
+if [[ "$target_platform" == linux-* ]]; then
+  $READELF -d $PREFIX/bin/classad_version
+fi

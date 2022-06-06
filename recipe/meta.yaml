@@ -27,6 +27,8 @@ source:
     - man-classads.patch
     # don't rebuild condor_utils for python bindings
     - python-link-condor_utils.patch
+    # use local env python in cli tools
+    - python-env.patch
     # use conda openssl libraries
     - osx-openssl.patch  # [osx]
     # remove unused variable on macos
@@ -39,7 +41,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:

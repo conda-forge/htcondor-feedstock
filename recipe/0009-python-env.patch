@@ -1,0 +1,60 @@
+diff --git a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
+index 2ca146e260..57d8bb7c41 100755
+--- a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
++++ b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ import os
+ import time
+diff --git a/src/condor_scripts/common-cloud-attributes-aws.py b/src/condor_scripts/common-cloud-attributes-aws.py
+index 4e2ae135ea..2075ab5a51 100755
+--- a/src/condor_scripts/common-cloud-attributes-aws.py
++++ b/src/condor_scripts/common-cloud-attributes-aws.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ import requests
+ 
+diff --git a/src/condor_scripts/common-cloud-attributes-google.py b/src/condor_scripts/common-cloud-attributes-google.py
+index 83005dc71d..d8ec573621 100755
+--- a/src/condor_scripts/common-cloud-attributes-google.py
++++ b/src/condor_scripts/common-cloud-attributes-google.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ r"""Print HTCondor machine ClassAd attributes derived from Google Cloud Metadata Servers
+ 
+ Converts Google Cloud instance metadata into HTCondor ClassAd attribute/value
+diff --git a/src/condor_scripts/condor_check_config b/src/condor_scripts/condor_check_config
+index b3bdf2a1df..4e09a47356 100755
+--- a/src/condor_scripts/condor_check_config
++++ b/src/condor_scripts/condor_check_config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ """
+ Scan through the various HTCondor config knobs looking for potential
+diff --git a/src/condor_scripts/condor_check_password b/src/condor_scripts/condor_check_password
+index 944757bbe8..cb154c1096 100755
+--- a/src/condor_scripts/condor_check_password
++++ b/src/condor_scripts/condor_check_password
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ """
+ Scan through the various HTCondor signing keys and passwords, looking
+diff --git a/src/condor_scripts/condor_watch_q b/src/condor_scripts/condor_watch_q
+index a95aa82f2d..3adf7ba48c 100755
+--- a/src/condor_scripts/condor_watch_q
++++ b/src/condor_scripts/condor_watch_q
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ # Copyright 2020 HTCondor Team, Computer Sciences Department,
+ # University of Wisconsin-Madison, WI.

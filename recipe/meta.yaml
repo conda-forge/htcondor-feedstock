@@ -29,6 +29,8 @@ source:
     - 0007-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
+    # use local env python in cli tools
+    - 0009-python-env.patch
 
 build:
   error_overdepending: true

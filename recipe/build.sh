@@ -1,5 +1,6 @@
 #!/bin/bash
-set -eux
+
+set -ex
 
 _builddir="_build"
 rm -rf ${_builddir}

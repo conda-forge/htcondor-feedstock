@@ -67,6 +67,9 @@ requirements:
 outputs:
   - name: htcondor-classads
     build:
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
       run_exports:
         - {{ pin_subpackage("htcondor-classads", max_pin="x.x") }}
     requirements:
@@ -166,6 +169,9 @@ outputs:
         # this is just here to help the solver
         # through a difficult openssl 3 migration
         - openssl
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -235,6 +241,9 @@ outputs:
         - openssl
         - pcre
         - python
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('cxx') }}

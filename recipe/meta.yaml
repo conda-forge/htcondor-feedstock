@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.9.0" %}
+{% set version = "9.10.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/feature/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 09f3542259d1c1e1383334e97fdba897a66b09f7e2c03da7faf46f954da28478
+  sha256: 6f6830afc2544f3636929f281a082edee83788d84f51ffd7a087c862340fa92f
   patches:
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch
@@ -71,7 +71,7 @@ outputs:
     build:
       missing_dso_whitelist:
         # see https://github.com/conda/conda-build/pull/4529
-        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
+        - '**/ld-linux-aarch64.so*'  # [linux and aarch64]
       run_exports:
         - {{ pin_subpackage("htcondor-classads", max_pin="x.x") }}
     requirements:
@@ -173,7 +173,7 @@ outputs:
         - openssl
       missing_dso_whitelist:
         # see https://github.com/conda/conda-build/pull/4529
-        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
+        - '**/ld-linux-aarch64.so*'  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -245,7 +245,7 @@ outputs:
         - python
       missing_dso_whitelist:
         # see https://github.com/conda/conda-build/pull/4529
-        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
+        - '**/ld-linux-aarch64.so*'  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('cxx') }}

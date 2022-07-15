@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.6.0" %}
+{% set version = "9.7.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,30 +11,24 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/feature/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 67a2b993f751ae499856dae94feb67aa6eb9bd9be6bd24ac7a9c3d84c9a7e79b
+  sha256: b21f12adbf8612233d1ce19d32c9a075ac07da3c0c2f9c22036135deba33a627
   patches:
     # don't build daemons
-    - no-daemons.patch
+    - 0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
-    - python-archlib.patch
+    - 0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
     # set install paths
-    - paths.patch
-    # don't link libpython
-    - python-no-libpython.patch
-    # fix man directory
-    - man-directory.patch
+    - 0003-cmake-set-install-paths-for-conda-builds.patch
     # set section 7 for classads manpage
-    - man-classads.patch
+    - 0004-man-set-section-7-for-classads-man-page.patch
+    # don't link libpython
+    - 0005-python-don-t-link-against-libpython.patch
     # don't rebuild condor_utils for python bindings
-    - python-link-condor_utils.patch
+    - 0006-python-link-against-libcondor_utils-as-external.patch
     # use conda openssl libraries
-    - osx-openssl.patch  # [osx]
-    # remove unused variable on macos
-    - unused-onestring.patch  # [osx]
+    - 0007-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
-    - no-macosx_rewrite_libs.patch  # [osx]
-    # fix for compiling with voms on OSX
-    - voms-osx.patch  # [osx]
+    - 0008-osx-don-t-run-macosx_rewrite_libs.patch
 
 build:
   error_overdepending: true
@@ -73,6 +67,9 @@ requirements:
 outputs:
   - name: htcondor-classads
     build:
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
       run_exports:
         - {{ pin_subpackage("htcondor-classads", max_pin="x.x") }}
     requirements:
@@ -172,6 +169,9 @@ outputs:
         # this is just here to help the solver
         # through a difficult openssl 3 migration
         - openssl
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -186,14 +186,12 @@ outputs:
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
         - openssl
-        - voms  # [(osx and arm64) or ppc64le or aarch64]
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl
         - libuuid  # [linux]
         - llvm-openmp  # [osx]
-        - voms  # [(osx and arm64) or ppc64le or aarch64]
     files:
       - bin/condor*
       - bin/*gahp
@@ -243,6 +241,9 @@ outputs:
         - openssl
         - pcre
         - python
+      missing_dso_whitelist:
+        # see https://github.com/conda/conda-build/pull/4529
+        - "**/ld-linux-aarch64.so*"  # [linux and aarch64]
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -345,3 +346,4 @@ extra:
   recipe-maintainers:
     - duncanmmacleod
     - jasoncpatton
+    - timtheisen

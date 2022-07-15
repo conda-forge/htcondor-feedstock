@@ -1,5 +1,6 @@
 #!/bin/bash
-set -eux
+
+set -ex
 
 _builddir="_build"
 rm -rf ${_builddir}
@@ -28,6 +29,7 @@ cmake \
 	-D_VERBOSE:BOOL=TRUE \
 	-DBUILD_SHARED_LIBS:BOOL=TRUE \
 	-DBUILD_TESTING:BOOL=FALSE \
+	-DCMAKE_CROSSCOMPILING_EMULATOR:STRING="${CMAKE_CROSSCOMPILING_EMULATOR}" \
 	-DDLOPEN_GSI_LIBS:BOOL=FALSE \
 	-DDLOPEN_SECURITY_LIBS:BOOL=FALSE \
 	-DDLOPEN_VOMS_LIBS:BOOL=FALSE \
@@ -94,3 +96,7 @@ else
 fi
 unset CONDA_BACKUP_CONDOR_CONFIG
 EOF
+
+if [[ "$target_platform" == linux-* ]]; then
+  $READELF -d $PREFIX/bin/classad_version
+fi

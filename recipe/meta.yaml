@@ -61,7 +61,7 @@ requirements:
     - munge  # [linux]
     - openldap
     - openssl
-    - pcre
+    - pcre2
     - scitokens-cpp >=0.5.0
     - sqlite
     - voms  # [not win]
@@ -79,9 +79,9 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
       host:
-        - pcre
+        - pcre2
       run:
-        - pcre
+        - pcre2
     files:
       - bin/classad*
       - include/classad
@@ -138,7 +138,7 @@ outputs:
         - llvm-openmp  # [osx]
         - munge  # [linux]
         - openssl
-        - pcre
+        - pcre2
         - scitokens-cpp >=0.5.0
         - voms  # [not win]
       run:
@@ -148,7 +148,7 @@ outputs:
         - llvm-openmp  # [osx]
         - munge  # [linux]
         - openssl
-        - pcre
+        - pcre2
         - voms  # [not win]
     files:
       - lib/libcondor_utils*
@@ -241,7 +241,7 @@ outputs:
       ignore_run_exports:
         - libuuid  # [linux]
         - openssl
-        - pcre
+        - pcre2
         - python
       missing_dso_whitelist:
         # see https://github.com/conda/conda-build/pull/4529
@@ -262,7 +262,7 @@ outputs:
         - libuuid  # [linux]
         - munge  # [linux]
         - openssl
-        - pcre
+        - pcre2
         - python
         - setuptools
       run:

@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.10.0" %}
+{% set version = "9.10.1" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/feature/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 6f6830afc2544f3636929f281a082edee83788d84f51ffd7a087c862340fa92f
+  sha256: 32849bf93ed11b10ff433143a5adbfd0c64b72acf1123c809acccd3976c6664e
   patches:
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch

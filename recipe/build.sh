@@ -17,9 +17,10 @@ fi
 if [ "$(uname)" == "Linux" ]; then
 	export LDFLAGS="-ldl -lrt ${LDFLAGS}"
 	WITH_MUNGE="TRUE"
+	WITH_VOMS="TRUE"
 else
-	# these attempt to use find_so_name, which fails
 	WITH_MUNGE="FALSE"
+	WITH_VOMS="FALSE"
 fi
 
 # configure
@@ -53,7 +54,7 @@ cmake \
 	-DWITH_MUNGE:BOOL=${WITH_MUNGE} \
 	-DWITH_PYTHON_BINDINGS:BOOL=FALSE \
 	-DWITH_SCITOKENS:BOOL=TRUE \
-	-DWITH_VOMS:BOOL=TRUE \
+	-DWITH_VOMS:BOOL=${WITH_VOMS} \
 ;
 
 # build

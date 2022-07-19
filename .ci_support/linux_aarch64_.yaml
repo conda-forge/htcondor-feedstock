@@ -32,8 +32,8 @@ libxml2:
 - '2.9'
 openssl:
 - 1.1.1
-pcre:
-- '8'
+pcre2:
+- '10.37'
 perl:
 - 5.32.1
 pin_run_as_build:

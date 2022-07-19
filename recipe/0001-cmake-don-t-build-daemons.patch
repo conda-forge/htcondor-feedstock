@@ -1,7 +1,7 @@
-From 2d190392dd808524708630583e5a4cf58ee30d8b Mon Sep 17 00:00:00 2001
-From: Duncan Macleod <duncan.macleod@ligo.org>
-Date: Fri, 14 Jan 2022 11:33:40 +0000
-Subject: [PATCH 01/10] cmake: don't build daemons
+From 109d8386e4072446dedcf072bbcf7f857cf565f7 Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Fri, 15 Jul 2022 18:19:10 +0100
+Subject: [PATCH] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
@@ -26,7 +26,7 @@ index bf7a6281d0..64dfb4a8fd 100644
  #if (BUILD_TESTING AND NOT WINDOWS)
  if (BUILD_TESTING)
 diff --git a/src/condor_procd/CMakeLists.txt b/src/condor_procd/CMakeLists.txt
-index 7ddf202d16..b5bb67fbdc 100644
+index 1919d500c9..b5bb67fbdc 100644
 --- a/src/condor_procd/CMakeLists.txt
 +++ b/src/condor_procd/CMakeLists.txt
 @@ -72,17 +72,5 @@ set( ProcdUtilsSrcs "${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp;../con
@@ -37,21 +37,21 @@ index 7ddf202d16..b5bb67fbdc 100644
 -condor_daemon(EXE condor_procd SOURCES "${ProcdElements};${ProcClientElements}" LIBRARIES "procdutils;${PROCD_WIN_LINK_LIBS};${LIBCGROUP_FOUND}" INSTALL "${C_SBIN}")
 -
 -if (LINUX)
--	condor_exe( procd_ctl "procd_ctl.cpp;${ProcClientElements};${SAFE_OPEN_SRC};../condor_utils/distribution.cpp;../condor_utils/my_distribution.cpp;../condor_utils/condor_pidenvid.cpp;dprintf_lite.cpp" ${C_SBIN} "procdutils" OFF)
+-	condor_exe( procd_ctl "procd_ctl.cpp;${ProcClientElements};${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp;dprintf_lite.cpp" ${C_SBIN} "procdutils" OFF)
 -
 -	condor_exe( gidd_alloc "gidd_alloc.cpp" ${C_SBIN} "" OFF)
 -endif(LINUX)
 -
 -if (WINDOWS)
--	condor_exe( procd_ctl "procd_ctl.cpp;${ProcClientElements};${SAFE_OPEN_SRC};../condor_utils/distribution.cpp;../condor_utils/my_distribution.cpp;../condor_utils/condor_pidenvid.cpp" ${C_SBIN} "procdutils;condor_utils" OFF)
+-	condor_exe( procd_ctl "procd_ctl.cpp;${ProcClientElements};${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp" ${C_SBIN} "procdutils;condor_utils" OFF)
 -endif(WINDOWS)
  
  set( PROCD_CLIENT_UTIL_SRCS "${ProcClientElements}" PARENT_SCOPE )
 diff --git a/src/condor_schedd.V6/CMakeLists.txt b/src/condor_schedd.V6/CMakeLists.txt
-index 00efb23c6a..d1a154ff53 100644
+index 0d5d6a8741..536286913a 100644
 --- a/src/condor_schedd.V6/CMakeLists.txt
 +++ b/src/condor_schedd.V6/CMakeLists.txt
-@@ -50,7 +50,4 @@ tdman.cpp
+@@ -49,7 +49,4 @@ tdman.cpp
  transfer_queue.cpp
  )
  
@@ -60,10 +60,10 @@ index 00efb23c6a..d1a154ff53 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index a8cbe59cd5..4790fbcc17 100644
+index a7515224e9..b3b66b9b1c 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
-@@ -30,7 +30,6 @@ endif(WINDOWS)
+@@ -31,7 +31,6 @@ endif(WINDOWS)
  if (NOT WINDOWS)
  
      install ( FILES condor_run DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -71,7 +71,7 @@ index a8cbe59cd5..4790fbcc17 100644
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -55,7 +54,6 @@ if (NOT WINDOWS)
+@@ -56,7 +55,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )

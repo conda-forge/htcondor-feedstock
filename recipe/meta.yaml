@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.0.14" %}
+{% set version = "9.0.15" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/{{ version.split('.')[:2] | join('.') }}/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 948c598281b8195407587ed192d3fd846ebf3ab2dbe91f2e4130e9ab02f419f5
+  sha256: 75dbd046065dbc58b10637c47f3bd1c1cee50484046ede424883a69f9a39277a
   patches:
     # don't build daemons
     - no-daemons.patch
@@ -46,7 +46,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake <3.24.0a0
     - llvm-openmp  # [osx]
     - make  # [unix]
     - perl
@@ -256,7 +256,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - cmake
+        - cmake <3.24.0a0
         - make  # [unix]
         - pkg-config  # [unix]
         # extras for cross-compilation

@@ -96,7 +96,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: HTCondor's classified advertisement language
       description: |
         Classified Advertisements (classads) are the lingua franca of
@@ -161,7 +161,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: HTCondor utilities library
       description: Just the HTCondor libcondor_utils shared object library.
 
@@ -223,7 +223,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: 'HTCondor: High Throughput Computing'
       description: |
         HTCondor is a workload management system for high-throughput and
@@ -300,7 +300,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: Python bindings for HTCondor
       description: |
         The HTCondor Python bindings aim to expose a high-quality,
@@ -331,7 +331,7 @@ about:
   dev_url: https://github.com/htcondor/htcondor
   license: Apache-2.0
   license_family: APACHE
-  license_file: LICENSE-2.0.txt
+  license_file: LICENSE
   summary: 'HTCondor: High Throughput Computing'
   description: |
     HTCondor is a workload management system for high-throughput and

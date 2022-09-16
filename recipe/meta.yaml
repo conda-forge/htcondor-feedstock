@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.10.1" %}
+{% set version = "9.11.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/feature/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 32849bf93ed11b10ff433143a5adbfd0c64b72acf1123c809acccd3976c6664e
+  sha256: 5b97c1cc6d7aa9086858a4a118111a09194918cc4ee583198cceed7e723e7903
   patches:
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch
@@ -30,7 +30,7 @@ source:
     # don't rewrite libs on macos
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
-    - 0009-python-env.patch
+    - 0009-python-use-conda-placeholder-shebang.patch
 
 build:
   error_overdepending: true
@@ -42,7 +42,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake <3.24.0a0
     - llvm-openmp  # [osx]
     - make  # [unix]
     - perl
@@ -96,7 +96,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: HTCondor's classified advertisement language
       description: |
         Classified Advertisements (classads) are the lingua franca of
@@ -161,7 +161,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: HTCondor utilities library
       description: Just the HTCondor libcondor_utils shared object library.
 
@@ -223,7 +223,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: 'HTCondor: High Throughput Computing'
       description: |
         HTCondor is a workload management system for high-throughput and
@@ -249,7 +249,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - cmake
+        - cmake <3.24.0a0
         - make  # [unix]
         - pkg-config  # [unix]
         # extras for cross-compilation
@@ -300,7 +300,7 @@ outputs:
       dev_url: https://github.com/htcondor/htcondor
       license: Apache-2.0
       license_family: APACHE
-      license_file: LICENSE-2.0.txt
+      license_file: LICENSE
       summary: Python bindings for HTCondor
       description: |
         The HTCondor Python bindings aim to expose a high-quality,
@@ -331,7 +331,7 @@ about:
   dev_url: https://github.com/htcondor/htcondor
   license: Apache-2.0
   license_family: APACHE
-  license_file: LICENSE-2.0.txt
+  license_file: LICENSE
   summary: 'HTCondor: High Throughput Computing'
   description: |
     HTCondor is a workload management system for high-throughput and

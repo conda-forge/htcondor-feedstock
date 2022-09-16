@@ -1,7 +1,7 @@
-From 1fbefbc09ef1aa1eeb55f8f83e351015c12c410c Mon Sep 17 00:00:00 2001
+From 1594496f949e133fa594023c0bcd6e0a152359f9 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
-Subject: [PATCH 8/9] osx: don't run macosx_rewrite_libs
+Subject: [PATCH 08/10] osx: don't run macosx_rewrite_libs
 
 conda-build handles this for us
 ---
@@ -61,5 +61,5 @@ index 3e70a70b50..3d12e6dc07 100644
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB}/lib${PY3CLASSAD_LIB_NAME}.dylib)" )
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_PYTHON3ARCHLIB}/classad/classad${PYTHON3_MODULE_SUFFIX})" )
 -- 
-2.35.3
+2.37.0 (Apple Git-136)
 

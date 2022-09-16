@@ -31,11 +31,14 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
+    # fix scitokens init
+    # backport of https://github.com/htcondor/htcondor/pull/847
+    - 0010-fix-scitokens-lib-initialization.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -149,6 +152,7 @@ outputs:
         - munge  # [linux]
         - openssl
         - pcre2
+        - scitokens-cpp >=0.5.0
         - voms  # [linux]
     files:
       - lib/libcondor_utils*

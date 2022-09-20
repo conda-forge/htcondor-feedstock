@@ -1,7 +1,7 @@
 From d47085ce0604d688276388d2681cf4309a2cb56d Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:34:36 +0000
-Subject: [PATCH 2/9] cmake: set C_PYTHONARCHLIB for python
+Subject: [PATCH 02/10] cmake: set C_PYTHONARCHLIB for python
 
 from python itself
 ---
@@ -31,5 +31,5 @@ index d95522b99f..e8ae1cd8b3 100644
              list(GET _PYTHON_VALUES 10 PYTHON3_PREFIX)
              #set(C_PYTHON3ARCHLIB ${C_PYTHON3ARCHLIB})
 -- 
-2.35.3
+2.37.0 (Apple Git-136)
 

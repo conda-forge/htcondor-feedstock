@@ -1,4 +1,4 @@
-From d47085ce0604d688276388d2681cf4309a2cb56d Mon Sep 17 00:00:00 2001
+From 5d0b4ba45a8437a9973c8520249668f1de8d6086 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:34:36 +0000
 Subject: [PATCH 02/10] cmake: set C_PYTHONARCHLIB for python
@@ -9,10 +9,10 @@ from python itself
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index d95522b99f..e8ae1cd8b3 100644
+index 031efaf700..51cba074e2 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -143,7 +143,7 @@ if(NOT WINDOWS)
+@@ -139,7 +139,7 @@ if(NOT WINDOWS)
              list(GET _PYTHON_VALUES 5 PYTHON_LIBDIR)
              list(GET _PYTHON_VALUES 6 PYTHON_MULTIARCH)
              list(GET _PYTHON_VALUES 7 PYTHON_LIB)
@@ -21,7 +21,7 @@ index d95522b99f..e8ae1cd8b3 100644
              list(GET _PYTHON_VALUES 9 PYTHON_MODULE_EXTENSION)
              list(GET _PYTHON_VALUES 10 PYTHON_PREFIX)
              #set(C_PYTHONARCHLIB ${C_PYTHONARCHLIB})
-@@ -208,7 +208,7 @@ if(NOT WINDOWS)
+@@ -204,7 +204,7 @@ if(NOT WINDOWS)
              list(GET _PYTHON_VALUES 5 PYTHON3_LIBDIR)
              list(GET _PYTHON_VALUES 6 PYTHON3_MULTIARCH)
              list(GET _PYTHON_VALUES 7 PYTHON3_LIB)

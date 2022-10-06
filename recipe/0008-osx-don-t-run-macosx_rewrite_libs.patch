@@ -1,4 +1,4 @@
-From 1594496f949e133fa594023c0bcd6e0a152359f9 Mon Sep 17 00:00:00 2001
+From 2e6c67a70e4123a1cb7a092d843860d238d55e7b Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
 Subject: [PATCH 08/10] osx: don't run macosx_rewrite_libs
@@ -24,10 +24,10 @@ index 3f943a3d3c..b716b29712 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index 7ef5bc696b..c19184eeb6 100644
+index f90fc926fd..3e370fe5ff 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
-@@ -697,8 +697,10 @@ endif()
+@@ -705,8 +705,10 @@ endif()
  
  if ( APPLE )
  	target_link_libraries( condor_utils PUBLIC ${IOKIT_FOUND} ${COREFOUNDATION_FOUND} resolv )
@@ -39,10 +39,10 @@ index 7ef5bc696b..c19184eeb6 100644
  
  ##################################################
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 3e70a70b50..3d12e6dc07 100644
+index 8c75ca8fae..7ec68a453f 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
-@@ -294,7 +294,7 @@ else()
+@@ -282,7 +282,7 @@ else()
        install ( TARGETS htcondor DESTINATION ${C_PYTHONARCHLIB}/htcondor )
        install ( TARGETS classad_module DESTINATION ${C_PYTHONARCHLIB}/classad )
  
@@ -51,7 +51,7 @@ index 3e70a70b50..3d12e6dc07 100644
            set_target_properties( pyclassad PROPERTIES INSTALL_NAME_DIR ${CMAKE_CURRENT_BINARY_DIR} )
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB}/lib${PYCLASSAD_LIB_NAME}.dylib)" )
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_PYTHONARCHLIB}/classad/classad${PYTHON_MODULE_SUFFIX})" )
-@@ -393,7 +393,7 @@ else()
+@@ -364,7 +364,7 @@ else()
        install ( TARGETS py3htcondor DESTINATION ${C_PYTHON3ARCHLIB}/htcondor )
        install ( TARGETS py3classad_module DESTINATION ${C_PYTHON3ARCHLIB}/classad )
  

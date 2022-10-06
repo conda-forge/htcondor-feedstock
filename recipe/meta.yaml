@@ -45,7 +45,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake <3.24.0a0
+    - cmake
     - llvm-openmp  # [osx]
     - make  # [unix]
     - perl
@@ -253,7 +253,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - cmake <3.24.0a0
+        - cmake
         - make  # [unix]
         - pkg-config  # [unix]
         # extras for cross-compilation

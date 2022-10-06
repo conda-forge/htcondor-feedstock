@@ -1,4 +1,4 @@
-From 0dfb06615898edd6b3bc0d46f97bc9c7072aaab9 Mon Sep 17 00:00:00 2001
+From b444212ca1be3311cb06f9e872768e43813efea0 Mon Sep 17 00:00:00 2001
 From: Jason Patton <jpatton@cs.wisc.edu>
 Date: Fri, 16 Sep 2022 16:13:02 -0500
 Subject: [PATCH 10/10] fix scitokens lib initialization

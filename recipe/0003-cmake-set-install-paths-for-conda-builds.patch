@@ -1,4 +1,4 @@
-From 19da0bb77b9d1b3a837eea9c639c49e9f3babf86 Mon Sep 17 00:00:00 2001
+From bef26aebec701dd7e368b311f0b335ec27962866 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
 Subject: [PATCH 03/10] cmake: set install paths for conda builds

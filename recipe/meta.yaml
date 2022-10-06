@@ -198,6 +198,7 @@ outputs:
         - libcurl
         - libuuid  # [linux]
         - llvm-openmp  # [osx]
+        - openssl
     files:
       - bin/condor*
       - bin/*gahp

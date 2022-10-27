@@ -21,7 +21,7 @@ krb5:
 libcurl:
 - '7'
 libxml2:
-- '2.9'
+- '2.10'
 llvm_openmp:
 - '14'
 macos_machine:
@@ -35,20 +35,11 @@ perl:
 pin_run_as_build:
   boost:
     max_pin: x.x.x
-  krb5:
-    max_pin: x.x
-  libcurl:
-    max_pin: x
-  libxml2:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  sqlite:
-    max_pin: x
 python:
 - 3.10.* *_cpython
-- 3.7.* *_cpython
 - 3.8.* *_cpython
 - 3.9.* *_cpython
 sqlite:

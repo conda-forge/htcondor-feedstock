@@ -1,7 +1,7 @@
 From 2116befe33a281072d5d6512f400278d271f65e0 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:08 +0000
-Subject: [PATCH 04/10] man: set section 7 for classads man page
+Subject: [PATCH 04/11] man: set section 7 for classads man page
 
 ---
  docs/conf.py | 2 +-
@@ -21,5 +21,5 @@ index 5d2fdb8cf8..eb46b16d7b 100644
      ('man-pages/condor_advertise', 'condor_advertise', u'HTCondor Manual', [u'HTCondor Team'], 1),
      ('man-pages/condor_annex', 'condor_annex', u'HTCondor Manual', [u'HTCondor Team'], 1),
 -- 
-2.37.0 (Apple Git-136)
+2.20.1
 

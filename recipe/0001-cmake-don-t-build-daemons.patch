@@ -1,7 +1,7 @@
 From 081dd87a9c8b4d3403618e80ed302c920126e73d Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/10] cmake: don't build daemons
+Subject: [PATCH 01/11] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
@@ -111,5 +111,5 @@ index 44229b1608..52125666c0 100644
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.37.0 (Apple Git-136)
+2.20.1
 

@@ -34,11 +34,13 @@ source:
     # fix scitokens init
     # backport of https://github.com/htcondor/htcondor/pull/847
     - 0010-fix-scitokens-lib-initialization.patch
+    # update distutils.sysconfig with sysconfig
+    - 0011-python-replace-distutils.sysconfig-with-sysconfig.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:

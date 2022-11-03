@@ -1,7 +1,7 @@
 From 432c5742541703f5ac351f9693dd87f842d9d733 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:50:32 +0000
-Subject: [PATCH 06/10] python: link against libcondor_utils as external
+Subject: [PATCH 06/11] python: link against libcondor_utils as external
 
 don't use the CMake target, so that we don't have to rebuild libcondor_utils when building the Python bindings
 ---
@@ -146,5 +146,5 @@ index 95916ed2c5..8c75ca8fae 100644
        set_target_properties( wheel_htcondor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${WHEEL_BINARY_DIR}/htcondor" )
        if ( NOT APPLE )
 -- 
-2.37.0 (Apple Git-136)
+2.20.1
 

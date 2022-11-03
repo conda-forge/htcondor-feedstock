@@ -1,7 +1,7 @@
 From b444212ca1be3311cb06f9e872768e43813efea0 Mon Sep 17 00:00:00 2001
 From: Jason Patton <jpatton@cs.wisc.edu>
 Date: Fri, 16 Sep 2022 16:13:02 -0500
-Subject: [PATCH 10/10] fix scitokens lib initialization
+Subject: [PATCH 10/11] fix scitokens lib initialization
 
 Fixes SciTokens initialization when not using dlopen.
 Cherry-pick of https://github.com/htcondor/htcondor/pull/847
@@ -31,5 +31,5 @@ index e53aaba55d..11ba504ada 100644
  }
  
 -- 
-2.37.0 (Apple Git-136)
+2.20.1
 

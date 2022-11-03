@@ -1,7 +1,7 @@
 From 0b449f045a166475327587f82eb3e5aa2ad98e4b Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 05/10] python: don't link against libpython
+Subject: [PATCH 05/11] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake  | 14 +++++++-------
@@ -55,5 +55,5 @@ index 925c4dbc49..95916ed2c5 100644
        if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
            set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON3_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
-2.37.0 (Apple Git-136)
+2.20.1
 

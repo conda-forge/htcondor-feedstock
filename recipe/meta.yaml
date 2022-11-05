@@ -14,32 +14,32 @@ source:
   sha256: 756317dbd39844e05253e9a425b182342bb8c66ad0693b7d7dc3008f0fc5261f
   patches:
     # don't build daemons
-    - no-daemons.patch
+    - 0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
-    - python-archlib.patch
+    - 0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
     # set install paths
-    - paths.patch
+    - 0003-cmake-set-install-paths-for-conda-builds.patch
     # don't link libpython
-    - python-no-libpython.patch
-    # fix man directory
-    - man-directory.patch
+    - 0004-python-don-t-link-against-libpython.patch
     # set section 7 for classads manpage
-    - man-classads.patch
+    - 0005-man-set-section-7-for-classads-man-page.patch
     # don't rebuild condor_utils for python bindings
-    - python-link-condor_utils.patch
+    - 0006-python-link-against-libcondor_utils-as-external.patch
     # use conda openssl libraries
-    - osx-openssl.patch  # [osx]
-    # remove unused variable on macos
-    - unused-onestring.patch  # [osx]
+    - 0007-osx-use-pre-installed-openssl-libraries.patch
+    # backport https://github.com/htcondor/htcondor/pull/307
+    - 0008-patch-out-unused-variable.patch  # [osx]
     # don't rewrite libs on macos
-    - no-macosx_rewrite_libs.patch  # [osx]
-    # fix for compiling with voms on OSX
-    - voms-osx.patch  # [osx]
+    - 0009-osx-don-t-run-macosx_rewrite_libs.patch
+    # backport https://github.com/htcondor/htcondor/pull/362
+    - 0010-fix-linking-voms.patch
+    # backport https://github.com/htcondor/htcondor/pull/929
+    - 0011-python-replace-distutils.sysconfig-with-sysconfig.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:

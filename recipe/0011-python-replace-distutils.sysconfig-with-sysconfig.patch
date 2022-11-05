@@ -1,0 +1,64 @@
+From f8b42b3a5791416c33518684ecf8d507e285d525 Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Sat, 5 Nov 2022 17:04:18 +0000
+Subject: [PATCH 11/11] python: replace distutils.sysconfig with sysconfig
+
+distutils will be removed in Python 3.12
+backport of https://github.com/htcondor/htcondor/pull/929
+---
+ build/cmake/CondorConfigure.cmake     | 10 +++++-----
+ build/cmake/CondorPackageConfig.cmake |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
+index ccd9e9f0f0..34b1cc86c8 100644
+--- a/build/cmake/CondorConfigure.cmake
++++ b/build/cmake/CondorConfigure.cmake
+@@ -90,7 +90,7 @@ if(NOT WINDOWS)
+         include (FindPythonLibs)
+         message(STATUS "Got PYTHONLIBS_VERSION_STRING = ${PYTHONLIBS_VERSION_STRING}")
+         if (PYTHON_EXECUTABLE)
+-            execute_process( COMMAND "${PYTHON_EXECUTABLE}" "-c" "import distutils.sysconfig; import sys; sys.stdout.write(distutils.sysconfig.get_config_var('SO'))" OUTPUT_VARIABLE PYTHON_MODULE_SUFFIX)
++            execute_process( COMMAND "${PYTHON_EXECUTABLE}" "-c" "import sys, sysconfig; sys.stdout.write(sysconfig.get_config_var('EXT_SUFFIX'))" OUTPUT_VARIABLE PYTHON_MODULE_SUFFIX)
+         endif()
+     else()
+         # We need to do this the hard way for both python2 and python3 support in the same build
+@@ -172,18 +172,18 @@ message(STATUS "PYTHON_LIB = ${PYTHON_LIB}")
+         find_program(PYTHON3_EXECUTABLE python3)
+         if (PYTHON3_EXECUTABLE)
+             set(PYTHON3INTERP_FOUND TRUE)
+-            set(PYTHON_QUERY_PART_01 "from distutils import sysconfig;")
++            set(PYTHON_QUERY_PART_01 "import sysconfig;")
+             set(PYTHON_QUERY_PART_02 "import sys;")
+             set(PYTHON_QUERY_PART_03 "print(str(sys.version_info.major) + '.' + str(sys.version_info.minor) + '.' + str(sys.version_info.micro));")
+             set(PYTHON_QUERY_PART_04 "print(sys.version_info.major);")
+             set(PYTHON_QUERY_PART_05 "print(sys.version_info.minor);")
+             set(PYTHON_QUERY_PART_06 "print(sys.version_info.micro);")
+-            set(PYTHON_QUERY_PART_07 "print(sysconfig.get_python_inc(plat_specific=True));")
++            set(PYTHON_QUERY_PART_07 "print(sysconfig.get_path('platinclude'));")
+             set(PYTHON_QUERY_PART_08 "print(sysconfig.get_config_var('LIBDIR'));")
+             set(PYTHON_QUERY_PART_09 "print(sysconfig.get_config_var('MULTIARCH'));")
+             set(PYTHON_QUERY_PART_10 "print(sysconfig.get_config_var('LDLIBRARY'));")
+-            set(PYTHON_QUERY_PART_11 "print(sysconfig.get_python_lib(plat_specific=True, prefix=''));")
+-            set(PYTHON_QUERY_PART_12 "print(sysconfig.get_config_var('SO'));")
++            set(PYTHON_QUERY_PART_11 "print(sysconfig.get_path('platlib', vars={'platbase': ''}).lstrip('/'));")
++            set(PYTHON_QUERY_PART_12 "print(sysconfig.get_config_var('EXT_SUFFIX'));")
+             set(PYTHON_QUERY_PART_13 "print(sys.prefix)")
+ 
+             set(PYTHON_QUERY_COMMAND "${PYTHON_QUERY_PART_01}${PYTHON_QUERY_PART_02}${PYTHON_QUERY_PART_03}${PYTHON_QUERY_PART_04}${PYTHON_QUERY_PART_05}${PYTHON_QUERY_PART_06}${PYTHON_QUERY_PART_07}${PYTHON_QUERY_PART_08}${PYTHON_QUERY_PART_09}${PYTHON_QUERY_PART_10}${PYTHON_QUERY_PART_11}${PYTHON_QUERY_PART_12}${PYTHON_QUERY_PART_13}")
+diff --git a/build/cmake/CondorPackageConfig.cmake b/build/cmake/CondorPackageConfig.cmake
+index c09683ac07..9a2a3a9fad 100644
+--- a/build/cmake/CondorPackageConfig.cmake
++++ b/build/cmake/CondorPackageConfig.cmake
+@@ -322,7 +322,7 @@ elseif ( ${OS_NAME} MATCHES "WIN" )
+ elseif( ${OS_NAME} STREQUAL "LINUX" AND CONDOR_PACKAGE_BUILD )
+ 
+ 	execute_process( COMMAND python2 -c "import distutils.sysconfig; import sys; sys.stdout.write(distutils.sysconfig.get_python_lib(1))" OUTPUT_VARIABLE C_PYTHONARCHLIB)
+-	execute_process( COMMAND python3 -c "import distutils.sysconfig; import sys; sys.stdout.write(distutils.sysconfig.get_python_lib(1))" OUTPUT_VARIABLE C_PYTHON3ARCHLIB)
++	execute_process( COMMAND python3 -c "import sys, sysconfig; sys.stdout.write(sysconfig.get_path('platlib')[1:])" OUTPUT_VARIABLE C_PYTHON3ARCHLIB)
+ 
+ 	# it's a smaller subset easier to differentiate.
+ 	# check the operating system name
+-- 
+2.20.1
+

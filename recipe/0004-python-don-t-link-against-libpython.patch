@@ -1,0 +1,59 @@
+From 68d0b9ffa0c10258dfd6c602540d775f58ff0fa4 Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Sat, 5 Nov 2022 16:53:17 +0000
+Subject: [PATCH 04/11] python: don't link against libpython
+
+---
+ build/cmake/CondorConfigure.cmake  | 14 +++++++-------
+ src/python-bindings/CMakeLists.txt |  2 --
+ 2 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
+index 775d7dc062..ccd9e9f0f0 100644
+--- a/build/cmake/CondorConfigure.cmake
++++ b/build/cmake/CondorConfigure.cmake
+@@ -214,14 +214,14 @@ message(STATUS "PYTHON_LIB = ${PYTHON_LIB}")
+ 				set(PYTHON3_LIB "libpython${PYTHON3_VERSION_MAJOR}.${PYTHON3_VERSION_MINOR}.dylib")
+ 			endif()
+ 
+-            if(EXISTS "${PYTHON3_LIBDIR}/${PYTHON3_LIB}")
+-                set(PYTHON3_LIBRARIES "${PYTHON3_LIBDIR}/${PYTHON3_LIB}")
+-                set(PYTHON3LIBS_FOUND TRUE)
+-            endif()
+-            if(EXISTS "${PYTHON3_LIBDIR}/${PYTHON3_MULTIARCH}/${PYTHON3_LIB}")
+-                set(PYTHON3_LIBRARIES "${PYTHON3_LIBDIR}/${PYTHON3_MULTIARCH}/${PYTHON3_LIB}")
+-                set(PYTHON3LIBS_FOUND TRUE)
++            # in conda builds we don't want to actually link against libpython
++            if ( ${OS_NAME} STREQUAL "DARWIN" )
++              set(PYTHON3_LIBRARIES "-undefined dynamic_lookup")
++            else()
++              set(PYTHON3_LIBRARIES "")
+             endif()
++            set(PYTHON3LIBS_FOUND TRUE)
++
+             set(PYTHON3_INCLUDE_PATH "${PYTHON3_INCLUDE_DIRS}")
+             set(PYTHON3LIBS_VERSION_STRING "${PYTHON3_VERSION_STRING}")
+             set(PYTHON3_MODULE_SUFFIX "${PYTHON3_MODULE_EXTENSION}")
+diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
+index 4bd066aba2..e28d739e78 100644
+--- a/src/python-bindings/CMakeLists.txt
++++ b/src/python-bindings/CMakeLists.txt
+@@ -122,7 +122,6 @@ if(WINDOWS)
+ 				# non-existent python27_d, the problem is in the order that you include headers
+ 				# set(PYTHON_DEBUG_LIBRARY ${BOOST_LD}/python27_d.lib)
+ 
+-				get_filename_component(PYTHON3_LIBRARY_FILENAME ${PYTHON3_LIBRARIES} NAME)
+ 				string(REGEX REPLACE "([0-9]+[.][0-9]+).*" "\\1" _PYTHON_VERSION ${PYTHON3_VERSION_STRING})
+ 				if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
+ 				  set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
+@@ -317,7 +316,6 @@ else()
+       include_directories(${BOOST_INCLUDE})
+       link_directories(${BOOST_LD})
+ 
+-      get_filename_component(PYTHON3_LIBRARY_FILENAME ${PYTHON3_LIBRARIES} NAME)
+       string(REGEX REPLACE "([0-9]+[.][0-9]+).*" "\\1" _PYTHON3_VERSION ${PYTHON3_VERSION_STRING})
+       if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
+           set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON3_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
+-- 
+2.20.1
+

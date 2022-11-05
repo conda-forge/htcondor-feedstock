@@ -1,0 +1,25 @@
+From 8201502cef0dc31a6002cca474ddd80595657448 Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Sat, 5 Nov 2022 16:57:43 +0000
+Subject: [PATCH 08/11] patch out unused variable
+
+---
+ src/condor_utils/xform_utils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/condor_utils/xform_utils.cpp b/src/condor_utils/xform_utils.cpp
+index 87a8f64252..b773537271 100644
+--- a/src/condor_utils/xform_utils.cpp
++++ b/src/condor_utils/xform_utils.cpp
+@@ -46,7 +46,7 @@
+ #include <set>
+ 
+ // values for hashtable defaults, these are declared as char rather than as const char to make g++ on fedora shut up.
+-static char OneString[] = "1", ZeroString[] = "0";
++static char ZeroString[] = "0";
+ //static char ParallelNodeString[] = "#pArAlLeLnOdE#";
+ static char UnsetString[] = "";
+ 
+-- 
+2.20.1
+

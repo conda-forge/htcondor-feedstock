@@ -10,7 +10,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://research.cs.wisc.edu/htcondor/tarball/10.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
   sha256: 7aee153b5170dce0f0792869c6fa7f27c3eb9764a2a3391b3cbc4f0432c99855
   patches:
     # for patches see:

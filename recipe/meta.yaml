@@ -292,10 +292,9 @@ outputs:
         - src/condor_tests/test_htcondor_dags/
         - src/condor_tests/test_python_bindings_classad.py
       commands:
-        # check that the pip recognises that package is already installed
-        # mainly by asking pip to install it again, and making sure it doesn't
-        # do anything
-        - python -m pip install --no-deps --index-url nothing {{ name }}
+        # check metadata
+        - python -m pip check htcondor
+        - python -m pip show htcondor
         # run tests
         - python -m pytest src/condor_tests/
       imports:

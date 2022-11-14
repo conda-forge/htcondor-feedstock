@@ -1,17 +1,17 @@
-From 2116befe33a281072d5d6512f400278d271f65e0 Mon Sep 17 00:00:00 2001
+From e335db423286939e06380efc237ae9877814bfd9 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:08 +0000
-Subject: [PATCH 04/11] man: set section 7 for classads man page
+Subject: [PATCH 04/10] man: set section 7 for classads man page
 
 ---
  docs/conf.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/docs/conf.py b/docs/conf.py
-index 5d2fdb8cf8..eb46b16d7b 100644
+index 5b7bac4aca..f35e5937fb 100644
 --- a/docs/conf.py
 +++ b/docs/conf.py
-@@ -115,7 +115,7 @@ pygments_style = 'colorful'
+@@ -116,7 +116,7 @@ pygments_style = 'colorful'
  # (source start file, name, description, authors, manual section).
  man_pages = [
      ('man-pages/classad_eval', 'classad_eval', u'HTCondor Manual', [u'HTCondor Team'], 1),
@@ -21,5 +21,5 @@ index 5d2fdb8cf8..eb46b16d7b 100644
      ('man-pages/condor_advertise', 'condor_advertise', u'HTCondor Manual', [u'HTCondor Team'], 1),
      ('man-pages/condor_annex', 'condor_annex', u'HTCondor Manual', [u'HTCondor Team'], 1),
 -- 
-2.20.1
+2.38.1
 

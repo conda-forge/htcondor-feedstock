@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.12.0" %}
+{% set version = "10.0.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -10,9 +10,15 @@ package:
   version: {{ version }}
 
 source:
-  url: https://research.cs.wisc.edu/htcondor/tarball/feature/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: e54dcdf8015f103763db9631ea0a74f646ef713288949a327bac346e020be0d1
+  url: https://research.cs.wisc.edu/htcondor/tarball/10.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  sha256: fbe5d9dbd6a49919f9166fe6004b30c3f9d0556c783297e0ee23140aa6532d1e
   patches:
+    # for patches see:
+    #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches-10.0
+    # update patches via:
+    #   git pull --rebase upstream VX_Y_Z
+    #   git format-patch VX_Y_Z
+
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
@@ -31,16 +37,13 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
-    # fix scitokens init
-    # backport of https://github.com/htcondor/htcondor/pull/847
-    - 0010-fix-scitokens-lib-initialization.patch
     # update distutils.sysconfig with sysconfig
-    - 0011-python-replace-distutils.sysconfig-with-sysconfig.patch
+    - 0010-python-replace-distutils.sysconfig-with-sysconfig.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -289,10 +292,9 @@ outputs:
         - src/condor_tests/test_htcondor_dags/
         - src/condor_tests/test_python_bindings_classad.py
       commands:
-        # check that the pip recognises that package is already installed
-        # mainly by asking pip to install it again, and making sure it doesn't
-        # do anything
-        - python -m pip install --no-deps --index-url nothing {{ name }}
+        # check metadata
+        - python -m pip check htcondor
+        - python -m pip show htcondor
         # run tests
         - python -m pytest src/condor_tests/
       imports:

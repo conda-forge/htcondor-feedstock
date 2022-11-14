@@ -1,7 +1,7 @@
-From 081dd87a9c8b4d3403618e80ed302c920126e73d Mon Sep 17 00:00:00 2001
+From 162651feb58f7dcecafef780bdc2189d7d8fd210 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/11] cmake: don't build daemons
+Subject: [PATCH 01/10] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
@@ -9,8 +9,8 @@ we don't need them for conda environments
  src/condor_procd/CMakeLists.txt     | 12 ------------
  src/condor_schedd.V6/CMakeLists.txt |  3 ---
  src/condor_scripts/CMakeLists.txt   |  2 --
- src/condor_tools/CMakeLists.txt     |  9 ---------
- 5 files changed, 1 insertion(+), 27 deletions(-)
+ src/condor_tools/CMakeLists.txt     |  8 --------
+ 5 files changed, 1 insertion(+), 26 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index b6cd676267..8e6cd0fbeb 100644
@@ -80,7 +80,7 @@ index a7515224e9..b3b66b9b1c 100644
  
      install ( FILES condor_qsub DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
 diff --git a/src/condor_tools/CMakeLists.txt b/src/condor_tools/CMakeLists.txt
-index 44229b1608..52125666c0 100644
+index dbe2c9a3fb..52125666c0 100644
 --- a/src/condor_tools/CMakeLists.txt
 +++ b/src/condor_tools/CMakeLists.txt
 @@ -20,13 +20,8 @@ condor_exe(condor_manifest "manifest.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -97,7 +97,7 @@ index 44229b1608..52125666c0 100644
  condor_exe(condor_config_val "config_val.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_userprio "user_prio.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_transform_ads "transform_ads.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
-@@ -67,12 +62,8 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
+@@ -67,11 +62,8 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
  condor_exe(condor_version "version.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_wait "wait.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_history "history.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -106,10 +106,9 @@ index 44229b1608..52125666c0 100644
 -condor_exe(condor_on "tool.cpp" "${C_SBIN}" "${CONDOR_TOOL_LIBS}" OFF)
  
 -clone_install(condor_on "${C_SBIN}" "condor_off;condor_restart;condor_reconfig;condor_set_shutdown" "${C_SBIN}")
--clone_install(condor_on "${C_SBIN}" "condor_set_shutdown" "${C_SBIN}")
  clone_install(condor_vacate "${C_BIN}" "condor_reschedule" "${C_BIN}")
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.20.1
+2.38.1
 

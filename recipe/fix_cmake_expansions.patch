@@ -1,0 +1,123 @@
+The Condor build files currently (10.1.1) suffer from an issue relating to variable
+name expansion in CMake, as documented here:
+
+https://stackoverflow.com/a/19988856/3760486
+
+This manifested itself as a build error relating to a truncated file because
+libcondor_utils was getting built as a static library even though it was intended
+to be a shared library.
+
+diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
+index e7981c2..362eaef 100644
+--- a/build/cmake/CondorConfigure.cmake
++++ b/build/cmake/CondorConfigure.cmake
+@@ -17,9 +17,9 @@
+  ###############################################################
+ 
+ # OS pre mods
+-if(${OS_NAME} STREQUAL "DARWIN")
++if(OS_NAME STREQUAL "DARWIN")
+ 	#this needs to be evaluated in order due to WIN collision.
+-elseif(${OS_NAME} MATCHES "WIN")
++elseif(OS_NAME MATCHES "WIN")
+ 	set(WINDOWS ON)
+ 
+ 	# The following is necessary for sdk/ddk version to compile against.
+@@ -96,7 +96,7 @@ if(NOT WINDOWS)
+         # We need to do this the hard way for both python2 and python3 support in the same build
+         # This will be easier in cmake 3
+ 
+-        if(${OS_NAME} STREQUAL "DARWIN")
++        if(OS_NAME STREQUAL "DARWIN")
+             # macOS 12.X (Monterey) and above don't support python2
+             if(NOT ${OS_VER} MATCHES "2[1-9]")
+                 find_program(PYTHON_EXECUTABLE python)
+@@ -145,7 +145,7 @@ message(STATUS "PYTHON_EXECUTABLE = ${PYTHON_EXECUTABLE}")
+             list(GET _PYTHON_VALUES 10 PYTHON_PREFIX)
+             #set(C_PYTHONARCHLIB ${C_PYTHONARCHLIB})
+ 
+-			if(${OS_NAME} STREQUAL "DARWIN")
++			if(OS_NAME STREQUAL "DARWIN")
+ 				set(PYTHON_LIBDIR "${PYTHON_PREFIX}/lib")
+ 				set(PYTHON_LIB "libpython${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}.dylib")
+ 			endif()
+@@ -209,7 +209,7 @@ message(STATUS "PYTHON_LIB = ${PYTHON_LIB}")
+             list(GET _PYTHON_VALUES 10 PYTHON3_PREFIX)
+             #set(C_PYTHON3ARCHLIB ${C_PYTHON3ARCHLIB})
+ 
+-			if(${OS_NAME} STREQUAL "DARWIN")
++			if(OS_NAME STREQUAL "DARWIN")
+ 				set(PYTHON3_LIBDIR "${PYTHON3_PREFIX}/lib")
+ 				set(PYTHON3_LIB "libpython${PYTHON3_VERSION_MAJOR}.${PYTHON3_VERSION_MINOR}.dylib")
+ 			endif()
+@@ -497,7 +497,7 @@ if( NOT WINDOWS)
+ 	check_symbol_exists(TCP_KEEPALIVE "sys/types.h;sys/socket.h;netinet/tcp.h" HAVE_TCP_KEEPALIVE)
+ 	check_symbol_exists(TCP_KEEPCNT "sys/types.h;sys/socket.h;netinet/tcp.h" HAVE_TCP_KEEPCNT)
+ 	check_symbol_exists(TCP_KEEPINTVL, "sys/types.h;sys/socket.h;netinet/tcp.h" HAVE_TCP_KEEPINTVL)
+-	if(${OS_NAME} STREQUAL "LINUX")
++	if(OS_NAME STREQUAL "LINUX")
+ 		check_include_files("linux/tcp.h" HAVE_LINUX_TCP_H)
+ 	endif()
+ 	if( HAVE_LINUX_TCP_H )
+@@ -559,7 +559,7 @@ if( NOT WINDOWS)
+ 	check_include_files("dlfcn.h" HAVE_DLFCN_H)
+ 	check_include_files("inttypes.h" HAVE_INTTYPES_H)
+ 	check_include_files("ldap.h" HAVE_LDAP_H)
+-	if (${OS_NAME} STREQUAL "DARWIN")
++	if (OS_NAME STREQUAL "DARWIN")
+ 		find_multiple( "LDAP;lber" LDAP_FOUND )
+ 	else()
+ 		find_multiple( "ldap;lber" LDAP_FOUND )
+@@ -690,7 +690,7 @@ set(SIZEOF_VOIDPTR "${VOIDPTR}")
+ ##################################################
+ ##################################################
+ # Now checking *nix OS based options
+-if(${OS_NAME} STREQUAL "LINUX")
++if(OS_NAME STREQUAL "LINUX")
+ 
+ 	set(LINUX ON)
+ 	set( CONDOR_BUILD_SHARED_LIBS TRUE )
+@@ -739,7 +739,7 @@ if(${OS_NAME} STREQUAL "LINUX")
+ 	set(HAVE_GNU_LD ON)
+     option(HAVE_HTTP_PUBLIC_FILES "Support for public input file transfer via HTTP" ON)
+ 
+-elseif(${OS_NAME} STREQUAL "DARWIN")
++elseif(OS_NAME STREQUAL "DARWIN")
+ 	add_definitions(-DDarwin)
+ 	set(DARWIN ON)
+ 	set( CONDOR_BUILD_SHARED_LIBS TRUE )
+@@ -759,7 +759,7 @@ elseif(${OS_NAME} STREQUAL "DARWIN")
+ 	endif()
+ 
+ 	exec_program (sw_vers ARGS -productVersion OUTPUT_VARIABLE TEST_VER)
+-	if(${TEST_VER} MATCHES "10.([67])")
++	if(TEST_VER MATCHES "10.([67])")
+ 		set (HAVE_OLD_SCANDIR 1)
+ 		dprint("Using old function signature for scandir()")
+ 	else()
+@@ -950,7 +950,7 @@ endif()
+ ################################################################################
+ # Various externals rely on make, even if we're not using
+ # Make.  Ensure we have a usable, reasonable default for them.
+-if(${CMAKE_GENERATOR} STREQUAL "Unix Makefiles")
++if(CMAKE_GENERATOR STREQUAL "Unix Makefiles")
+ 	set( MAKE $(MAKE) )
+ else ()
+ 	include (ProcessorCount)
+@@ -1022,14 +1022,14 @@ else ()
+ 	# globus is an odd *beast* which requires a bit more config.
+ 	# old globus builds on manylinux1 (centos5 docker image)
+ 	if (LINUX)
+-		if (${SYSTEM_NAME} MATCHES "centos5.11")
++		if (SYSTEM_NAME MATCHES "centos5.11")
+ 			add_subdirectory(${CONDOR_EXTERNAL_DIR}/bundles/globus/5.2.5)
+ 		else()
+ 			add_subdirectory(${CONDOR_EXTERNAL_DIR}/bundles/globus/6.0)
+ 		endif()
+ 	elseif(DARWIN)
+ 		exec_program (sw_vers ARGS -productVersion OUTPUT_VARIABLE TEST_VER)
+-		if (${TEST_VER} MATCHES "10.1[3-9]" OR ${TEST_VER} MATCHES "1[1-9].[1-9]")
++		if (TEST_VER MATCHES "10.1[3-9]" OR ${TEST_VER} MATCHES "1[1-9].[1-9]")
+ 			add_subdirectory(${CONDOR_EXTERNAL_DIR}/bundles/globus/6.0)
+ 		else()
+ 			add_subdirectory(${CONDOR_EXTERNAL_DIR}/bundles/globus/5.2.5)

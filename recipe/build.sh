@@ -57,9 +57,6 @@ cmake \
 	-DWITH_VOMS:BOOL=${WITH_VOMS} \
 ;
 
-# There seems to be a race condition in building
-# a particular library.
-CPU_COUNT=1
 # build
 cmake --build . --parallel ${CPU_COUNT} --verbose
 

@@ -39,6 +39,7 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # update distutils.sysconfig with sysconfig
     - 0010-python-replace-distutils.sysconfig-with-sysconfig.patch
+    - fix_cmake_expansions.patch
 
 build:
   error_overdepending: true

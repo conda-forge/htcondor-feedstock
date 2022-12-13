@@ -1,0 +1,31 @@
+HTCondor 10.1 supports OpenSSL 3, but there is at least one mistake that prevents
+compilation on osx64.
+
+diff --git a/src/condor_io/condor_auth_ssl.cpp b/src/condor_io/condor_auth_ssl.cpp
+index 94bfd31..f5db209 100644
+--- a/src/condor_io/condor_auth_ssl.cpp
++++ b/src/condor_io/condor_auth_ssl.cpp
+@@ -127,8 +127,10 @@ int g_last_verify_error_index = -1;
+ // Symbols from libssl
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ static long (*SSL_CTX_ctrl_ptr)(SSL_CTX *, int, long, void *) = NULL;
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000L || defined(LIBRESSL_VERSION_NUMBER)
+ static unsigned long (*SSL_CTX_set_options_ptr)(SSL_CTX *, unsigned long) = NULL;
++#else
++static uint64_t (*SSL_CTX_set_options_ptr)(SSL_CTX *, uint64_t) = NULL;
+ #endif
+ static int (*SSL_peek_ptr)(SSL *ssl, void *buf, int num) = NULL;
+ static void (*SSL_CTX_free_ptr)(SSL_CTX *) = NULL;
+@@ -231,8 +233,10 @@ bool Condor_Auth_SSL::Initialize()
+ 		 (dl_hdl = dlopen(LIBSSL_SO, RTLD_LAZY)) == NULL ||
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 		 !(SSL_CTX_ctrl_ptr = (long (*)(SSL_CTX *, int, long, void *))dlsym(dl_hdl, "SSL_CTX_ctrl")) ||
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000L || defined(LIBRESSL_VERSION_NUMBER)
+ 		 !(SSL_CTX_set_options_ptr = (unsigned long (*)(SSL_CTX *, unsigned long))dlsym(dl_hdl, "SSL_CTX_set_options")) ||
++#else
++		 !(SSL_CTX_set_options_ptr = (uint64_t (*)(SSL_CTX *, uint64_t))dlsym(dl_hdl, "SSL_CTX_set_options")) ||
+ #endif
+ 		 !(SSL_peek_ptr = (int (*)(SSL *ssl, void *buf, int num))dlsym(dl_hdl, "SSL_peek")) ||
+ 		 !(SSL_CTX_free_ptr = (void (*)(SSL_CTX *))dlsym(dl_hdl, "SSL_CTX_free")) ||

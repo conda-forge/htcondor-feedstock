@@ -38,6 +38,8 @@ source:
     # fix scitokens init
     # backport of https://github.com/htcondor/htcondor/pull/847
     - 0012-fix-scitokens-lib-initialization.patch
+    - fix_cmake_expansions.patch
+    - openssl3.patch
 
 build:
   error_overdepending: true

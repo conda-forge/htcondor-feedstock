@@ -39,11 +39,13 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # update distutils.sysconfig with sysconfig
     - 0010-python-replace-distutils.sysconfig-with-sysconfig.patch
+    - fix_cmake_expansions.patch
+    - openssl3.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:

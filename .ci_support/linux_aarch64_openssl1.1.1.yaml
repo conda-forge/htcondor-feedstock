@@ -25,7 +25,7 @@ expat:
 gct:
 - 6.2.1629922860
 krb5:
-- '1.19'
+- '1.20'
 libcurl:
 - '7'
 libuuid:

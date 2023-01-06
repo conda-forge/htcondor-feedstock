@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "10.1.1" %}
+{% set version = "10.2.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 60900c9a027a87b6b4cc5d9924a1b8b3058602ecd0c3c23a6e33040920e82463
+  sha256: ffd77d8d067843a671aa8f4344d6fe54d8f79700b74c5ef3fca5586836448bb3
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
@@ -37,22 +37,18 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
-    # update distutils.sysconfig with sysconfig
-    - 0010-python-replace-distutils.sysconfig-with-sysconfig.patch
-    - fix_cmake_expansions.patch
-    - openssl3.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake >=3.20
     - llvm-openmp  # [osx]
     - make  # [unix]
     - perl
@@ -248,7 +244,7 @@ outputs:
         completion.
 
   - name: python-htcondor
-    script: install-python.sh
+    script: build-python.sh
     build:
       ignore_run_exports:
         - libuuid  # [linux]
@@ -261,7 +257,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - cmake
+        - cmake >=3.20
         - make  # [unix]
         - pkg-config  # [unix]
         # extras for cross-compilation

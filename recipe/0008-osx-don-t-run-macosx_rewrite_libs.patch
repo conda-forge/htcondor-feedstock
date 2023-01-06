@@ -1,7 +1,7 @@
-From cc8c9fbe24c99ac3ff4f428d204491119234a7d1 Mon Sep 17 00:00:00 2001
+From 4fbdfcd7b8f983f31973a21526e43ab6c43c54d9 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
-Subject: [PATCH 08/10] osx: don't run macosx_rewrite_libs
+Subject: [PATCH 8/9] osx: don't run macosx_rewrite_libs
 
 conda-build handles this for us
 ---
@@ -24,10 +24,10 @@ index 3f943a3d3c..b716b29712 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index f90fc926fd..3e370fe5ff 100644
+index 8a73c695ac..8e8331d230 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
-@@ -705,8 +705,10 @@ endif()
+@@ -704,8 +704,10 @@ endif()
  
  if ( APPLE )
  	target_link_libraries( condor_utils PUBLIC ${IOKIT_FOUND} ${COREFOUNDATION_FOUND} resolv )
@@ -61,5 +61,5 @@ index 8c75ca8fae..7ec68a453f 100644
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB}/lib${PY3CLASSAD_LIB_NAME}.dylib)" )
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_PYTHON3ARCHLIB}/classad/classad${PYTHON3_MODULE_SUFFIX})" )
 -- 
-2.38.1
+2.39.0
 

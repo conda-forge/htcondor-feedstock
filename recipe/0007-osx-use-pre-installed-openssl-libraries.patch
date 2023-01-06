@@ -1,14 +1,14 @@
-From 3a59b67336197e21f895ba11f87a1e2ae9adb86c Mon Sep 17 00:00:00 2001
+From a9c85d519fdf06fd9e7fdbfea0ea8bd6824217b5 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:48 +0000
-Subject: [PATCH 07/10] osx: use pre-installed openssl libraries
+Subject: [PATCH 7/9] osx: use pre-installed openssl libraries
 
 ---
  externals/bundles/openssl/packaged/CMakeLists.txt | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/externals/bundles/openssl/packaged/CMakeLists.txt b/externals/bundles/openssl/packaged/CMakeLists.txt
-index 6b2dae5068..d92ed7e2fa 100644
+index bfafceb088..96723f6ab3 100644
 --- a/externals/bundles/openssl/packaged/CMakeLists.txt
 +++ b/externals/bundles/openssl/packaged/CMakeLists.txt
 @@ -16,7 +16,7 @@ add_library(openssl-headers INTERFACE)
@@ -19,8 +19,8 @@ index 6b2dae5068..d92ed7e2fa 100644
 +if (APPLE AND NOT "$ENV{CONDA_BUILD}" STREQUAL "1")
  	include(FetchContent)
  
- 	exec_program (sw_vers ARGS -productVersion OUTPUT_VARIABLE MACOS_PRODUCT_VER)
-@@ -73,8 +73,10 @@ else()
+ 	# Fetch the whole source tarball, then delete the
+@@ -62,8 +62,10 @@ else()
  	find_library(LIBSSL_FOUND "ssl")
  
  	# If we dlopen libssl.so, this defines its name
@@ -34,5 +34,5 @@ index 6b2dae5068..d92ed7e2fa 100644
  
  	# and set the contents of the targets appropriately
 -- 
-2.38.1
+2.39.0
 

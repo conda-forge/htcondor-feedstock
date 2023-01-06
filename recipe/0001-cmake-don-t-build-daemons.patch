@@ -1,7 +1,7 @@
-From 162651feb58f7dcecafef780bdc2189d7d8fd210 Mon Sep 17 00:00:00 2001
+From efe8e71650f436dd96213d3a0dcc430ccfc6c614 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/10] cmake: don't build daemons
+Subject: [PATCH 1/9] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
@@ -48,10 +48,10 @@ index e3f36a5efe..a615a075db 100644
  
  set( PROCD_CLIENT_UTIL_SRCS "${ProcClientElements}" PARENT_SCOPE )
 diff --git a/src/condor_schedd.V6/CMakeLists.txt b/src/condor_schedd.V6/CMakeLists.txt
-index 12f47d0724..536286913a 100644
+index 7c1cf99c3b..cde3be6690 100644
 --- a/src/condor_schedd.V6/CMakeLists.txt
 +++ b/src/condor_schedd.V6/CMakeLists.txt
-@@ -49,7 +49,4 @@ tdman.cpp
+@@ -47,7 +47,4 @@ schedd_stats.cpp
  transfer_queue.cpp
  )
  
@@ -110,5 +110,5 @@ index dbe2c9a3fb..52125666c0 100644
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.38.1
+2.39.0
 

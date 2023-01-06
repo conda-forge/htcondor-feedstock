@@ -1,39 +1,32 @@
-From 641809a45a9cfdc9523d8c7dd7c88bf9758b8b29 Mon Sep 17 00:00:00 2001
+From 7d99cd5454be73bd17fba768341248779067dab5 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 05/10] python: don't link against libpython
+Subject: [PATCH 5/9] python: don't link against libpython
 
 ---
- build/cmake/CondorConfigure.cmake  | 14 +++++++-------
- src/python-bindings/CMakeLists.txt |  2 --
- 2 files changed, 7 insertions(+), 9 deletions(-)
+ build/cmake/CondorConfigure.cmake  | 8 +++++++-
+ src/python-bindings/CMakeLists.txt | 2 --
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 9fefa8e87d..972ae7c595 100644
+index c6562dfb0e..b8b86b8ebb 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -214,14 +214,14 @@ if(NOT WINDOWS)
- 				set(PYTHON3_LIB "libpython${PYTHON3_VERSION_MAJOR}.${PYTHON3_VERSION_MINOR}.dylib")
- 			endif()
+@@ -149,7 +149,13 @@ if(NOT WINDOWS)
  
--            if(EXISTS "${PYTHON3_LIBDIR}/${PYTHON3_LIB}")
--                set(PYTHON3_LIBRARIES "${PYTHON3_LIBDIR}/${PYTHON3_LIB}")
--                set(PYTHON3LIBS_FOUND TRUE)
--            endif()
--            if(EXISTS "${PYTHON3_LIBDIR}/${PYTHON3_MULTIARCH}/${PYTHON3_LIB}")
--                set(PYTHON3_LIBRARIES "${PYTHON3_LIBDIR}/${PYTHON3_MULTIARCH}/${PYTHON3_LIB}")
--                set(PYTHON3LIBS_FOUND TRUE)
-+            # in conda builds we don't want to actually link against libpython
-+            if (APPLE)
-+              set(PYTHON3_LIBRARIES "-Wl,-undefined,dynamic_lookup")
-+            else()
-+              set(PYTHON3_LIBRARIES "")
-             endif()
-+            set(PYTHON3LIBS_FOUND TRUE)
-+
-             set(PYTHON3_INCLUDE_PATH "${PYTHON3_INCLUDE_DIRS}")
-             set(PYTHON3LIBS_VERSION_STRING "${PYTHON3_VERSION_STRING}")
-             set(PYTHON3_MODULE_SUFFIX "${PYTHON3_MODULE_EXTENSION}")
+ 			set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
+ 
+-			set(PYTHON3_LIBRARIES "${PYTHON3_LIB}")
++			# in conda builds we don't want to actually link against libpython
++			if (APPLE)
++			  set(PYTHON3_LIBRARIES "-Wl,-undefined,dynamic_lookup")
++			else()
++			  set(PYTHON3_LIBRARIES "")
++			endif()
++			set(PYTHON3LIBS_FOUND TRUE)
+ 
+ 			# where to install the Python library
+ 			set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
 index 925c4dbc49..95916ed2c5 100644
 --- a/src/python-bindings/CMakeLists.txt
@@ -55,5 +48,5 @@ index 925c4dbc49..95916ed2c5 100644
        if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
            set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON3_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
-2.38.1
+2.39.0
 

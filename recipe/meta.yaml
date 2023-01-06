@@ -246,7 +246,7 @@ outputs:
         completion.
 
   - name: python-htcondor
-    script: install-python.sh
+    script: build-python.sh
     build:
       ignore_run_exports:
         - libuuid  # [linux]

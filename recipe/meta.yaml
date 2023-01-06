@@ -37,10 +37,8 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
-    # update distutils.sysconfig with sysconfig
-    - 0010-python-replace-distutils.sysconfig-with-sysconfig.patch
-    - fix_cmake_expansions.patch
-    - openssl3.patch
+    # fix openssl builds
+    - 0010-fix-building-against-openssl3.patch
 
 build:
   error_overdepending: true

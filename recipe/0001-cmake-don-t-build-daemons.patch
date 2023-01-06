@@ -1,4 +1,4 @@
-From 162651feb58f7dcecafef780bdc2189d7d8fd210 Mon Sep 17 00:00:00 2001
+From 5dd523152a048d85623e9c9cb101857691fcea15 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 01/10] cmake: don't build daemons
@@ -110,5 +110,5 @@ index dbe2c9a3fb..52125666c0 100644
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.38.1
+2.39.0
 

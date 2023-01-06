@@ -1,4 +1,4 @@
-From 3475022beff0e48428123744b7696a4e8901a3c5 Mon Sep 17 00:00:00 2001
+From 5fc482caf76d686435b23ac3f1d065bd5ebadebf Mon Sep 17 00:00:00 2001
 From: jasoncpatton <jpatton@cs.wisc.edu>
 Date: Thu, 15 Sep 2022 12:24:59 +0100
 Subject: [PATCH 09/10] python: use conda placeholder shebang
@@ -73,5 +73,5 @@ index a95aa82f2d..52d2b68b8c 100755
  # Copyright 2020 HTCondor Team, Computer Sciences Department,
  # University of Wisconsin-Madison, WI.
 -- 
-2.38.1
+2.39.0
 

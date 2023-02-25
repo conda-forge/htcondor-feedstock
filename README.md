@@ -1,11 +1,36 @@
+About htcondor-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htcondor-feedstock/blob/main/LICENSE.txt)
+
 About htcondor
-==============
+--------------
 
 Home: http://htcondor.org/
 
 Package license: Apache-2.0
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htcondor-feedstock/blob/main/LICENSE.txt)
+Summary: HTCondor: High Throughput Computing
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+HTCondor is a workload management system for high-throughput and
+high-performance jobs. Like other full-featured batch systems, HTCondor
+provides a job queuing mechanism, scheduling policy, priority scheme,
+resource monitoring, and resource management. Users submit their
+serial or parallel jobs to HTCondor, HTCondor places them into a queue,
+chooses when and where to run the jobs based upon a policy, carefully
+monitors their progress, and ultimately informs the user upon
+completion.
+
+About htcondor-classads
+-----------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
 
 Summary: HTCondor's classified advertisement language
 
@@ -31,6 +56,38 @@ three. Two classads match if each ad has an attribute requirements
 that evaluates to true in the context of the other ad. Classad
 matching is used by the HTCondor central manager to determine the
 compatibility of jobs and workstations where they may be run.
+
+About libcondor_utils
+---------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
+
+Summary: HTCondor utilities library
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+Just the HTCondor libcondor_utils shared object library.
+About python-htcondor
+---------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
+
+Summary: Python bindings for HTCondor
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+The HTCondor Python bindings aim to expose a high-quality,
+Pythonic interface to the HTCondor client libraries. They utilize
+the same C++ libraries as HTCondor itself, meaning they have
+nearly the same behavior as the command line tools.
 
 
 Current build status

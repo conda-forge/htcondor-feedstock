@@ -1,30 +1,81 @@
-From efe8e71650f436dd96213d3a0dcc430ccfc6c614 Mon Sep 17 00:00:00 2001
+From 1aaa44d8aa16a3fd1e3134a4b93619383795cd39 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 1/9] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
- src/CMakeLists.txt                  |  2 +-
+ src/CMakeLists.txt                  | 17 -----------------
  src/condor_procd/CMakeLists.txt     | 12 ------------
  src/condor_schedd.V6/CMakeLists.txt |  3 ---
  src/condor_scripts/CMakeLists.txt   |  2 --
  src/condor_tools/CMakeLists.txt     |  8 --------
- 5 files changed, 1 insertion(+), 26 deletions(-)
+ 5 files changed, 42 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index b6cd676267..8e6cd0fbeb 100644
+index 788f177d46..9ba4a7a244 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -24,7 +24,7 @@
- # the 2nd arg is prio order for symbols ripping to prevent .o copy-mindging within the std:u
- add_subdirectories("${CONDOR_SOURCE_DIR}/src"
- 	"${CONDOR_SOURCE_DIR}/src/bash_completion.d;${CONDOR_SOURCE_DIR}/src/classad_analysis;${CONDOR_SOURCE_DIR}/src/ccb;${CONDOR_SOURCE_DIR}/src/condor_io;${CONDOR_SOURCE_DIR}/src/condor_daemon_client;${CONDOR_SOURCE_DIR}/src/condor_daemon_core.V6;${CONDOR_SOURCE_DIR}/src/condor_procapi;${CONDOR_SOURCE_DIR}/src/condor_procd;${CONDOR_SOURCE_DIR}/src/condor_schedd.V6;${CONDOR_SOURCE_DIR}/src/condor_sysapi;${CONDOR_SOURCE_DIR}/src/condor_utils"
--	"${CONDOR_SOURCE_DIR}/src/classad;${CONDOR_SOURCE_DIR}/src/safefile")
-+	"${CONDOR_SOURCE_DIR}/src/classad;${CONDOR_SOURCE_DIR}/src/safefile;${CONDOR_MASTER_SRC_DIR};${CONDOR_NEGOTIATOR_SRC_DIR};${CONDOR_SOURCE_DIR}/src/condor_collector.V6;${CONDOR_SOURCE_DIR}/src/condor_shadow.V6.1;${CONDOR_STARTD_SRC_DIR};${CONDOR_SOURCE_DIR}/src/condor_starter.V6.1;${CONDOR_SOURCE_DIR}/src/condor_credd;${CONDOR_SOURCE_DIR}/src/condor_gridmanager;${CONDOR_SOURCE_DIR}/src/condor_had;${CONDOR_SOURCE_DIR}/src/condor_transferd;${CONDOR_SOURCE_DIR}/src/arc_gahp;${CONDOR_SOURCE_DIR}/src/azure_gahp;${CONDOR_SOURCE_DIR}/src/condor_c-gahp;${CONDOR_SOURCE_DIR}/src/condor_ft-gahp;${CONDOR_SOURCE_DIR}/src/condor_vm-gahp;${CONDOR_SOURCE_DIR}/src/ec2_gahp;${CONDOR_SOURCE_DIR}/src/gce_gahp;${CONDOR_SOURCE_DIR}/src/nordugrid_gahp;${CONDOR_SOURCE_DIR}/src/openstack_gahp")
+@@ -18,31 +18,22 @@
  
- #if (BUILD_TESTING AND NOT WINDOWS)
- if (BUILD_TESTING)
+ 
+ add_subdirectory(annex)
+-add_subdirectory(arc_gahp)
+-add_subdirectory(azure_gahp)
+ add_subdirectory(bash_completion.d)
+ add_subdirectory(blahp)
+ add_subdirectory(ccb)
+ add_subdirectory(classad_analysis)
+ add_subdirectory(condor_birdwatcher)
+-add_subdirectory(condor_c-gahp)
+ add_subdirectory(condor_chirp)
+-add_subdirectory(condor_collector.V6)
+ add_subdirectory(condor_credd)
+ add_subdirectory(condor_daemon_client)
+ add_subdirectory(condor_daemon_core.V6)
+ add_subdirectory(condor_dagman)
+ add_subdirectory(condor_examples)
+ add_subdirectory(condor_filetransfer_plugins)
+-add_subdirectory(condor_ft-gahp)
+-add_subdirectory(condor_gridmanager)
+-add_subdirectory(condor_had)
+ add_subdirectory(condor_io)
+ add_subdirectory(condor_job_router)
+ add_subdirectory(condor_kbdd)
+ add_subdirectory(condor_mail)
+-add_subdirectory(condor_master.V6)
+-add_subdirectory(condor_negotiator.V6)
+ add_subdirectory(condor_power)
+ add_subdirectory(condor_prio)
+ add_subdirectory(condor_procapi)
+@@ -51,12 +42,8 @@ add_subdirectory(condor_q.V6)
+ add_subdirectory(condor_release)
+ add_subdirectory(condor_rmdir)
+ add_subdirectory(condor_rm.V6)
+-add_subdirectory(condor_schedd.V6)
+ add_subdirectory(condor_scripts)
+-add_subdirectory(condor_shadow.V6.1)
+ add_subdirectory(condor_shared_port)
+-add_subdirectory(condor_startd.V6)
+-add_subdirectory(condor_starter.V6.1)
+ add_subdirectory(condor_status.V6)
+ add_subdirectory(condor_submit.V6)
+ add_subdirectory(condor_sysapi)
+@@ -65,14 +52,10 @@ add_subdirectory(condor_tools)
+ add_subdirectory(condor_unit_tests)
+ add_subdirectory(condor_userlog)
+ add_subdirectory(condor_utils)
+-add_subdirectory(condor_vm-gahp)
+ add_subdirectory(condor_who)
+ add_subdirectory(defrag)
+-add_subdirectory(ec2_gahp)
+ add_subdirectory(gangliad)
+-add_subdirectory(gce_gahp)
+ add_subdirectory(gpu)
+-add_subdirectory(openstack_gahp)
+ add_subdirectory(python-bindings)
+ add_subdirectory(rvgahp)
+ 
 diff --git a/src/condor_procd/CMakeLists.txt b/src/condor_procd/CMakeLists.txt
 index e3f36a5efe..a615a075db 100644
 --- a/src/condor_procd/CMakeLists.txt
@@ -60,7 +111,7 @@ index 7c1cf99c3b..cde3be6690 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index a7515224e9..b3b66b9b1c 100644
+index 7103d3e511..fb339c98f9 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
 @@ -31,7 +31,6 @@ endif(WINDOWS)
@@ -71,7 +122,7 @@ index a7515224e9..b3b66b9b1c 100644
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -56,7 +55,6 @@ if (NOT WINDOWS)
+@@ -57,7 +56,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -80,7 +131,7 @@ index a7515224e9..b3b66b9b1c 100644
  
      install ( FILES condor_qsub DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
 diff --git a/src/condor_tools/CMakeLists.txt b/src/condor_tools/CMakeLists.txt
-index dbe2c9a3fb..52125666c0 100644
+index d45167aab5..6daf9e2d8e 100644
 --- a/src/condor_tools/CMakeLists.txt
 +++ b/src/condor_tools/CMakeLists.txt
 @@ -20,13 +20,8 @@ condor_exe(condor_manifest "manifest.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -97,7 +148,7 @@ index dbe2c9a3fb..52125666c0 100644
  condor_exe(condor_config_val "config_val.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_userprio "user_prio.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_transform_ads "transform_ads.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
-@@ -67,11 +62,8 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
+@@ -66,11 +61,8 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
  condor_exe(condor_version "version.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_wait "wait.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_history "history.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -110,5 +161,5 @@ index dbe2c9a3fb..52125666c0 100644
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.39.0
+2.41.0
 

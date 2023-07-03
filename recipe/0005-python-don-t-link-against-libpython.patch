@@ -1,34 +1,34 @@
-From 7d99cd5454be73bd17fba768341248779067dab5 Mon Sep 17 00:00:00 2001
+From dd018f6f5186c773f55b8851b56134cf9bf25207 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
 Subject: [PATCH 5/9] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake  | 8 +++++++-
- src/python-bindings/CMakeLists.txt | 2 --
- 2 files changed, 7 insertions(+), 3 deletions(-)
+ src/python-bindings/CMakeLists.txt | 1 -
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index c6562dfb0e..b8b86b8ebb 100644
+index cd8eb3ae2c..a4f4b7e625 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -149,7 +149,13 @@ if(NOT WINDOWS)
+@@ -154,7 +154,13 @@ if(NOT WINDOWS)
  
- 			set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
+ 		set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
  
--			set(PYTHON3_LIBRARIES "${PYTHON3_LIB}")
-+			# in conda builds we don't want to actually link against libpython
-+			if (APPLE)
-+			  set(PYTHON3_LIBRARIES "-Wl,-undefined,dynamic_lookup")
-+			else()
-+			  set(PYTHON3_LIBRARIES "")
-+			endif()
-+			set(PYTHON3LIBS_FOUND TRUE)
+-		set(PYTHON3_LIBRARIES "${PYTHON3_LIB}")
++		# in conda builds we don't want to actually link against libpython
++		if (APPLE)
++			set(PYTHON3_LIBRARIES "-Wl,-undefined,dynamic_lookup")
++		else()
++			set(PYTHON3_LIBRARIES "")
++		endif()
++		set(PYTHON3LIBS_FOUND TRUE)
  
- 			# where to install the Python library
- 			set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
+ 		# where to install the Python library
+ 		set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 925c4dbc49..95916ed2c5 100644
+index 72242bbfbd..eb0be4b57b 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
 @@ -126,7 +126,6 @@ if(WINDOWS)
@@ -39,14 +39,6 @@ index 925c4dbc49..95916ed2c5 100644
  				string(REGEX REPLACE "([0-9]+[.][0-9]+).*" "\\1" _PYTHON_VERSION ${PYTHON3_VERSION_STRING})
  				if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
  				  set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
-@@ -309,7 +308,6 @@ else()
-       include_directories(${BOOST_INCLUDE})
-       link_directories(${BOOST_LD})
- 
--      get_filename_component(PYTHON3_LIBRARY_FILENAME ${PYTHON3_LIBRARIES} NAME)
-       string(REGEX REPLACE "([0-9]+[.][0-9]+).*" "\\1" _PYTHON3_VERSION ${PYTHON3_VERSION_STRING})
-       if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
-           set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON3_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
-2.39.0
+2.41.0
 

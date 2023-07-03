@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "10.0.4" %}
+{% set version = "10.0.5" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/10.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 0c245b6b89cfeee72322cf8503ced77724146103010e05cde20af89976338051
+  sha256: cdc784011b2cdbd03e36f66d7c93770447c3fba4d4effc3783532c0a914d30b7
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches-10.0

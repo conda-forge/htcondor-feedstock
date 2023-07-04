@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "10.5.1" %}
+{% set version = "10.6.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: c738a10e00f8862295d7d5576c69dad24fa0b654c542839dd593f350825fb443
+  sha256: 93406626eefbc28f480f21db5726f7b0bb7f4b11e5b6d4a09287552655aeb951
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
@@ -37,6 +37,8 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
+    # revert htcondor/htcondor@3be7e2f
+    - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
 
 build:
   error_overdepending: true

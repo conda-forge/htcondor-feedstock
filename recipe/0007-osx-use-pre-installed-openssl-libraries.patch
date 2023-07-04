@@ -1,7 +1,7 @@
-From d72a6df733a28544308d2ced8027bd7a66acbb61 Mon Sep 17 00:00:00 2001
+From 472d6097f032286decc28b9ccc84c71bb6b70637 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:48 +0000
-Subject: [PATCH 7/9] osx: use pre-installed openssl libraries
+Subject: [PATCH 07/10] osx: use pre-installed openssl libraries
 
 ---
  externals/bundles/openssl/packaged/CMakeLists.txt | 8 +++++---

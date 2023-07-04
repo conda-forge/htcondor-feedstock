@@ -1,7 +1,7 @@
-From e2a444e4bbbd203c9a213e4096801ae5b60f5d1a Mon Sep 17 00:00:00 2001
+From 63d6555a6707449d547a8ba7ab5e59c0128f0609 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 5/9] python: don't link against libpython
+Subject: [PATCH 05/10] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake  | 8 +++++++-
@@ -9,7 +9,7 @@ Subject: [PATCH 5/9] python: don't link against libpython
  2 files changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index cd8eb3ae2c..a4f4b7e625 100644
+index 55f636c21a..be36e34642 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -154,7 +154,13 @@ if(NOT WINDOWS)

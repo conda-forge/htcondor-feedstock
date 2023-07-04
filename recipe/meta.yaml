@@ -37,6 +37,8 @@ source:
     - 0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
     - 0009-python-use-conda-placeholder-shebang.patch
+    # revert htcondor/htcondor@3be7e2f
+    - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
 
 build:
   error_overdepending: true

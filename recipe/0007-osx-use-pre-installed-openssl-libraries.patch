@@ -1,4 +1,4 @@
-From a9c85d519fdf06fd9e7fdbfea0ea8bd6824217b5 Mon Sep 17 00:00:00 2001
+From d72a6df733a28544308d2ced8027bd7a66acbb61 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:48 +0000
 Subject: [PATCH 7/9] osx: use pre-installed openssl libraries
@@ -34,5 +34,5 @@ index bfafceb088..96723f6ab3 100644
  
  	# and set the contents of the targets appropriately
 -- 
-2.39.0
+2.41.0
 

@@ -1,4 +1,4 @@
-From dd018f6f5186c773f55b8851b56134cf9bf25207 Mon Sep 17 00:00:00 2001
+From e2a444e4bbbd203c9a213e4096801ae5b60f5d1a Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
 Subject: [PATCH 5/9] python: don't link against libpython

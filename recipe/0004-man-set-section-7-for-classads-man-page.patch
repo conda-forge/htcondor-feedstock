@@ -1,4 +1,4 @@
-From efb5269e34850797de72fe8fec03351c9cff8bea Mon Sep 17 00:00:00 2001
+From 897deb83da3d654676b885831e12e6329bdd0b2f Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:08 +0000
 Subject: [PATCH 4/9] man: set section 7 for classads man page

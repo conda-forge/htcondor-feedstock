@@ -3,6 +3,7 @@ About htcondor-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htcondor-feedstock/blob/main/LICENSE.txt)
 
+
 About htcondor
 --------------
 
@@ -24,6 +25,7 @@ serial or parallel jobs to HTCondor, HTCondor places them into a queue,
 chooses when and where to run the jobs based upon a policy, carefully
 monitors their progress, and ultimately informs the user upon
 completion.
+
 
 About htcondor-classads
 -----------------------
@@ -57,6 +59,7 @@ that evaluates to true in the context of the other ad. Classad
 matching is used by the HTCondor central manager to determine the
 compatibility of jobs and workstations where they may be run.
 
+
 About libcondor_utils
 ---------------------
 
@@ -71,6 +74,7 @@ Development: https://github.com/htcondor/htcondor
 Documentation: https://htcondor.readthedocs.io/
 
 Just the HTCondor libcondor_utils shared object library.
+
 About python-htcondor
 ---------------------
 

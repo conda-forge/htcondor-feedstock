@@ -3,7 +3,7 @@ boost:
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cdt_name:
 - cos7
 channel_sources:
@@ -13,17 +13,17 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '11'
+- '12'
 docker_image:
-- condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 expat:
 - '2'
 gct:
 - 6.2.1629922860
 krb5:
-- '1.20'
+- '1.21'
 libcurl:
-- '7'
+- '8'
 libuuid:
 - '2'
 libxml2:
@@ -48,7 +48,7 @@ python:
 sqlite:
 - '3'
 target_platform:
-- linux-64
+- linux-ppc64le
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

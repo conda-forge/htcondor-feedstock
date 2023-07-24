@@ -256,6 +256,7 @@ outputs:
       missing_dso_whitelist:
         # see https://github.com/conda/conda-build/pull/4529
         - '**/ld-linux-aarch64.so*'  # [linux and aarch64]
+      skip: true  # [python_impl != 'cpython']
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -318,6 +319,8 @@ outputs:
         nearly the same behavior as the command line tools.
 
   - name: htcondor
+    build:
+      skip: true  # [python_impl != 'cpython']
     requirements:
       host:
         - python

@@ -60,7 +60,7 @@ requirements:
     - sysroot_linux-64 2.17  # [linux64]
   host:
     - {{ cdt('libselinux') }}  # [linux]
-    - boost
+    - libboost-python-devel
     - expat
     - gct  # [linux]
     - krb5
@@ -265,8 +265,8 @@ outputs:
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
       host:
-        - boost
         - gct  # [linux]
+        - libboost-python-devel
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - libuuid  # [linux]
@@ -276,7 +276,6 @@ outputs:
         - python
         - setuptools
       run:
-        - {{ pin_compatible('boost') }}
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - python

@@ -249,6 +249,7 @@ outputs:
     script: build-python.sh
     build:
       ignore_run_exports:
+        - libboost
         - libuuid  # [linux]
         - openssl
         - pcre2

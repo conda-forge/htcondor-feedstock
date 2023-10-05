@@ -10,11 +10,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  url: https://research.cs.wisc.edu/htcondor/tarball/23.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
   sha256: e7310275f841a41e2453cf5ffbf8b09496402a25e1b13a46f00ce38db84b68ac
   patches:
     # for patches see:
-    #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
+    #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches-23.0
     # update patches via:
     #   git pull --rebase upstream VX_Y_Z
     #   git format-patch VX_Y_Z

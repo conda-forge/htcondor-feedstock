@@ -60,7 +60,7 @@ requirements:
     - sysroot_linux-64 2.17  # [linux64]
   host:
     - {{ cdt('libselinux') }}  # [linux]
-    - libboost-python-devel
+    - libboost-devel
     - expat
     - gct  # [linux]
     - krb5
@@ -248,6 +248,7 @@ outputs:
     build:
       ignore_run_exports:
         - gct  # [linux]
+        - libboost
         - libuuid  # [linux]
         - openssl
         - pcre

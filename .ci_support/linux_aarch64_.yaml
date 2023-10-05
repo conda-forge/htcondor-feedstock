@@ -10,10 +10,6 @@ cdt_name:
 - cos7
 channel_sources:
 - conda-forge
-- conda-forge
-- conda-forge/label/python_rc,conda-forge
-- conda-forge
-- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -26,6 +22,8 @@ expat:
 - '2'
 krb5:
 - '1.21'
+libboost_devel:
+- '1.82'
 libboost_python_devel:
 - '1.82'
 libcurl:
@@ -65,4 +63,3 @@ zip_keys:
   - cxx_compiler_version
 - - python
   - python_impl
-  - channel_sources

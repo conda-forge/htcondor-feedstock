@@ -1,11 +1,38 @@
+About htcondor-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htcondor-feedstock/blob/main/LICENSE.txt)
+
+
 About htcondor
-==============
+--------------
 
 Home: http://htcondor.org/
 
 Package license: Apache-2.0
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/htcondor-feedstock/blob/master/LICENSE.txt)
+Summary: HTCondor: High Throughput Computing
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+HTCondor is a workload management system for high-throughput and
+high-performance jobs. Like other full-featured batch systems, HTCondor
+provides a job queuing mechanism, scheduling policy, priority scheme,
+resource monitoring, and resource management. Users submit their
+serial or parallel jobs to HTCondor, HTCondor places them into a queue,
+chooses when and where to run the jobs based upon a policy, carefully
+monitors their progress, and ultimately informs the user upon
+completion.
+
+
+About htcondor-classads
+-----------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
 
 Summary: HTCondor's classified advertisement language
 
@@ -33,6 +60,40 @@ matching is used by the HTCondor central manager to determine the
 compatibility of jobs and workstations where they may be run.
 
 
+About libcondor_utils
+---------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
+
+Summary: HTCondor utilities library
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+Just the HTCondor libcondor_utils shared object library.
+
+About python-htcondor
+---------------------
+
+Home: http://htcondor.org/
+
+Package license: Apache-2.0
+
+Summary: Python bindings for HTCondor
+
+Development: https://github.com/htcondor/htcondor
+
+Documentation: https://htcondor.readthedocs.io/
+
+The HTCondor Python bindings aim to expose a high-quality,
+Pythonic interface to the HTCondor client libraries. They utilize
+the same C++ libraries as HTCondor itself, meaning they have
+nearly the same behavior as the command line tools.
+
+
 Current build status
 ====================
 
@@ -44,80 +105,45 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main">
           </a>
         </summary>
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_openssl1.1.1</td>
+              <td>linux_64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_64_openssl1.1.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl3</td>
+              <td>linux_aarch64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_64_openssl3" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_openssl1.1.1</td>
+              <td>linux_ppc64le</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_aarch64_openssl1.1.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_openssl3</td>
+              <td>osx_64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_aarch64_openssl3" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_openssl1.1.1</td>
+              <td>osx_arm64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_ppc64le_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_ppc64le_openssl3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_64_openssl3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_arm64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_arm64_openssl3" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8358&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/htcondor-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>

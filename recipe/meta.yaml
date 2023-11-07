@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.0.17" %}
+{% set version = "9.0.19" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -10,8 +10,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://research.cs.wisc.edu/htcondor/tarball/{{ version.split('.')[:2] | join('.') }}/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 756317dbd39844e05253e9a425b182342bb8c66ad0693b7d7dc3008f0fc5261f
+  url: https://research.cs.wisc.edu/htcondor/tarball-private/{{ version.split('.')[:2] | join('.') }}/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  sha256: 7426e3ead21e07bb8a112d54e94163f4d4e822a164724086e71e6e565ae94ba3
   patches:
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch
@@ -44,7 +44,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -60,7 +60,7 @@ requirements:
     - sysroot_linux-64 2.17  # [linux64]
   host:
     - {{ cdt('libselinux') }}  # [linux]
-    - boost
+    - libboost-devel
     - expat
     - gct  # [linux]
     - krb5
@@ -248,6 +248,7 @@ outputs:
     build:
       ignore_run_exports:
         - gct  # [linux]
+        - libboost
         - libuuid  # [linux]
         - openssl
         - pcre
@@ -265,8 +266,8 @@ outputs:
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
       host:
-        - boost
         - gct  # [linux]
+        - libboost-python-devel
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - libuuid  # [linux]
@@ -276,7 +277,6 @@ outputs:
         - python
         - setuptools
       run:
-        - {{ pin_compatible('boost') }}
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - python

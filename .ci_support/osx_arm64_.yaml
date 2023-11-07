@@ -1,7 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
-boost:
-- 1.78.0
 c_compiler:
 - clang
 c_compiler_version:
@@ -17,7 +15,11 @@ cxx_compiler_version:
 expat:
 - '2'
 krb5:
-- '1.20'
+- '1.21'
+libboost_devel:
+- '1.82'
+libboost_python_devel:
+- '1.82'
 libcurl:
 - '8'
 libxml2:
@@ -33,14 +35,13 @@ pcre:
 perl:
 - 5.32.1
 pin_run_as_build:
-  boost:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
 - 3.10.* *_cpython
 - 3.11.* *_cpython
+- 3.12.* *_cpython
 - 3.8.* *_cpython
 - 3.9.* *_cpython
 sqlite:

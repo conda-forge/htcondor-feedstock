@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "9.0.19" %}
+{% set version = "9.0.20" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball-private/{{ version.split('.')[:2] | join('.') }}/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 7426e3ead21e07bb8a112d54e94163f4d4e822a164724086e71e6e565ae94ba3
+  sha256: eac647d9582d403e2a06dd1c097b4aa5dce967d90391e5b01475197d94d63300
   patches:
     # don't build daemons
     - 0001-cmake-don-t-build-daemons.patch
@@ -44,7 +44,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:

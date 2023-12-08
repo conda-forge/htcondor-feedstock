@@ -43,7 +43,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -304,6 +304,7 @@ outputs:
         - htcondor.dags
         - htcondor.htchirp
         - htcondor.personal
+        - htcondor_cli
     about:
       home: http://htcondor.org/
       doc_url: https://htcondor.readthedocs.io/
@@ -320,6 +321,8 @@ outputs:
 
   - name: htcondor
     build:
+      entry_points:
+        - htcondor = htcondor_cli.cli:main
       skip: true  # [python_impl != 'cpython']
     requirements:
       host:
@@ -332,10 +335,12 @@ outputs:
         - {{ pin_subpackage('htcondor-utils', exact=True) }}
     test:
       imports:
-        - htcondor
         - classad
+        - htcondor
+        - htcondor_cli
       commands:
         - condor_q --version
+        - htcondor --help
 
 about:
   home: http://htcondor.org/

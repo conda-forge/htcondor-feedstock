@@ -47,3 +47,6 @@ cmake --build bindings/python --parallel ${CPU_COUNT} --verbose
 # install
 cmake --build src/python-bindings --parallel ${CPU_COUNT} --verbose --target install
 cmake --build bindings/python --parallel ${CPU_COUNT} --verbose --target install
+
+# install the htcondor_cli package (but not the actual CLI script)
+cp -r ${SRC_DIR}/src/condor_tools/htcondor_cli ${SP_DIR}/

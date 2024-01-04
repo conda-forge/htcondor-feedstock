@@ -43,7 +43,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -309,6 +309,37 @@ outputs:
         the same C++ libraries as HTCondor itself, meaning they have
         nearly the same behavior as the command line tools.
 
+  - name: htcondor-cli
+    script: build-htcondor-cli.sh
+    build:
+      skip: true  # [python_impl != 'cpython']
+    requirements:
+      build:
+        # extras for cross-compilation
+        - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+        - python                              # [build_platform != target_platform]
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('python-htcondor', exact=True) }}
+    files:
+      # console script
+      - bin/htcondor
+      # python library
+      - {{ SP_DIR }}/htcondor_cli/
+      # metadata
+      - {{ SP_DIR }}/htcondor_cli-{{ version }}.dist-info/
+    test:
+      requires:
+        - pip
+      imports:
+        - htcondor_cli
+      commands:
+        - python -m pip check
+        - python -m pip show htcondor-cli
+        - htcondor --help
+
   - name: htcondor
     build:
       skip: true  # [python_impl != 'cpython']
@@ -316,17 +347,20 @@ outputs:
       host:
         - python
       run:
-        - {{ pin_subpackage('htcondor-classads', exact=True) }}
-        - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - python
-        - {{ pin_subpackage('python-htcondor', exact=True) }}
+        - {{ pin_subpackage('htcondor-classads', exact=True) }}
+        - {{ pin_subpackage('htcondor-cli', exact=True) }}
         - {{ pin_subpackage('htcondor-utils', exact=True) }}
+        - {{ pin_subpackage('libcondor_utils', exact=True) }}
+        - {{ pin_subpackage('python-htcondor', exact=True) }}
     test:
       imports:
-        - htcondor
         - classad
+        - htcondor
+        - htcondor_cli
       commands:
         - condor_q --version
+        - htcondor --help
 
 about:
   home: http://htcondor.org/

@@ -31,7 +31,7 @@ libcurl:
 libuuid:
 - '2'
 libxml2:
-- '2.12'
+- '2'
 openssl:
 - '3'
 pcre2:

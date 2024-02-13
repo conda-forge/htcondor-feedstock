@@ -17,5 +17,5 @@ if [[ "${target_platform}" == linux* ]]; then
 elif [[ "${target_ploatfmr}" == osx* ]]; then
   # ignore libc++ availability checks
   # see https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
-	CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+  CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi

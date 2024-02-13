@@ -1,6 +1,10 @@
 #!/bin/bash
 set -eux
 
+# get common configuration
+. "${RECIPE_DIR}/common.sh"
+
+# create build directory
 _builddir="_build${PY_VER}"
 rm -rf ${_builddir}
 mkdir -pv ${_builddir}

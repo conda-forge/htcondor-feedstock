@@ -2,31 +2,22 @@
 
 set -ex
 
+# get common configuration
+. "${RECIPE_DIR}/common.sh"
+
+# create build directory
 _builddir="_build"
 rm -rf ${_builddir}
 mkdir -pv ${_builddir}
 pushd ${_builddir}
 
-# if cross compiling, unset the _CONDA_PYTHON_SYSCONFIGDATA_NAME variable
-# so that sphinx can use the build-platform's python
-if [[ "${build_platform}" != "${target_platform}" ]]; then
-	unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
-fi
-
 # platform-specific options
-if [ "$(uname)" == "Linux" ]; then
-	export LDFLAGS="-ldl -lrt ${LDFLAGS}"
+if [[ "${target_platform}" == linux* ]]; then
 	WITH_MUNGE="TRUE"
 	WITH_VOMS="TRUE"
 else
 	WITH_MUNGE="FALSE"
 	WITH_VOMS="FALSE"
-fi
-
-# ignore libc++ availability checks
-# see https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
-if [ "$(uname)" = "Darwin" ]; then
-	CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 # configure

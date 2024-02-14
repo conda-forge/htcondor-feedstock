@@ -34,7 +34,9 @@ mv ${PREFIX}/share/man/man1/classads.7 ${PREFIX}/share/man/man7/
 
 # -- create the condor_config file
 
-CONDOR_CONFIG_LOCATION="etc/condor/condor_config"
+CONDOR_CONFIG_DIR="etc/condor"
+CONDOR_CONFIG_LOCATION="${CONDOR_CONFIG_DIR}/condor_config"
+mkdir -p ${PREFIX}/${CONDOR_CONFIG_DIR}
 install -m 0644 ${RECIPE_DIR}/condor_config ${PREFIX}/${CONDOR_CONFIG_LOCATION}
 
 # -- create activate/deactivate scripts

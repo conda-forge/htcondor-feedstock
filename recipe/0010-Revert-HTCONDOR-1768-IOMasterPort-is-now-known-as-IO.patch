@@ -1,4 +1,4 @@
-From 292d68128fb45638f0895c2315a2754107a60132 Mon Sep 17 00:00:00 2001
+From 49ac2a612c82de4a878d1995882ab766e14dc16a Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Tue, 4 Jul 2023 19:45:24 +0100
 Subject: [PATCH 10/10] Revert "HTCONDOR-1768 IOMasterPort is now known as
@@ -10,7 +10,7 @@ This reverts commit 3be7e2fda46fc6e4758296362dfa7fb827a44d54.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/condor_sysapi/idle_time.cpp b/src/condor_sysapi/idle_time.cpp
-index d1c450828f..f49314df2e 100644
+index 69a5b87537..6bc6139840 100644
 --- a/src/condor_sysapi/idle_time.cpp
 +++ b/src/condor_sysapi/idle_time.cpp
 @@ -424,7 +424,7 @@ calc_idle_time_cpp(time_t * user_idle, time_t * console_idle)
@@ -23,5 +23,5 @@ index d1c450828f..f49314df2e 100644
      } else {
          hidMatchDictionary = IOServiceMatching("IOHIDSystem");
 -- 
-2.41.0
+2.39.2
 

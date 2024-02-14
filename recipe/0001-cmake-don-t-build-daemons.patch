@@ -1,4 +1,4 @@
-From 87d9f048fee64dc95b9dae179bdbe60400b32619 Mon Sep 17 00:00:00 2001
+From 222418cc803f43239e1290ecd5c7c9fe2d8de2da Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 01/10] cmake: don't build daemons
@@ -9,11 +9,11 @@ we don't need them for conda environments
  src/condor_procd/CMakeLists.txt     | 12 ------------
  src/condor_schedd.V6/CMakeLists.txt |  3 ---
  src/condor_scripts/CMakeLists.txt   |  2 --
- src/condor_tools/CMakeLists.txt     |  8 --------
- 5 files changed, 41 deletions(-)
+ src/condor_tools/CMakeLists.txt     | 10 ----------
+ 5 files changed, 43 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 286edeb3a6..32811f6191 100644
+index cd2b826159..4400748fec 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -18,31 +18,22 @@
@@ -97,10 +97,10 @@ index e3f36a5efe..a615a075db 100644
  
  set( PROCD_CLIENT_UTIL_SRCS "${ProcClientElements}" PARENT_SCOPE )
 diff --git a/src/condor_schedd.V6/CMakeLists.txt b/src/condor_schedd.V6/CMakeLists.txt
-index 7c1cf99c3b..cde3be6690 100644
+index b36e35f59c..68bed68310 100644
 --- a/src/condor_schedd.V6/CMakeLists.txt
 +++ b/src/condor_schedd.V6/CMakeLists.txt
-@@ -47,7 +47,4 @@ schedd_stats.cpp
+@@ -48,7 +48,4 @@ schedd_stats.cpp
  transfer_queue.cpp
  )
  
@@ -109,18 +109,18 @@ index 7c1cf99c3b..cde3be6690 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index c9f8b99652..35a62095e0 100644
+index 3b56d17e62..53f7cf4171 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
-@@ -31,7 +31,6 @@ endif(WINDOWS)
- if (NOT WINDOWS)
+@@ -37,7 +37,6 @@ if (NOT WINDOWS)
+     install ( FILES cleanup_locally_mounted_checkpoint DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
  
      install ( FILES condor_run DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
 -    install ( FILES condor_updates_stats DESTINATION ${C_SBIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -57,7 +56,6 @@ if (NOT WINDOWS)
+@@ -64,7 +63,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -129,7 +129,7 @@ index c9f8b99652..35a62095e0 100644
  
      install ( FILES condor_qsub DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
 diff --git a/src/condor_tools/CMakeLists.txt b/src/condor_tools/CMakeLists.txt
-index eb85da331a..f1a9d718e2 100644
+index eb85da331a..c0969f5377 100644
 --- a/src/condor_tools/CMakeLists.txt
 +++ b/src/condor_tools/CMakeLists.txt
 @@ -20,13 +20,8 @@ condor_exe(condor_manifest "manifest.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -146,20 +146,18 @@ index eb85da331a..f1a9d718e2 100644
  condor_exe(condor_config_val "config_val.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_userprio "user_prio.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_transform_ads "transform_ads.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
-@@ -67,11 +62,9 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
+@@ -67,11 +62,6 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
  condor_exe(condor_version "version.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_wait "wait.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_history "history.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -condor_exe(condor_store_cred "store_cred_main.cpp" ${C_SBIN} "${CONDOR_TOOL_LIBS}" OFF)
 -condor_exe(condor_on "tool.cpp" "${C_SBIN}" "${CONDOR_TOOL_LIBS}" OFF)
-+condor_exe(condor_vacate "tool.cpp" "${C_BIN}" "${CONDOR_TOOL_LIBS}" OFF)
- 
+-
 -clone_install(condor_on "${C_SBIN}" "condor_off;condor_restart;condor_reconfig;condor_set_shutdown" "${C_SBIN}")
 -clone_install(condor_on "${C_SBIN}" "condor_vacate;condor_reschedule" "${C_BIN}")
-+clone_install(condor_vacate "${C_BIN}" "condor_reschedule" "${C_BIN}")
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  
 -- 
-2.41.0
+2.39.2
 

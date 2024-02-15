@@ -1,7 +1,7 @@
 From 2c5537585647c71bfa289af430d1c33a47b569f3 Mon Sep 17 00:00:00 2001
 From: jasoncpatton <jpatton@cs.wisc.edu>
 Date: Thu, 15 Sep 2022 12:24:59 +0100
-Subject: [PATCH 09/10] python: use conda placeholder shebang
+Subject: [PATCH 09/11] python: use conda placeholder shebang
 
 ---
  src/condor_credd/condor_credmon_oauth/condor_credmon_vault | 2 +-

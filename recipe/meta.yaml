@@ -39,6 +39,8 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # revert htcondor/htcondor@3be7e2f
     - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
+    # fix issue cross-compiling python bindings
+    - 0011-python-fix-cross-compiling-configuration.patch
 
 build:
   error_overdepending: true

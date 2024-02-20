@@ -10,6 +10,12 @@ rm -rf ${_builddir}
 mkdir -pv ${_builddir}
 pushd ${_builddir}
 
+# if cross-compiling, hardcode the SOABI to help CMake
+if [ "${build_platform}" != "${target_platform}" ]; then
+  PYTHON_EXTENSION_SUFFIX=$(${PYTHON}${PY_VER}-config --extension-suffix | cut -d. -f2)
+  HTCONDOR_CMAKE_ARGS="${HTCONDOR_CMAKE_ARGS} -DPython3_SOABI:STRING=${PYTHON_EXTENSION_SUFFIX}"
+fi
+
 # configure
 cmake \
   ${SRC_DIR} \

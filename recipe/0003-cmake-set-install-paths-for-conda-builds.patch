@@ -1,14 +1,14 @@
-From c400cd38dfeeb70fc6dcaecd438e8bea1f6bb5f2 Mon Sep 17 00:00:00 2001
+From 4d1de18164068a00fad8ffcf82d5f8b8ea3d24f0 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
-Subject: [PATCH 03/10] cmake: set install paths for conda builds
+Subject: [PATCH 03/11] cmake: set install paths for conda builds
 
 ---
  build/cmake/CondorPackageConfig.cmake | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/build/cmake/CondorPackageConfig.cmake b/build/cmake/CondorPackageConfig.cmake
-index b934d90fcd..cc2d5e0b23 100644
+index ed894501fc..8f03c45edb 100644
 --- a/build/cmake/CondorPackageConfig.cmake
 +++ b/build/cmake/CondorPackageConfig.cmake
 @@ -125,8 +125,8 @@ set( C_BIN			bin)
@@ -49,5 +49,5 @@ index b934d90fcd..cc2d5e0b23 100644
  set( C_LOCAL_DIR	var/lib/condor )
  set( C_LOG_DIR		var/log/condor )
 -- 
-2.41.0
+2.39.2
 

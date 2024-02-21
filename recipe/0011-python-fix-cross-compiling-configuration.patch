@@ -1,0 +1,27 @@
+From 964ba76bca1d96565dfa56cedd19d8b243eb7561 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <duncan.macleod@ligo.org>
+Date: Thu, 15 Feb 2024 18:19:08 +0000
+Subject: [PATCH 11/11] python: fix cross compiling configuration
+
+when cross-compiling attempting to get Interpreter and Development variables at the same time doesn't work
+---
+ build/cmake/CondorConfigure.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
+index 80b3a49fb7..0816c199c8 100644
+--- a/build/cmake/CondorConfigure.cmake
++++ b/build/cmake/CondorConfigure.cmake
+@@ -142,7 +142,8 @@ if(NOT WINDOWS)
+ 	endif(WANT_PYTHON2_BINDINGS AND NOT WANT_PYTHON_WHEELS)
+ 
+ 	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
+-		find_package (Python3 COMPONENTS Interpreter Development)
++		find_package (Python3 COMPONENTS Interpreter)
++		find_package (Python3 COMPONENTS Development)
+ 
+ 		# All these variables are used later, and were defined in cmake 2.6
+ 		# days.  At some point, we should not copy the find_package python
+-- 
+2.39.2
+

@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "23.3.1" %}
+{% set version = "23.4.0" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: c8140b2ba3944771d768058980dbcdc94ff8c438bf1f627db55829281ab002bf
+  sha256: 5b4e5ea0f9618449916678498a67921aabfa296de7c572f60011caf4dc0544f9
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
@@ -39,6 +39,8 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # revert htcondor/htcondor@3be7e2f
     - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
+    # fix issue cross-compiling python bindings
+    - 0011-python-fix-cross-compiling-configuration.patch
 
 build:
   error_overdepending: true
@@ -72,7 +74,6 @@ requirements:
     - pcre2
     - scitokens-cpp >=0.5.0
     - sqlite
-    - voms  # [linux]
 
 outputs:
   - name: htcondor-classads
@@ -145,7 +146,6 @@ outputs:
         - openssl
         - pcre2
         - scitokens-cpp >=0.5.0
-        - voms  # [linux]
       run:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
@@ -155,7 +155,6 @@ outputs:
         - openssl
         - pcre2
         - scitokens-cpp >=0.5.0
-        - voms  # [linux]
     files:
       - lib/libcondor_utils*
     test:

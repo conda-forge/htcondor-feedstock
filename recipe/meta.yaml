@@ -171,31 +171,22 @@ outputs:
       description: Just the HTCondor libcondor_utils shared object library.
 
   - name: htcondor-utils
-    build:
-      ignore_run_exports:
-        # this is just here to help the solver
-        # through a difficult openssl 3 migration
-        - openssl
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - llvm-openmp  # [osx]
       host:
         - {{ cdt('libselinux') }}  # [linux]
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl
         - libuuid  # [linux]
-        - libgomp  # [linux]
-        - llvm-openmp  # [osx]
         - openssl
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl
         - libuuid  # [linux]
-        - llvm-openmp  # [osx]
         - openssl
     files:
       - bin/condor*
@@ -244,7 +235,6 @@ outputs:
       ignore_run_exports:
         - libboost
         - libuuid  # [linux]
-        - openssl
         - pcre2
         - python
       skip: true  # [python_impl != 'cpython']
@@ -263,7 +253,6 @@ outputs:
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - libuuid  # [linux]
         - munge  # [linux]
-        - openssl
         - pcre2
         - python
         - setuptools

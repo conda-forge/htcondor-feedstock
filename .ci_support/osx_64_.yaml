@@ -25,7 +25,7 @@ libboost_python_devel:
 libcurl:
 - '8'
 libxml2:
-- '2.12'
+- '2'
 llvm_openmp:
 - '16'
 macos_machine:
@@ -33,7 +33,7 @@ macos_machine:
 openssl:
 - '3'
 pcre2:
-- '10.40'
+- '10.42'
 perl:
 - 5.32.1
 pin_run_as_build:

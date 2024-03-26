@@ -6,6 +6,10 @@ c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,9 +23,9 @@ expat:
 krb5:
 - '1.21'
 libboost_devel:
-- '1.82'
+- '1.84'
 libboost_python_devel:
-- '1.82'
+- '1.84'
 libcurl:
 - '8'
 libxml2:
@@ -59,5 +63,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - c_stdlib_version
+  - MACOSX_DEPLOYMENT_TARGET
 - - python
   - python_impl

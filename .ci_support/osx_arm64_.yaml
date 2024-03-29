@@ -21,9 +21,9 @@ expat:
 krb5:
 - '1.21'
 libboost_devel:
-- '1.82'
+- '1.84'
 libboost_python_devel:
-- '1.82'
+- '1.84'
 libcurl:
 - '8'
 libxml2:

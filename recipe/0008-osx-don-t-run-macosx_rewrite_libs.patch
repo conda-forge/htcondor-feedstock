@@ -1,7 +1,7 @@
-From e1c84e14f0b3efb5cdff4f72b0bd5c4cc67a250d Mon Sep 17 00:00:00 2001
+From 5361c25e0a852210f674c866f4c0766bf23abe81 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
-Subject: [PATCH 08/11] osx: don't run macosx_rewrite_libs
+Subject: [PATCH 08/12] osx: don't run macosx_rewrite_libs
 
 conda-build handles this for us
 ---
@@ -24,10 +24,10 @@ index 474e8b5bca..4b8e5850bf 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index 3f3542ed5b..57065752a2 100644
+index dfaa6dc471..bf522a217b 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
-@@ -705,8 +705,10 @@ endif()
+@@ -706,8 +706,10 @@ endif()
  
  if ( APPLE )
  	target_link_libraries( condor_utils PUBLIC ${IOKIT_FOUND} ${COREFOUNDATION_FOUND} resolv )

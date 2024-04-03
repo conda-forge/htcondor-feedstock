@@ -1,0 +1,39 @@
+From 22d83feb6b7256d04f4eceb52c45d0e9e1315c9e Mon Sep 17 00:00:00 2001
+From: Greg Thain <gthain@cs.wisc.edu>
+Date: Wed, 13 Mar 2024 07:23:19 -0500
+Subject: [PATCH 11/11] HTCONDOR-2342 Port to pcre2 10.43
+
+(cherry picked from commit f39aef52706e2db1d774f9bd5f60cf7031ebc9f2)
+---
+ src/classad/fnCall.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/classad/fnCall.cpp b/src/classad/fnCall.cpp
+index ea3948e9ec..32066b5ea1 100644
+--- a/src/classad/fnCall.cpp
++++ b/src/classad/fnCall.cpp
+@@ -3154,7 +3154,7 @@ static bool regexp_helper(
+ 				output.append(&target[target_idx], (ovector[0]) - target_idx);
+ 			}
+ 
+-			if (pcre2_substring_list_get(match_data, &groups_pcre2, NULL)) {
++			if (pcre2_substring_list_get(match_data, &groups_pcre2, nullptr)) {
+ 				result.SetErrorValue( );
+ 				goto cleanup;
+ 			}
+@@ -3177,7 +3177,11 @@ static bool regexp_helper(
+ 				replace_ptr++;
+ 			}
+ 
+-			pcre2_substring_list_free((PCRE2_SPTR *) groups_pcre2);
++#if PCRE2_MAJOR == 10 && PCRE2_MINOR < 43
++			pcre2_substring_list_free((PCRE2_SPTR *)groups_pcre2);
++#else
++			pcre2_substring_list_free(groups_pcre2);
++#endif
+ 
+ 			target_idx = ovector[1];
+ 			if ( ovector[0] == ovector[1] ) {
+-- 
+2.39.2
+

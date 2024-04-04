@@ -41,11 +41,13 @@ source:
     - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
     # fix issue cross-compiling python bindings
     - 0011-python-fix-cross-compiling-configuration.patch
+    # backport f39aef52706e2db1d774f9bd5f60cf7031ebc9f2
+    - 0012-HTCONDOR-2342-Port-to-pcre2-10.43.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:

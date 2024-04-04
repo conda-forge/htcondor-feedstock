@@ -1,7 +1,7 @@
-From 964ba76bca1d96565dfa56cedd19d8b243eb7561 Mon Sep 17 00:00:00 2001
+From e392c313881713c12de4384cf23d4b2fc9e5c024 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Thu, 15 Feb 2024 18:19:08 +0000
-Subject: [PATCH 11/11] python: fix cross compiling configuration
+Subject: [PATCH 11/12] python: fix cross compiling configuration
 
 when cross-compiling attempting to get Interpreter and Development variables at the same time doesn't work
 ---
@@ -9,7 +9,7 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 80b3a49fb7..0816c199c8 100644
+index fd395848dc..e0f1a1d2c2 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -142,7 +142,8 @@ if(NOT WINDOWS)

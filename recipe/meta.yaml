@@ -39,6 +39,8 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # fix openssl builds
     - 0010-fix-building-against-openssl3.patch
+    # backport htcondor/htcondor@f39aef52706e2db1d774f9bd5f60cf7031ebc9f2
+    - 0011-HTCONDOR-2342-Port-to-pcre2-10.43.patch
 
 build:
   error_overdepending: true

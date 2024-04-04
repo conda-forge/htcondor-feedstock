@@ -1,7 +1,7 @@
-From 2ef19b46725d24663fcce1b2558c726f127ebdae Mon Sep 17 00:00:00 2001
+From 41dc429a40c6a6fc6f1727533d87462198d80cde Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 6 Jan 2023 16:28:59 +0000
-Subject: [PATCH 10/10] fix building against openssl3
+Subject: [PATCH 10/11] fix building against openssl3
 
 Co-authored-by: Peter Williams <peter@newton.cx>
 ---
@@ -9,7 +9,7 @@ Co-authored-by: Peter Williams <peter@newton.cx>
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/src/condor_io/condor_auth_ssl.cpp b/src/condor_io/condor_auth_ssl.cpp
-index 94bfd31848..dad65ada0a 100644
+index 5576212f5c..54c267bb72 100644
 --- a/src/condor_io/condor_auth_ssl.cpp
 +++ b/src/condor_io/condor_auth_ssl.cpp
 @@ -127,8 +127,10 @@ int g_last_verify_error_index = -1;
@@ -24,7 +24,7 @@ index 94bfd31848..dad65ada0a 100644
  #endif
  static int (*SSL_peek_ptr)(SSL *ssl, void *buf, int num) = NULL;
  static void (*SSL_CTX_free_ptr)(SSL_CTX *) = NULL;
-@@ -231,8 +233,10 @@ bool Condor_Auth_SSL::Initialize()
+@@ -236,8 +238,10 @@ bool Condor_Auth_SSL::Initialize()
  		 (dl_hdl = dlopen(LIBSSL_SO, RTLD_LAZY)) == NULL ||
  #if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
  		 !(SSL_CTX_ctrl_ptr = (long (*)(SSL_CTX *, int, long, void *))dlsym(dl_hdl, "SSL_CTX_ctrl")) ||
@@ -37,5 +37,5 @@ index 94bfd31848..dad65ada0a 100644
  		 !(SSL_peek_ptr = (int (*)(SSL *ssl, void *buf, int num))dlsym(dl_hdl, "SSL_peek")) ||
  		 !(SSL_CTX_free_ptr = (void (*)(SSL_CTX *))dlsym(dl_hdl, "SSL_CTX_free")) ||
 -- 
-2.39.0
+2.39.2
 

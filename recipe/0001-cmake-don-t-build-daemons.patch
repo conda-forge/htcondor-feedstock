@@ -1,7 +1,7 @@
-From 5dd523152a048d85623e9c9cb101857691fcea15 Mon Sep 17 00:00:00 2001
+From 8ccf0a2ff0e0fe25682dabab7a8757d71e2f6c9a Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/10] cmake: don't build daemons
+Subject: [PATCH 01/11] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
@@ -60,7 +60,7 @@ index 12f47d0724..536286913a 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index a7515224e9..b3b66b9b1c 100644
+index c9f8b99652..35a62095e0 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
 @@ -31,7 +31,6 @@ endif(WINDOWS)
@@ -71,7 +71,7 @@ index a7515224e9..b3b66b9b1c 100644
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -56,7 +55,6 @@ if (NOT WINDOWS)
+@@ -57,7 +56,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -110,5 +110,5 @@ index dbe2c9a3fb..52125666c0 100644
  
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
 -- 
-2.39.0
+2.39.2
 

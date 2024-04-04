@@ -209,7 +209,7 @@ outputs:
     files:
       - bin/condor*
       - bin/*gahp
-      - etc/condor/*
+      - etc/condor/
       - etc/init.d/condor*
       - etc/examples/condor
       - etc/conda/*activate.d/*_condor.sh
@@ -217,7 +217,7 @@ outputs:
       - lib/*.jar
       - lib/libcondorapi*
       - lib/libchirp*
-      - libexec/condor/*
+      - libexec/condor/
       - share/man/man1/condor*.1
     test:
       commands:

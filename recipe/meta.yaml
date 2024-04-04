@@ -39,11 +39,13 @@ source:
     - 0009-python-use-conda-placeholder-shebang.patch
     # revert htcondor/htcondor@3be7e2f
     - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
+    # backport https://github.com/htcondor/htcondor/commit/f39aef52706e2db1d774f9bd5f60cf7031ebc9f2
+    - 0011-HTCONDOR-2342-Port-to-pcre2-10.43.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:

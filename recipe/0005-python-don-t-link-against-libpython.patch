@@ -1,7 +1,7 @@
-From 63d6555a6707449d547a8ba7ab5e59c0128f0609 Mon Sep 17 00:00:00 2001
+From f1de98bd991321f697051abae51e98d66d95c8c6 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 05/10] python: don't link against libpython
+Subject: [PATCH 05/11] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake  | 8 +++++++-
@@ -9,7 +9,7 @@ Subject: [PATCH 05/10] python: don't link against libpython
  2 files changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 55f636c21a..be36e34642 100644
+index 97fb6a23d6..a1f211b7a5 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -154,7 +154,13 @@ if(NOT WINDOWS)
@@ -40,5 +40,5 @@ index 72242bbfbd..eb0be4b57b 100644
  				if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
  				  set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
-2.41.0
+2.39.2
 

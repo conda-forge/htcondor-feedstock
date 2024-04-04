@@ -7,7 +7,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 cdt_name:
-- cos7
+- cos6
 channel_sources:
 - conda-forge
 channel_targets:
@@ -17,7 +17,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '12'
 docker_image:
-- condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 expat:
 - '2'
 krb5:

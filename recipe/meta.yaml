@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "23.0.6" %}
+{% set version = "23.0.8" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/23.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 7d0fd9228d65dc937cc9a608413bd2613db1d1449546a87d6936d4b8920a76d6
+  sha256: 50e993e5efc8d96cb66d5854ec5180e309f7b8cf7d491c990399813f0608940a
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches-23.0
@@ -52,13 +52,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake >=3.20
     - llvm-openmp  # [osx]
     - make  # [unix]
     - perl
     - pkg-config  # [unix]
     - sphinx
-    - sysroot_linux-64 2.17  # [linux64]
   host:
     - {{ cdt('libselinux') }}  # [linux]
     - libboost-devel
@@ -88,6 +88,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       host:
         - pcre2
       run:
@@ -139,6 +140,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - llvm-openmp  # [osx]
       host:
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
@@ -152,7 +154,6 @@ outputs:
         - scitokens-cpp >=0.5.0
         - voms  # [linux]
       run:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - krb5
         - llvm-openmp  # [osx]
@@ -189,6 +190,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - llvm-openmp  # [osx]
       host:
         - {{ cdt('libselinux') }}  # [linux]
@@ -263,6 +265,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - cmake >=3.20
         - make  # [unix]
         - pkg-config  # [unix]

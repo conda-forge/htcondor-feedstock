@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 c_compiler:
 - clang
 c_compiler_version:
@@ -35,7 +37,7 @@ macos_machine:
 openssl:
 - '3'
 pcre2:
-- '10.43'
+- '10.44'
 perl:
 - 5.32.1
 pin_run_as_build:

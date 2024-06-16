@@ -1,15 +1,11 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.12'
+- '10.13'
 MACOSX_SDK_VERSION:
-- '10.12'
+- '10.13'
 c_compiler:
 - clang
 c_compiler_version:
 - '16'
-c_stdlib:
-- macosx_deployment_target
-c_stdlib_version:
-- '10.12'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -37,7 +33,7 @@ macos_machine:
 openssl:
 - '3'
 pcre2:
-- '10.43'
+- '10.44'
 perl:
 - 5.32.1
 pin_run_as_build:

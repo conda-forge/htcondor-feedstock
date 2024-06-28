@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "23.6.2" %}
+{% set version = "23.8.1" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 9477197ecbc973c52388c10f718225b814459de123af4f5a5919b8454d12b273
+  sha256: 0e350a0886a5263af6e0189c19c87b1cb2610b74212dc988042c60ffc11aa952
   patches:
     # for patches see:
     #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
@@ -47,7 +47,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:

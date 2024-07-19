@@ -13,10 +13,10 @@ we don't need them for conda environments
  5 files changed, 43 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index cd2b826159..4400748fec 100644
+index e299c91988..939a0eaf31 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -18,31 +18,22 @@
+@@ -18,30 +18,21 @@
  
  
  add_subdirectory(annex)
@@ -25,7 +25,6 @@ index cd2b826159..4400748fec 100644
  add_subdirectory(bash_completion.d)
  add_subdirectory(blahp)
  add_subdirectory(ccb)
- #add_subdirectory(classad_analysis)
  add_subdirectory(condor_birdwatcher)
 -add_subdirectory(condor_c-gahp)
  add_subdirectory(condor_chirp)
@@ -48,7 +47,7 @@ index cd2b826159..4400748fec 100644
  add_subdirectory(condor_power)
  add_subdirectory(condor_prio)
  add_subdirectory(condor_procapi)
-@@ -53,10 +44,7 @@ add_subdirectory(condor_rmdir)
+@@ -52,10 +43,7 @@ add_subdirectory(condor_rmdir)
  add_subdirectory(condor_rm.V6)
  add_subdirectory(condor_schedd.V6)
  add_subdirectory(condor_scripts)
@@ -59,7 +58,7 @@ index cd2b826159..4400748fec 100644
  add_subdirectory(condor_status.V6)
  add_subdirectory(condor_submit.V6)
  add_subdirectory(condor_sysapi)
-@@ -65,14 +53,10 @@ add_subdirectory(condor_tools)
+@@ -64,14 +52,10 @@ add_subdirectory(condor_tools)
  add_subdirectory(condor_unit_tests)
  add_subdirectory(condor_userlog)
  add_subdirectory(condor_utils)
@@ -109,10 +108,10 @@ index b36e35f59c..68bed68310 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index 3b56d17e62..53f7cf4171 100644
+index b9dd0f8840..a79572af60 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
-@@ -37,7 +37,6 @@ if (NOT WINDOWS)
+@@ -38,7 +38,6 @@ if (NOT WINDOWS)
      install ( FILES cleanup_locally_mounted_checkpoint DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
  
      install ( FILES condor_run DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -120,7 +119,7 @@ index 3b56d17e62..53f7cf4171 100644
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -64,7 +63,6 @@ if (NOT WINDOWS)
+@@ -66,7 +65,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )

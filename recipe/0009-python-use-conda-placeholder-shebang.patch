@@ -64,10 +64,10 @@ index 944757bbe8..60bf95aa2e 100755
  Scan through the various HTCondor signing keys and passwords, looking
 diff --git a/src/condor_scripts/condor_watch_q b/src/condor_scripts/condor_watch_q
 index 1509002a65..2b3014214a 100755
---- a/src/condor_scripts/condor_watch_q
-+++ b/src/condor_scripts/condor_watch_q
+--- a/src/condor_scripts/condor_watch_q.in
++++ b/src/condor_scripts/condor_watch_q.in
 @@ -1,4 +1,4 @@
--#!/usr/bin/python3
+-#!@Python3_EXECUTABLE@
 +#!/opt/anaconda1anaconda2anaconda3/bin/python
  
  # Copyright 2020 HTCondor Team, Computer Sciences Department,

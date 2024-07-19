@@ -9,19 +9,19 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index fd395848dc..e0f1a1d2c2 100644
+index bc302a5707..6b977b50ff 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -142,7 +142,8 @@ if(NOT WINDOWS)
+@@ -150,7 +150,8 @@ if(NOT WINDOWS)
  	endif(WANT_PYTHON2_BINDINGS AND NOT WANT_PYTHON_WHEELS)
  
  	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
 -		find_package (Python3 COMPONENTS Interpreter Development)
 +		find_package (Python3 COMPONENTS Interpreter)
 +		find_package (Python3 COMPONENTS Development)
- 
- 		# All these variables are used later, and were defined in cmake 2.6
- 		# days.  At some point, we should not copy the find_package python
+ 		if (APPLE)
+ 			# mac doesn't ship a python  interpeter by default
+ 			# but we want to force the system one, not the one we found
 -- 
 2.39.2
 

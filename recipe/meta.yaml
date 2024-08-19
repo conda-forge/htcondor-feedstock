@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "23.8.1" %}
+{% set version = "23.9.6" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,36 +11,48 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/current/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 0e350a0886a5263af6e0189c19c87b1cb2610b74212dc988042c60ffc11aa952
+  sha256: e2ceb59e5137365aa121376c50b305bca6902eee49fa61b49c89197bd4269dfd
   patches:
-    # for patches see:
-    #   https://github.com/htcondor/htcondor/compare/main...duncanmmacleod:htcondor:conda-patches
-    # update patches via:
-    #   git pull --rebase upstream VX_Y_Z
-    #   git format-patch VX_Y_Z
+    # to update the patches for a new release:
+    #
+    #     # checkout the new source release tag
+    #     cd /path/to/git/htcondor
+    #     git fetch
+    #     git checkout <release-tag>
+    #     # apply the patches on top of the release tag
+    #     git am --3way /path/to/git/htcondor-feedstock/recipe/patches/*.patch
+    #     <resolve-any-conflicts>
+    #     # render new patch files
+    #     git format-patch <release-tag>
+    #     # copy them back to the feedstock
+    #     cd /path/to/git/htcondor-feedstock
+    #     git rm recipe/patches/*.patch
+    #     cp /path/to/git/htcondor/*.patch recipe/patches/
+    #     git add recipe/patches/*.patch
+    #     <update-this-file-as-required>
 
     # don't build daemons
-    - 0001-cmake-don-t-build-daemons.patch
+    - patches/0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
-    - 0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
+    - patches/0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
     # set install paths
-    - 0003-cmake-set-install-paths-for-conda-builds.patch
+    - patches/0003-cmake-set-install-paths-for-conda-builds.patch
     # set section 7 for classads manpage
-    - 0004-man-set-section-7-for-classads-man-page.patch
+    - patches/0004-man-set-section-7-for-classads-man-page.patch
     # don't link libpython
-    - 0005-python-don-t-link-against-libpython.patch
-    # don't rebuild condor_utils for python bindings
-    - 0006-python-link-against-libcondor_utils-as-external.patch
+    - patches/0005-python-don-t-link-against-libpython.patch
+    # don't rebuild libcondor_utils and libclassad for python bindings
+    - patches/0006-python-link-against-libcondor_utils-and-libclassad-a.patch
     # use conda openssl libraries
-    - 0007-osx-use-pre-installed-openssl-libraries.patch
+    - patches/0007-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
-    - 0008-osx-don-t-run-macosx_rewrite_libs.patch
+    - patches/0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
-    - 0009-python-use-conda-placeholder-shebang.patch
+    - patches/0009-python-use-conda-placeholder-shebang.patch
     # revert htcondor/htcondor@3be7e2f
-    - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
+    - patches/0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
     # fix issue cross-compiling python bindings
-    - 0011-python-fix-cross-compiling-configuration.patch
+    - patches/0011-python-fix-cross-compiling-configuration.patch
 
 build:
   error_overdepending: true

@@ -1,0 +1,77 @@
+From 29f92c94171477c44d6b63ba00f5367602d225b4 Mon Sep 17 00:00:00 2001
+From: jasoncpatton <jpatton@cs.wisc.edu>
+Date: Thu, 15 Sep 2022 12:24:59 +0100
+Subject: [PATCH 09/11] python: use conda placeholder shebang
+
+---
+ src/condor_credd/condor_credmon_oauth/condor_credmon_vault | 2 +-
+ src/condor_scripts/common-cloud-attributes-aws.py          | 2 +-
+ src/condor_scripts/common-cloud-attributes-google.py       | 2 +-
+ src/condor_scripts/condor_check_config                     | 2 +-
+ src/condor_scripts/condor_check_password                   | 2 +-
+ src/condor_scripts/condor_watch_q.in                       | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
+index 233bd6b57c..d8ea8613fe 100755
+--- a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
++++ b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ 
+ import os
+ import time
+diff --git a/src/condor_scripts/common-cloud-attributes-aws.py b/src/condor_scripts/common-cloud-attributes-aws.py
+index 4e2ae135ea..5969ee3ad3 100755
+--- a/src/condor_scripts/common-cloud-attributes-aws.py
++++ b/src/condor_scripts/common-cloud-attributes-aws.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ 
+ import requests
+ 
+diff --git a/src/condor_scripts/common-cloud-attributes-google.py b/src/condor_scripts/common-cloud-attributes-google.py
+index 83005dc71d..18dc134068 100755
+--- a/src/condor_scripts/common-cloud-attributes-google.py
++++ b/src/condor_scripts/common-cloud-attributes-google.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ r"""Print HTCondor machine ClassAd attributes derived from Google Cloud Metadata Servers
+ 
+ Converts Google Cloud instance metadata into HTCondor ClassAd attribute/value
+diff --git a/src/condor_scripts/condor_check_config b/src/condor_scripts/condor_check_config
+index cf1cb899c9..92be9b5689 100755
+--- a/src/condor_scripts/condor_check_config
++++ b/src/condor_scripts/condor_check_config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ 
+ """
+ Scan through the various HTCondor config knobs looking for potential
+diff --git a/src/condor_scripts/condor_check_password b/src/condor_scripts/condor_check_password
+index 944757bbe8..60bf95aa2e 100755
+--- a/src/condor_scripts/condor_check_password
++++ b/src/condor_scripts/condor_check_password
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ 
+ """
+ Scan through the various HTCondor signing keys and passwords, looking
+diff --git a/src/condor_scripts/condor_watch_q.in b/src/condor_scripts/condor_watch_q.in
+index 3e1ca01f24..2b3014214a 100755
+--- a/src/condor_scripts/condor_watch_q.in
++++ b/src/condor_scripts/condor_watch_q.in
+@@ -1,4 +1,4 @@
+-#!@Python3_EXECUTABLE@
++#!/opt/anaconda1anaconda2anaconda3/bin/python
+ 
+ # Copyright 2020 HTCondor Team, Computer Sciences Department,
+ # University of Wisconsin-Madison, WI.
+-- 
+2.39.2
+

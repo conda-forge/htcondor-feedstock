@@ -20,27 +20,27 @@ source:
     #   git format-patch VX_Y_Z
 
     # don't build daemons
-    - 0001-cmake-don-t-build-daemons.patch
+    - patches/0001-cmake-don-t-build-daemons.patch
     # set C_PYTHONARCHLIB for python
-    - 0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
+    - patches/0002-cmake-set-C_PYTHONARCHLIB-for-python.patch
     # set install paths
-    - 0003-cmake-set-install-paths-for-conda-builds.patch
+    - patches/0003-cmake-set-install-paths-for-conda-builds.patch
     # set section 7 for classads manpage
-    - 0004-man-set-section-7-for-classads-man-page.patch
+    - patches/0004-man-set-section-7-for-classads-man-page.patch
     # don't link libpython
-    - 0005-python-don-t-link-against-libpython.patch
+    - patches/0005-python-don-t-link-against-libpython.patch
     # don't rebuild condor_utils for python bindings
-    - 0006-python-link-against-libcondor_utils-as-external.patch
+    - patches/0006-python-link-against-libcondor_utils-as-external.patch
     # use conda openssl libraries
-    - 0007-osx-use-pre-installed-openssl-libraries.patch
+    - patches/0007-osx-use-pre-installed-openssl-libraries.patch
     # don't rewrite libs on macos
-    - 0008-osx-don-t-run-macosx_rewrite_libs.patch
+    - patches/0008-osx-don-t-run-macosx_rewrite_libs.patch
     # use local env python in cli tools
-    - 0009-python-use-conda-placeholder-shebang.patch
+    - patches/0009-python-use-conda-placeholder-shebang.patch
     # revert htcondor/htcondor@3be7e2f
-    - 0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
+    - patches/0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
     # backport https://github.com/htcondor/htcondor/commit/f39aef52706e2db1d774f9bd5f60cf7031ebc9f2
-    - 0011-HTCONDOR-2342-Port-to-pcre2-10.43.patch
+    - patches/0011-HTCONDOR-2342-Port-to-pcre2-10.43.patch
 
 build:
   error_overdepending: true

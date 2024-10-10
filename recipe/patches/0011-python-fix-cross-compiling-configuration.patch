@@ -1,4 +1,4 @@
-From 7c6b02d0c01242c378c0eb6a05aeada18955b265 Mon Sep 17 00:00:00 2001
+From abc6cae228f92be6bc03644b72cda44be2331ba2 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Thu, 15 Feb 2024 18:19:08 +0000
 Subject: [PATCH 11/11] python: fix cross compiling configuration
@@ -9,7 +9,7 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index a939dfb00a..cae401d4c0 100644
+index e1bcfca17c..3de1202c4d 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -150,7 +150,8 @@ if(NOT WINDOWS)
@@ -23,5 +23,5 @@ index a939dfb00a..cae401d4c0 100644
  			# mac doesn't ship a python  interpeter by default
  			# but we want to force the system one, not the one we found
 -- 
-2.39.2
+2.39.5
 

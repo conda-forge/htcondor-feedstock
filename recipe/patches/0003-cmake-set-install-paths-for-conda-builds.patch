@@ -1,4 +1,4 @@
-From e7365a501f8e7576eba7818c802437f95f592c23 Mon Sep 17 00:00:00 2001
+From 49e141a8e8a6df62af8fec2a37bc3af9d84c5794 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
 Subject: [PATCH 03/11] cmake: set install paths for conda builds
@@ -49,5 +49,5 @@ index ed894501fc..8f03c45edb 100644
  set( C_LOCAL_DIR	var/lib/condor )
  set( C_LOG_DIR		var/log/condor )
 -- 
-2.39.2
+2.39.5
 

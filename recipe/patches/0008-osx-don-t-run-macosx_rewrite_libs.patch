@@ -1,7 +1,7 @@
 From 26efc4a0882eee6e642bc9d42edf0de7c1a6d2ac Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
-Subject: [PATCH 08/11] osx: don't run macosx_rewrite_libs
+Subject: [PATCH 08/12] osx: don't run macosx_rewrite_libs
 
 conda-build handles this for us
 ---

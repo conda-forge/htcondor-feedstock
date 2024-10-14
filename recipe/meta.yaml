@@ -53,6 +53,8 @@ source:
     - patches/0010-Revert-HTCONDOR-1768-IOMasterPort-is-now-known-as-IO.patch
     # fix issue cross-compiling python bindings
     - patches/0011-python-fix-cross-compiling-configuration.patch
+    # revert htcondor/htcondor@90b5a42
+    - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
 
 build:
   error_overdepending: true

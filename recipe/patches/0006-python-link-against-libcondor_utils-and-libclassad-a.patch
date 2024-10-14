@@ -1,7 +1,7 @@
 From 7f2a71ad351cb9aa22a1f52da200eb8fcab61598 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:50:32 +0000
-Subject: [PATCH 06/11] python: link against libcondor_utils and libclassad as
+Subject: [PATCH 06/12] python: link against libcondor_utils and libclassad as
  external
 
 don't use the CMake targets, so that we don't have to rebuild these libraries when building the Python bindings

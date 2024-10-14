@@ -1,7 +1,7 @@
 From 0ef1a7737f350b9dbe84965de22d0a99dd52fd8f Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:34:36 +0000
-Subject: [PATCH 02/11] cmake: set C_PYTHONARCHLIB for python
+Subject: [PATCH 02/12] cmake: set C_PYTHONARCHLIB for python
 
 ---
  build/cmake/CondorConfigure.cmake | 5 +++++

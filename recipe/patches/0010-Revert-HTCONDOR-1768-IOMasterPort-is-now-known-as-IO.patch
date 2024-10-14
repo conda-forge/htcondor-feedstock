@@ -1,7 +1,7 @@
-From 797b7c1d28502dd6faa2da2ef1b3c2294882f63d Mon Sep 17 00:00:00 2001
+From 4e19681afa99ff9c5138063463de2ff1206d5da6 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Tue, 4 Jul 2023 19:45:24 +0100
-Subject: [PATCH 10/11] Revert "HTCONDOR-1768 IOMasterPort is now known as
+Subject: [PATCH 10/12] Revert "HTCONDOR-1768 IOMasterPort is now known as
  IOMainPort"
 
 This reverts commit 3be7e2fda46fc6e4758296362dfa7fb827a44d54.
@@ -23,5 +23,5 @@ index 0031050400..935ad44118 100644
      } else {
          hidMatchDictionary = IOServiceMatching("IOHIDSystem");
 -- 
-2.39.2
+2.39.5
 

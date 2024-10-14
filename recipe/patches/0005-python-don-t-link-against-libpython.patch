@@ -1,7 +1,7 @@
-From a1d74133cb00816cebebfd10267e688392529ffe Mon Sep 17 00:00:00 2001
+From 36b7cd0984b81c7c3ba5a7b121b56295519842e8 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 05/11] python: don't link against libpython
+Subject: [PATCH 05/12] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake  | 8 +++++++-
@@ -9,7 +9,7 @@ Subject: [PATCH 05/11] python: don't link against libpython
  2 files changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 2343b3b235..a939dfb00a 100644
+index e67fb930ea..e1bcfca17c 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -171,7 +171,13 @@ if(NOT WINDOWS)
@@ -28,7 +28,7 @@ index 2343b3b235..a939dfb00a 100644
  		# where to install the Python library
  		set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 5dd815ab75..c1dac7274b 100644
+index 9c6c0d45bf..e5b4eebd3f 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
 @@ -146,7 +146,6 @@ if(WINDOWS)
@@ -40,5 +40,5 @@ index 5dd815ab75..c1dac7274b 100644
  				if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
  				  set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
-2.39.2
+2.39.5
 

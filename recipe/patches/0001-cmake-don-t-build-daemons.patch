@@ -1,19 +1,19 @@
-From ab8f106ed4382b831cc44936a20b2d28ea3b916d Mon Sep 17 00:00:00 2001
+From 830f9e5c51952ba7558234abd0ea801a2b51a4b9 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/11] cmake: don't build daemons
+Subject: [PATCH 01/12] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
- src/CMakeLists.txt                  | 16 ----------------
+ src/CMakeLists.txt                  | 15 ---------------
  src/condor_procd/CMakeLists.txt     | 12 ------------
  src/condor_schedd.V6/CMakeLists.txt |  3 ---
  src/condor_scripts/CMakeLists.txt   |  2 --
  src/condor_tools/CMakeLists.txt     | 10 ----------
- 5 files changed, 43 deletions(-)
+ 5 files changed, 42 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index e299c91988..939a0eaf31 100644
+index 4b91414b5e..39a51b1f19 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -18,30 +18,21 @@
@@ -58,7 +58,7 @@ index e299c91988..939a0eaf31 100644
  add_subdirectory(condor_status.V6)
  add_subdirectory(condor_submit.V6)
  add_subdirectory(condor_sysapi)
-@@ -64,14 +52,10 @@ add_subdirectory(condor_tools)
+@@ -64,12 +52,9 @@ add_subdirectory(condor_tools)
  add_subdirectory(condor_unit_tests)
  add_subdirectory(condor_userlog)
  add_subdirectory(condor_utils)
@@ -69,15 +69,13 @@ index e299c91988..939a0eaf31 100644
  add_subdirectory(gangliad)
 -add_subdirectory(gce_gahp)
  add_subdirectory(gpu)
--add_subdirectory(openstack_gahp)
  add_subdirectory(python-bindings)
  add_subdirectory(rvgahp)
- 
 diff --git a/src/condor_procd/CMakeLists.txt b/src/condor_procd/CMakeLists.txt
-index e3f36a5efe..a615a075db 100644
+index f702f6aa65..ce33c9e284 100644
 --- a/src/condor_procd/CMakeLists.txt
 +++ b/src/condor_procd/CMakeLists.txt
-@@ -66,17 +66,5 @@ set( ProcdUtilsSrcs "${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp;../con
+@@ -67,17 +67,5 @@ set( ProcdUtilsSrcs "${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp;../con
  if (WINDOWS)
  	set( ProcdUtilsSrcs "${ProcdUtilsSrcs};../condor_utils/process_control.WINDOWS.cpp;../condor_utils/ntsysinfo.WINDOWS.cpp" )
  endif(WINDOWS)
@@ -96,22 +94,22 @@ index e3f36a5efe..a615a075db 100644
  
  set( PROCD_CLIENT_UTIL_SRCS "${ProcClientElements}" PARENT_SCOPE )
 diff --git a/src/condor_schedd.V6/CMakeLists.txt b/src/condor_schedd.V6/CMakeLists.txt
-index b36e35f59c..68bed68310 100644
+index 28b1becaa7..0fad325c5e 100644
 --- a/src/condor_schedd.V6/CMakeLists.txt
 +++ b/src/condor_schedd.V6/CMakeLists.txt
-@@ -48,7 +48,4 @@ schedd_stats.cpp
- transfer_queue.cpp
- )
+@@ -56,7 +56,4 @@ if (LINUX)
+ 	set_source_files_properties(schedd_negotiate.cpp PROPERTIES COMPILE_OPTIONS "-Wno-error")
+ endif()
  
 -condor_daemon( EXE condor_schedd SOURCES "${scheddElements}"
 -  LIBRARIES "${CONDOR_LIBS}" INSTALL "${C_SBIN}")
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index b9dd0f8840..a79572af60 100644
+index 5dbac0d4b6..f0873864da 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
-@@ -38,7 +38,6 @@ if (NOT WINDOWS)
+@@ -39,7 +39,6 @@ if (NOT WINDOWS)
      install ( FILES cleanup_locally_mounted_checkpoint DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
  
      install ( FILES condor_run DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -119,7 +117,7 @@ index b9dd0f8840..a79572af60 100644
      install ( FILES condor_gather_info DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES condor_pool_job_report DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
      install ( FILES make-personal-from-tarball DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
-@@ -66,7 +65,6 @@ if (NOT WINDOWS)
+@@ -67,7 +66,6 @@ if (NOT WINDOWS)
          install ( FILES common-cloud-attributes-google.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.sh DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
          install ( FILES common-cloud-attributes-aws.py DESTINATION ${C_LIBEXEC} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
@@ -158,5 +156,5 @@ index eb85da331a..c0969f5377 100644
  condor_exe(condor_stats "stats.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  
 -- 
-2.39.2
+2.39.5
 

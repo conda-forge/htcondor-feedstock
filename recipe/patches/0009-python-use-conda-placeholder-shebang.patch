@@ -1,7 +1,7 @@
-From 29f92c94171477c44d6b63ba00f5367602d225b4 Mon Sep 17 00:00:00 2001
+From 74f47852e26e662f35d1e849bfacd002b04ee52f Mon Sep 17 00:00:00 2001
 From: jasoncpatton <jpatton@cs.wisc.edu>
 Date: Thu, 15 Sep 2022 12:24:59 +0100
-Subject: [PATCH 09/11] python: use conda placeholder shebang
+Subject: [PATCH 09/12] python: use conda placeholder shebang
 
 ---
  src/condor_credd/condor_credmon_oauth/condor_credmon_vault | 2 +-
@@ -63,7 +63,7 @@ index 944757bbe8..60bf95aa2e 100755
  """
  Scan through the various HTCondor signing keys and passwords, looking
 diff --git a/src/condor_scripts/condor_watch_q.in b/src/condor_scripts/condor_watch_q.in
-index 3e1ca01f24..2b3014214a 100755
+index 782a137efe..fd315566ee 100755
 --- a/src/condor_scripts/condor_watch_q.in
 +++ b/src/condor_scripts/condor_watch_q.in
 @@ -1,4 +1,4 @@
@@ -73,5 +73,5 @@ index 3e1ca01f24..2b3014214a 100755
  # Copyright 2020 HTCondor Team, Computer Sciences Department,
  # University of Wisconsin-Madison, WI.
 -- 
-2.39.2
+2.39.5
 

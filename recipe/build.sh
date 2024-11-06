@@ -12,7 +12,7 @@ mkdir -pv ${_builddir}
 pushd ${_builddir}
 
 # configure
-cmake \
+cmake ${CMAKE_ARGS} \
   ${SRC_DIR} \
   ${HTCONDOR_CMAKE_ARGS} \
   -DCMAKE_CROSSCOMPILING_EMULATOR:STRING=${CMAKE_CROSSCOMPILING_EMULATOR} \

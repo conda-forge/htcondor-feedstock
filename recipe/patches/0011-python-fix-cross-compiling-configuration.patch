@@ -1,4 +1,4 @@
-From abc6cae228f92be6bc03644b72cda44be2331ba2 Mon Sep 17 00:00:00 2001
+From 342fab522a029a2c5f61e443aa08082b13221ac9 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Thu, 15 Feb 2024 18:19:08 +0000
 Subject: [PATCH 11/12] python: fix cross compiling configuration
@@ -9,7 +9,7 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index e1bcfca17c..3de1202c4d 100644
+index 51a93f2c17..9d0820cb31 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -150,7 +150,8 @@ if(NOT WINDOWS)

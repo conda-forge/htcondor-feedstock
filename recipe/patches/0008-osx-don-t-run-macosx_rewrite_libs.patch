@@ -1,4 +1,4 @@
-From 26efc4a0882eee6e642bc9d42edf0de7c1a6d2ac Mon Sep 17 00:00:00 2001
+From 6abcbab2301c2c8e4f647ad599914817c46c3d1b Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
 Subject: [PATCH 08/12] osx: don't run macosx_rewrite_libs
@@ -12,10 +12,10 @@ conda-build handles this for us
  4 files changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index bba498c733..faa3952573 100644
+index 8f0e5acea0..58ccee11b7 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
-@@ -185,7 +185,7 @@ if (WITH_PYTHON_BINDINGS)
+@@ -190,7 +190,7 @@ if (WITH_PYTHON_BINDINGS)
                      message( FATAL_ERROR \"\${_err}\" )
                  endif()
          ")
@@ -38,10 +38,10 @@ index b28fe9bd18..3ae172519f 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index 6953de8c02..58dc1810cb 100644
+index 5f6c9a1bf0..3d1f94a495 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
-@@ -721,8 +721,10 @@ endif()
+@@ -716,8 +716,10 @@ endif()
  
  if ( APPLE )
  	target_link_libraries( condor_utils PUBLIC ${IOKIT_FOUND} ${COREFOUNDATION_FOUND} resolv )

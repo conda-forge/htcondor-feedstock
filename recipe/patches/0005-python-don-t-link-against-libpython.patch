@@ -1,4 +1,4 @@
-From 7e2de68bff86efb1e20ec7e05eff748513abd05d Mon Sep 17 00:00:00 2001
+From 0d0ab1cf07b81581d94f6982355a9d50a2977290 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
 Subject: [PATCH 05/12] python: don't link against libpython
@@ -9,10 +9,10 @@ Subject: [PATCH 05/12] python: don't link against libpython
  2 files changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index bf6243ccd1..51a93f2c17 100644
+index 3d79868fd7..a1a9c3c659 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -171,7 +171,13 @@ if(NOT WINDOWS)
+@@ -173,7 +173,13 @@ if(NOT WINDOWS)
  
  		set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
  
@@ -28,7 +28,7 @@ index bf6243ccd1..51a93f2c17 100644
  		# where to install the Python library
  		set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 9c6c0d45bf..e5b4eebd3f 100644
+index 1b23c7a19b..c6a83d1d2d 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
 @@ -146,7 +146,6 @@ if(WINDOWS)

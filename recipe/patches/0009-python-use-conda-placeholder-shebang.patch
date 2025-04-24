@@ -1,4 +1,4 @@
-From 7c6fcc5fd203a7651b7dfcdb2584774649d49a0c Mon Sep 17 00:00:00 2001
+From 7e3703d1a59fc4c5c411081dcee1381f6a863aee Mon Sep 17 00:00:00 2001
 From: jasoncpatton <jpatton@cs.wisc.edu>
 Date: Thu, 15 Sep 2022 12:24:59 +0100
 Subject: [PATCH 09/12] python: use conda placeholder shebang
@@ -13,7 +13,7 @@ Subject: [PATCH 09/12] python: use conda placeholder shebang
  6 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
-index 224d8ad830..1279f99ef6 100755
+index 9f6c5ebd0c..9157f41d01 100755
 --- a/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
 +++ b/src/condor_credd/condor_credmon_oauth/condor_credmon_vault
 @@ -1,4 +1,4 @@
@@ -43,7 +43,7 @@ index 83005dc71d..18dc134068 100755
  
  Converts Google Cloud instance metadata into HTCondor ClassAd attribute/value
 diff --git a/src/condor_scripts/condor_check_config b/src/condor_scripts/condor_check_config
-index cf1cb899c9..92be9b5689 100755
+index e23c5afc99..e536709a5e 100755
 --- a/src/condor_scripts/condor_check_config
 +++ b/src/condor_scripts/condor_check_config
 @@ -1,4 +1,4 @@
@@ -53,7 +53,7 @@ index cf1cb899c9..92be9b5689 100755
  """
  Scan through the various HTCondor config knobs looking for potential
 diff --git a/src/condor_scripts/condor_check_password b/src/condor_scripts/condor_check_password
-index 944757bbe8..60bf95aa2e 100755
+index d1c5da039f..0ab525fcfe 100755
 --- a/src/condor_scripts/condor_check_password
 +++ b/src/condor_scripts/condor_check_password
 @@ -1,4 +1,4 @@
@@ -63,7 +63,7 @@ index 944757bbe8..60bf95aa2e 100755
  """
  Scan through the various HTCondor signing keys and passwords, looking
 diff --git a/src/condor_scripts/condor_watch_q.in b/src/condor_scripts/condor_watch_q.in
-index 9e77f49f82..57c240adf0 100755
+index 26a3c03339..9d6319bbdb 100755
 --- a/src/condor_scripts/condor_watch_q.in
 +++ b/src/condor_scripts/condor_watch_q.in
 @@ -1,4 +1,4 @@

@@ -1,4 +1,4 @@
-From 6abcbab2301c2c8e4f647ad599914817c46c3d1b Mon Sep 17 00:00:00 2001
+From f874bfe712e8d67b830b7d3623c38f7cb1aed697 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
 Subject: [PATCH 08/12] osx: don't run macosx_rewrite_libs
@@ -12,10 +12,10 @@ conda-build handles this for us
  4 files changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index 8f0e5acea0..58ccee11b7 100644
+index 39a1f2f161..bcced35f14 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
-@@ -190,7 +190,7 @@ if (WITH_PYTHON_BINDINGS)
+@@ -218,7 +218,7 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
                      message( FATAL_ERROR \"\${_err}\" )
                  endif()
          ")
@@ -25,10 +25,10 @@ index 8f0e5acea0..58ccee11b7 100644
              install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_PYTHON3ARCHLIB}/classad2/classad2_impl${MVI_SUFFIX})" )
              install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_PYTHON3ARCHLIB}/htcondor2/htcondor2_impl${MVI_SUFFIX})" )
 diff --git a/src/classad/CMakeLists.txt b/src/classad/CMakeLists.txt
-index b28fe9bd18..3ae172519f 100644
+index 374a12c24f..207066bb59 100644
 --- a/src/classad/CMakeLists.txt
 +++ b/src/classad/CMakeLists.txt
-@@ -186,7 +186,7 @@ if (UNIX)
+@@ -194,7 +194,7 @@ if (UNIX)
    target_link_libraries( classad ${CMAKE_DL_LIBS})
    install( TARGETS classad DESTINATION ${C_LIB_PUBLIC} )
  endif()
@@ -38,10 +38,10 @@ index b28fe9bd18..3ae172519f 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index 5f6c9a1bf0..3d1f94a495 100644
+index b9c6d87587..70ca281025 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
-@@ -716,8 +716,10 @@ endif()
+@@ -727,8 +727,10 @@ endif()
  
  if ( APPLE )
  	target_link_libraries( condor_utils PUBLIC ${IOKIT_FOUND} ${COREFOUNDATION_FOUND} resolv )
@@ -53,10 +53,10 @@ index 5f6c9a1bf0..3d1f94a495 100644
  
  ##################################################
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 1b54f6f137..e54b882533 100644
+index a4a610ac01..35c0f3458b 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
-@@ -339,7 +339,7 @@ else()
+@@ -310,7 +310,7 @@ else()
        install ( TARGETS htcondor DESTINATION ${C_PYTHONARCHLIB}/htcondor )
        install ( TARGETS classad_module DESTINATION ${C_PYTHONARCHLIB}/classad )
  
@@ -65,8 +65,8 @@ index 1b54f6f137..e54b882533 100644
            set_target_properties( pyclassad PROPERTIES INSTALL_NAME_DIR ${CMAKE_CURRENT_BINARY_DIR} )
  
            install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB}/lib${PYCLASSAD_LIB_NAME}.dylib)" )
-@@ -466,7 +466,7 @@ else()
-       install ( TARGETS py3classad3_impl DESTINATION ${C_PYTHON3ARCHLIB}/classad3 )
+@@ -399,7 +399,7 @@ else()
+       install ( TARGETS py3classad_module DESTINATION ${C_PYTHON3ARCHLIB}/classad )
  
  
 -      if ( APPLE )

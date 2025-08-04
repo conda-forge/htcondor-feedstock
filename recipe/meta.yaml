@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "23.10.26" %}
+{% set version = "23.10.27" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://research.cs.wisc.edu/htcondor/tarball/23.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 8524399005a89540b648840de4c01f210b19a72d5f3aca3d3b17cef34eecb1c9
+  sha256: 893a9941c9df58347159d7a9e1262e8f8443f6a5c60dd6210e2ee99f65bed5c3
   patches:
     # to update the patches for a new release:
     #

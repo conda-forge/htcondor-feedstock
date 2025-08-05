@@ -58,7 +58,6 @@ source:
     - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
 
 build:
-  error_overdepending: true
   error_overlinking: true
   number: 0
   skip: true  # [win]
@@ -142,9 +141,6 @@ outputs:
 
   - name: libcondor_utils
     build:
-      ignore_run_exports:
-        # for some reason this isn't actually linked (DMM)
-        - scitokens-cpp  # [osx]
       run_exports:
         - {{ pin_subpackage("libcondor_utils", max_pin="x.x.x") }}
     requirements:
@@ -203,6 +199,7 @@ outputs:
         - libcurl
         - libuuid  # [linux]
         - openssl
+        - scitokens-cpp >=0.5.0
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}

@@ -32,8 +32,8 @@ libboost_python_devel:
 - '1.88'
 libcurl:
 - '8'
-libxml2:
-- '2.13'
+libxml2_devel:
+- '2.14'
 llvm_openmp:
 - '19'
 macos_machine:

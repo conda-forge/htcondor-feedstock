@@ -80,7 +80,7 @@ requirements:
     - krb5
     - libcurl
     - libuuid  # [linux]
-    - libxml2
+    - libxml2-devel
     - llvm-openmp  # [osx]
     - munge  # [linux]
     - openldap

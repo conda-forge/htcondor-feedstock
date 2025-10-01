@@ -59,7 +59,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
@@ -80,7 +80,7 @@ requirements:
     - krb5
     - libcurl
     - libuuid  # [linux]
-    - libxml2
+    - libxml2-devel
     - llvm-openmp  # [osx]
     - munge  # [linux]
     - openldap

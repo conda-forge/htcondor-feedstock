@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "24.9.2" %}
+{% set version = "24.10.2" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 771c519817d75ed9ed4518bbff21db5e2914272a9373cd4d7ac843a8e6997d46
+  sha256: 511971623d0fafbf49a3dcb16feb49a8a5574aa6ff4dc5cbc217e9abfc1f7f8e
   patches:
     # to update the patches for a new release:
     #
@@ -58,9 +58,8 @@ source:
     - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
 
 build:
-  error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -142,9 +141,6 @@ outputs:
 
   - name: libcondor_utils
     build:
-      ignore_run_exports:
-        # for some reason this isn't actually linked (DMM)
-        - scitokens-cpp  # [osx]
       run_exports:
         - {{ pin_subpackage("libcondor_utils", max_pin="x.x.x") }}
     requirements:
@@ -203,6 +199,7 @@ outputs:
         - libcurl
         - libuuid  # [linux]
         - openssl
+        - scitokens-cpp >=0.5.0
       run:
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}

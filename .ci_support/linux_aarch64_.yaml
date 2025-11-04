@@ -10,10 +10,6 @@ cdt_name:
 - conda
 channel_sources:
 - conda-forge
-- conda-forge
-- conda-forge
-- conda-forge
-- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -37,7 +33,7 @@ libuuid:
 libxml2:
 - '2.13'
 openssl:
-- '3'
+- '3.5'
 pcre2:
 - '10.46'
 perl:
@@ -61,5 +57,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources

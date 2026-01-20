@@ -4,15 +4,14 @@ Date: Fri, 14 Jan 2022 11:36:01 +0000
 Subject: [PATCH 05/12] python: don't link against libpython
 
 ---
- build/cmake/CondorConfigure.cmake  | 8 +++++++-
- src/python-bindings/CMakeLists.txt | 1 -
- 2 files changed, 7 insertions(+), 2 deletions(-)
+ build/cmake/CondorConfigure.cmake | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 3d79868fd7..a1a9c3c659 100644
+index 699beabf6e..05f33d4935 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -173,7 +173,13 @@ if(NOT WINDOWS)
+@@ -143,7 +143,13 @@ if(NOT WINDOWS)
  
  		set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
  
@@ -27,18 +26,6 @@ index 3d79868fd7..a1a9c3c659 100644
  
  		# where to install the Python library
  		set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
-diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index 1b23c7a19b..c6a83d1d2d 100644
---- a/src/python-bindings/CMakeLists.txt
-+++ b/src/python-bindings/CMakeLists.txt
-@@ -146,7 +146,6 @@ if(WINDOWS)
- 				# non-existent python27_d, the problem is in the order that you include headers
- 				# set(PYTHON_DEBUG_LIBRARY ${BOOST_LD}/python27_d.lib)
- 
--				get_filename_component(PYTHON3_LIBRARY_FILENAME ${PYTHON3_LIBRARIES} NAME)
- 				string(REGEX REPLACE "([0-9]+[.][0-9]+).*" "\\1" _PYTHON_VERSION ${PYTHON3_VERSION_STRING})
- 				if ( ${PACKAGE_VERSION} MATCHES "([0-9]+)[.]([0-9]+)[.]([0-9]+)" )
- 				  set( PY3CLASSAD_LIB_NAME "pyclassad${_PYTHON_VERSION}_${CMAKE_MATCH_1}_${CMAKE_MATCH_2}_${CMAKE_MATCH_3}" )
 -- 
 2.39.5
 

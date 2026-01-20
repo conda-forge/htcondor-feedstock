@@ -9,11 +9,11 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index a1a9c3c659..59f2646c50 100644
+index 38162ba799..ed4f103d4b 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -152,7 +152,8 @@ if(NOT WINDOWS)
- 	endif(WANT_PYTHON2_BINDINGS AND NOT WANT_PYTHON_WHEELS)
+@@ -122,7 +122,8 @@ if(NOT WINDOWS)
+ 	endif()
  
  	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
 -		find_package (Python3 COMPONENTS Interpreter Development)

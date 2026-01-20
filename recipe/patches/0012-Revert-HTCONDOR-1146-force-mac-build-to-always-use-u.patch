@@ -10,10 +10,10 @@ This reverts commit 90b5a42115cc0035d5cb08eabb576584bfa7dbbf.
  1 file changed, 10 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 59f2646c50..a4285e0790 100644
+index 259017e61f..2d7d251a4d 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -101,11 +101,6 @@ if(NOT WINDOWS)
+@@ -98,11 +98,6 @@ if(NOT WINDOWS)
  
  	if (WANT_PYTHON_WHEELS)
  		find_package (Python3 COMPONENTS Interpreter)
@@ -25,7 +25,7 @@ index 59f2646c50..a4285e0790 100644
  
  		# All these variables are used later, and were defined in cmake 2.6
  		# days.  At some point, we should not copy the find_package python
-@@ -154,11 +149,6 @@ if(NOT WINDOWS)
+@@ -124,11 +119,6 @@ if(NOT WINDOWS)
  	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
  		find_package (Python3 COMPONENTS Interpreter)
  		find_package (Python3 COMPONENTS Development)

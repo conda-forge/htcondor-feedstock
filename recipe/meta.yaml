@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "24.12.4" %}
+{% set version = "25.0.5" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 92bdc6248a05d0132414f5016c570c9b4a02ae5bd85809ecd7428dd731e1c67a
+  sha256: ec272553637a3f9e785a5b868d93af1ada78f2ff12d62e842ea97d1215bffd58
   patches:
     # to update the patches for a new release:
     #
@@ -75,12 +75,9 @@ requirements:
     - sphinx
   host:
     - {{ cdt('libselinux') }}  # [linux]
-    - libboost-devel
-    - expat
     - krb5
     - libcurl
     - libuuid  # [linux]
-    - libxml2-devel
     - llvm-openmp  # [osx]
     - munge  # [linux]
     - openldap
@@ -251,7 +248,6 @@ outputs:
     script: build-python.sh
     build:
       ignore_run_exports:
-        - libboost
         - libuuid  # [linux]
         - pcre2
         - python
@@ -267,7 +263,6 @@ outputs:
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
       host:
-        - libboost-python-devel
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - libuuid  # [linux]

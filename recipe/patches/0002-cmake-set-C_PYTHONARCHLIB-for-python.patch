@@ -8,10 +8,10 @@ Subject: [PATCH 02/12] cmake: set C_PYTHONARCHLIB for python
  1 file changed, 5 insertions(+)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 149dc643bb..3d79868fd7 100644
+index 38162ba799..699beabf6e 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -175,6 +175,11 @@ if(NOT WINDOWS)
+@@ -145,6 +145,11 @@ if(NOT WINDOWS)
  
  		set(PYTHON3_LIBRARIES "${PYTHON3_LIB}")
  

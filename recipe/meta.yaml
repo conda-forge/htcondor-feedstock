@@ -11,7 +11,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
   sha256: ec272553637a3f9e785a5b868d93af1ada78f2ff12d62e842ea97d1215bffd58
   patches:
     # to update the patches for a new release:
@@ -56,6 +56,8 @@ source:
     - patches/0011-python-fix-cross-compiling-configuration.patch
     # revert htcondor/htcondor@90b5a42
     - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
+    # remove extraneous dependency on v1 bindings
+    - patches/0013-remove-v1binding-dep.patch
 
 build:
   error_overlinking: true
@@ -292,11 +294,11 @@ outputs:
         # run tests
         - python -m pytest src/condor_tests/
       imports:
-        - classad
-        - htcondor
-        - htcondor.dags
-        - htcondor.htchirp
-        - htcondor.personal
+        - classad2
+        - htcondor2
+        - htcondor2.dags
+        - htcondor2.htchirp
+        - htcondor2.personal
     about:
       home: http://htcondor.org/
       doc_url: https://htcondor.readthedocs.io/
@@ -357,8 +359,8 @@ outputs:
         - {{ pin_subpackage('python-htcondor', exact=True) }}
     test:
       imports:
-        - classad
-        - htcondor
+        - classad2
+        - htcondor2
         - htcondor_cli
       commands:
         - condor_q --version

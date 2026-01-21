@@ -1,7 +1,7 @@
-From db5992a67654d9b0f963084ede34ceb03f142d38 Mon Sep 17 00:00:00 2001
+From 1c3a524d5f19118f249a19368254e36b7619ccd3 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Thu, 15 Feb 2024 18:19:08 +0000
-Subject: [PATCH 11/12] python: fix cross compiling configuration
+Subject: [PATCH 11/13] python: fix cross compiling configuration
 
 when cross-compiling attempting to get Interpreter and Development variables at the same time doesn't work
 ---
@@ -9,10 +9,10 @@ when cross-compiling attempting to get Interpreter and Development variables at 
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 38162ba799..ed4f103d4b 100644
+index 7ddba4c2aa..e2064871d1 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -122,7 +122,8 @@ if(NOT WINDOWS)
+@@ -113,7 +113,8 @@ if(NOT WINDOWS)
  	endif()
  
  	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
@@ -23,5 +23,5 @@ index 38162ba799..ed4f103d4b 100644
  			# mac doesn't ship a python  interpeter by default
  			# but we want to force the system one, not the one we found
 -- 
-2.39.5
+2.43.0
 

@@ -1,7 +1,7 @@
-From 258bf47c4740bb5290c60313595c42ae21d135b5 Mon Sep 17 00:00:00 2001
+From 50a7b608bd2728007df5ec8b8cefe1e8e8cd92f3 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:50:32 +0000
-Subject: [PATCH 06/12] python: link against libcondor_utils and libclassad as
+Subject: [PATCH 06/13] python: link against libcondor_utils and libclassad as
  external
 
 don't use the CMake targets, so that we don't have to rebuild these libraries when building the Python bindings
@@ -73,5 +73,5 @@ index 30e2e67a55..8562972974 100644
    set_target_properties(        py3classad3_impl PROPERTIES PREFIX "" RUNTIME_OUTPUT_NAME classad3_impl PDB_NAME py3classad3 )
    set_target_properties(        py3classad3_impl PROPERTIES SUFFIX "${PYTHON3_DLL_SUFFIX}" )
 -- 
-2.39.5
+2.43.0
 

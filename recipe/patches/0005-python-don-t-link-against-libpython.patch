@@ -1,17 +1,17 @@
-From 0d0ab1cf07b81581d94f6982355a9d50a2977290 Mon Sep 17 00:00:00 2001
+From c0df6dc0e910db237a8fdc8de36f42689a05317d Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:36:01 +0000
-Subject: [PATCH 05/12] python: don't link against libpython
+Subject: [PATCH 05/13] python: don't link against libpython
 
 ---
  build/cmake/CondorConfigure.cmake | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 699beabf6e..05f33d4935 100644
+index 10d3d99d4a..7ddba4c2aa 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -143,7 +143,13 @@ if(NOT WINDOWS)
+@@ -134,7 +134,13 @@ if(NOT WINDOWS)
  
  		set(PYTHON3_EXECUTABLE        ${Python3_EXECUTABLE})
  
@@ -27,5 +27,5 @@ index 699beabf6e..05f33d4935 100644
  		# where to install the Python library
  		set(C_PYTHON3ARCHLIB ${Python3_SITEARCH})
 -- 
-2.39.5
+2.43.0
 

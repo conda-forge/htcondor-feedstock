@@ -1,25 +1,26 @@
-From d2a9e7fae7e70dcd1cfba690a4e5db6281c780a4 Mon Sep 17 00:00:00 2001
+From d0730d7f936f21fa4979f5ac25e95dbc4d939e7a Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 01/13] cmake: don't build daemons
 
 we don't need them for conda environments
 ---
- src/CMakeLists.txt                  | 15 ---------------
+ src/CMakeLists.txt                  | 16 ----------------
  src/condor_procd/CMakeLists.txt     | 12 ------------
  src/condor_schedd.V6/CMakeLists.txt |  3 ---
  src/condor_scripts/CMakeLists.txt   |  3 ---
  src/condor_tools/CMakeLists.txt     | 10 ----------
- 5 files changed, 43 deletions(-)
+ 5 files changed, 44 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index f764862b21..b10cef0f4e 100644
+index c62608a1ed..b10cef0f4e 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -18,31 +18,22 @@
+@@ -18,32 +18,22 @@
  
  
  add_subdirectory(annex)
+-add_subdirectory(archive_librarian)
 -add_subdirectory(arc_gahp)
 -add_subdirectory(azure_gahp)
  add_subdirectory(bash_completion.d)
@@ -48,7 +49,7 @@ index f764862b21..b10cef0f4e 100644
  add_subdirectory(condor_power)
  add_subdirectory(condor_prio)
  add_subdirectory(condor_procapi)
-@@ -53,10 +44,7 @@ add_subdirectory(condor_rmdir)
+@@ -54,10 +44,7 @@ add_subdirectory(condor_rmdir)
  add_subdirectory(condor_rm.V6)
  add_subdirectory(condor_schedd.V6)
  add_subdirectory(condor_scripts)
@@ -59,7 +60,7 @@ index f764862b21..b10cef0f4e 100644
  add_subdirectory(condor_status.V6)
  add_subdirectory(condor_submit.V6)
  add_subdirectory(condor_sysapi)
-@@ -65,12 +53,9 @@ add_subdirectory(condor_tools)
+@@ -66,12 +53,9 @@ add_subdirectory(condor_tools)
  add_subdirectory(condor_unit_tests)
  add_subdirectory(condor_userlog)
  add_subdirectory(condor_utils)
@@ -73,7 +74,7 @@ index f764862b21..b10cef0f4e 100644
  add_subdirectory(python-bindings)
  add_subdirectory(rvgahp)
 diff --git a/src/condor_procd/CMakeLists.txt b/src/condor_procd/CMakeLists.txt
-index f702f6aa65..ce33c9e284 100644
+index b9de112230..dd49ba2fd2 100644
 --- a/src/condor_procd/CMakeLists.txt
 +++ b/src/condor_procd/CMakeLists.txt
 @@ -67,17 +67,5 @@ set( ProcdUtilsSrcs "${SAFE_OPEN_SRC};../condor_utils/condor_pidenvid.cpp;../con

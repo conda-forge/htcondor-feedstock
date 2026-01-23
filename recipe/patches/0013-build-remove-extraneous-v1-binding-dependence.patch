@@ -1,4 +1,4 @@
-From 3a3f71d95ca5aa0258759f59014cc6a3380da16f Mon Sep 17 00:00:00 2001
+From 029572d60970a7e00b27543fce649f8d0577169e Mon Sep 17 00:00:00 2001
 From: Tim Theisen <tim@cs.wisc.edu>
 Date: Tue, 20 Jan 2026 16:30:00 -0600
 Subject: [PATCH 13/13] build: remove extraneous v1 binding dependence

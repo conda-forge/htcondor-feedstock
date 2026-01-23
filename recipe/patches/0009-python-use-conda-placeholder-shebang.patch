@@ -1,4 +1,4 @@
-From 2e83f352972b1f34557ef186e8f90c91ec7e79f1 Mon Sep 17 00:00:00 2001
+From fd0fd4d79b600c5b7270806e3956bc4d56613278 Mon Sep 17 00:00:00 2001
 From: jasoncpatton <jpatton@cs.wisc.edu>
 Date: Thu, 15 Sep 2022 12:24:59 +0100
 Subject: [PATCH 09/13] python: use conda placeholder shebang
@@ -63,7 +63,7 @@ index d1c5da039f..0ab525fcfe 100755
  """
  Scan through the various HTCondor signing keys and passwords, looking
 diff --git a/src/condor_scripts/condor_watch_q.in b/src/condor_scripts/condor_watch_q.in
-index 977c89225a..672b50d298 100755
+index e03158a1fd..586f1ea180 100755
 --- a/src/condor_scripts/condor_watch_q.in
 +++ b/src/condor_scripts/condor_watch_q.in
 @@ -1,4 +1,4 @@

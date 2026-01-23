@@ -1,4 +1,4 @@
-From 79ea1333d60c14f7bc5ff74695df626cbc363fd7 Mon Sep 17 00:00:00 2001
+From d303c25e2a09a5d0e97d40a8babcbc3923a205d7 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
 Subject: [PATCH 08/13] osx: don't run macosx_rewrite_libs
@@ -37,7 +37,7 @@ index 2f3b781e1d..2e138115aa 100644
    install( CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/src/condor_scripts/macosx_rewrite_libs \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${C_LIB_PUBLIC}/libclassad.${PACKAGE_VERSION}.dylib)" )
    target_link_libraries( classad pcre2-8)
 diff --git a/src/condor_utils/CMakeLists.txt b/src/condor_utils/CMakeLists.txt
-index 1a257bf198..298d5b3c1b 100644
+index a54993c9d3..b3a9d2eee8 100644
 --- a/src/condor_utils/CMakeLists.txt
 +++ b/src/condor_utils/CMakeLists.txt
 @@ -729,8 +729,10 @@ endif()

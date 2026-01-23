@@ -11,7 +11,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  url: https://htcss-downloads.chtc.wisc.edu/tarball/24.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
   sha256: 629ac2e7908344c28834f60c2e466441df6bf7be5afa09894c7bc3e56a2609d1
   patches:
     # to update the patches for a new release:

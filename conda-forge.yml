@@ -1,6 +1,5 @@
 bot:
   abi_migration_branches:
-  - v23.0.x
   - v24.0.x
 build_platform:
   linux_aarch64: linux_64

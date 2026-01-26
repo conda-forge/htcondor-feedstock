@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "24.12.4" %}
+{% set version = "25.0.5" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:
@@ -11,8 +11,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://htcss-downloads.chtc.wisc.edu/tarball/{{ major_version }}.x/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 92bdc6248a05d0132414f5016c570c9b4a02ae5bd85809ecd7428dd731e1c67a
+  url: https://htcss-downloads.chtc.wisc.edu/tarball/25.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
+  sha256: ec272553637a3f9e785a5b868d93af1ada78f2ff12d62e842ea97d1215bffd58
   patches:
     # to update the patches for a new release:
     #
@@ -56,10 +56,12 @@ source:
     - patches/0011-python-fix-cross-compiling-configuration.patch
     # revert htcondor/htcondor@90b5a42
     - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
+    # remove extraneous dependency on v1 bindings
+    - patches/0013-build-remove-extraneous-v1-binding-dependence.patch
 
 build:
   error_overlinking: true
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -75,12 +77,9 @@ requirements:
     - sphinx
   host:
     - {{ cdt('libselinux') }}  # [linux]
-    - libboost-devel
-    - expat
     - krb5
     - libcurl
     - libuuid  # [linux]
-    - libxml2-devel
     - llvm-openmp  # [osx]
     - munge  # [linux]
     - openldap
@@ -251,7 +250,6 @@ outputs:
     script: build-python.sh
     build:
       ignore_run_exports:
-        - libboost
         - libuuid  # [linux]
         - pcre2
         - python
@@ -267,7 +265,6 @@ outputs:
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
       host:
-        - libboost-python-devel
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
         - libuuid  # [linux]
@@ -297,11 +294,11 @@ outputs:
         # run tests
         - python -m pytest src/condor_tests/
       imports:
-        - classad
-        - htcondor
-        - htcondor.dags
-        - htcondor.htchirp
-        - htcondor.personal
+        - classad2
+        - htcondor2
+        - htcondor2.dags
+        - htcondor2.htchirp
+        - htcondor2.personal
     about:
       home: http://htcondor.org/
       doc_url: https://htcondor.readthedocs.io/
@@ -362,8 +359,8 @@ outputs:
         - {{ pin_subpackage('python-htcondor', exact=True) }}
     test:
       imports:
-        - classad
-        - htcondor
+        - classad2
+        - htcondor2
         - htcondor_cli
       commands:
         - condor_q --version

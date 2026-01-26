@@ -1,7 +1,7 @@
-From 5db07f247142675c55cf2e76897702cd936a0ee5 Mon Sep 17 00:00:00 2001
+From 9ff50abdd107c969127c4952bba39a917c3f9f5d Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <macleoddm@cardiff.ac.uk>
 Date: Mon, 14 Oct 2024 12:39:07 +0100
-Subject: [PATCH 12/12] Revert "HTCONDOR-1146 force mac build to always use
+Subject: [PATCH 12/13] Revert "HTCONDOR-1146 force mac build to always use
  /usr/bin/python3"
 
 This reverts commit 90b5a42115cc0035d5cb08eabb576584bfa7dbbf.
@@ -10,10 +10,10 @@ This reverts commit 90b5a42115cc0035d5cb08eabb576584bfa7dbbf.
  1 file changed, 10 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 59f2646c50..a4285e0790 100644
+index e2064871d1..8f947691c9 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -101,11 +101,6 @@ if(NOT WINDOWS)
+@@ -89,11 +89,6 @@ if(NOT WINDOWS)
  
  	if (WANT_PYTHON_WHEELS)
  		find_package (Python3 COMPONENTS Interpreter)
@@ -25,7 +25,7 @@ index 59f2646c50..a4285e0790 100644
  
  		# All these variables are used later, and were defined in cmake 2.6
  		# days.  At some point, we should not copy the find_package python
-@@ -154,11 +149,6 @@ if(NOT WINDOWS)
+@@ -115,11 +110,6 @@ if(NOT WINDOWS)
  	if (WANT_PYTHON3_BINDINGS AND NOT WANT_PYTHON_WHEELS)
  		find_package (Python3 COMPONENTS Interpreter)
  		find_package (Python3 COMPONENTS Development)
@@ -38,5 +38,5 @@ index 59f2646c50..a4285e0790 100644
  		# All these variables are used later, and were defined in cmake 2.6
  		# days.  At some point, we should not copy the find_package python
 -- 
-2.39.5
+2.43.0
 

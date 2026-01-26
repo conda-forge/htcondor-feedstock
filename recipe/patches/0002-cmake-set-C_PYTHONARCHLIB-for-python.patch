@@ -1,17 +1,17 @@
-From 44876c98860cd3e9e61ea2c893773ff0ed5ebe02 Mon Sep 17 00:00:00 2001
+From 1031a2670b2a98bf66686697922a3a588dba5f76 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:34:36 +0000
-Subject: [PATCH 02/12] cmake: set C_PYTHONARCHLIB for python
+Subject: [PATCH 02/13] cmake: set C_PYTHONARCHLIB for python
 
 ---
  build/cmake/CondorConfigure.cmake | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index 149dc643bb..3d79868fd7 100644
+index e021722ea7..10d3d99d4a 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
-@@ -175,6 +175,11 @@ if(NOT WINDOWS)
+@@ -136,6 +136,11 @@ if(NOT WINDOWS)
  
  		set(PYTHON3_LIBRARIES "${PYTHON3_LIB}")
  
@@ -24,5 +24,5 @@ index 149dc643bb..3d79868fd7 100644
  		set(PYTHON3LIBS_VERSION_STRING "${PYTHON3_VERSION_STRING}")
  		set(PYTHON3_MODULE_SUFFIX "${PYTHON3_MODULE_EXTENSION}")
 -- 
-2.39.5
+2.43.0
 

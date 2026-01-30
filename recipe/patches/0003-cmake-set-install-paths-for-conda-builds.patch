@@ -1,27 +1,25 @@
-From b1dfbc83d730eb88273ca79af072606980804c03 Mon Sep 17 00:00:00 2001
+From ecc2817288daa2837413db8e3623c681fbaf66af Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
 Subject: [PATCH 03/13] cmake: set install paths for conda builds
 
 ---
- build/cmake/CondorPackageConfig.cmake | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ build/cmake/CondorPackageConfig.cmake | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/build/cmake/CondorPackageConfig.cmake b/build/cmake/CondorPackageConfig.cmake
-index ba582321c6..dadc0b5c97 100644
+index 018083d9d2..16394722dc 100644
 --- a/build/cmake/CondorPackageConfig.cmake
 +++ b/build/cmake/CondorPackageConfig.cmake
-@@ -125,8 +125,8 @@ set( C_BIN			bin)
+@@ -125,7 +125,7 @@ set( C_BIN			bin)
  set( C_LIB			lib)
  set( C_LIB_PUBLIC		lib)
  set( C_LIB32		lib)
 -set( C_LIBEXEC		libexec )
--set( C_LIBEXEC_BLAHP		libexec )
 +set( C_LIBEXEC		libexec/condor )
-+set( C_LIBEXEC_BLAHP		libexec/blahp )
+ set( C_LIBEXEC_BLAHP		libexec/blahp )
  set( C_SBIN			sbin)
  
- set( C_PYTHONARCHLIB lib/python)
 @@ -134,20 +134,20 @@ set( C_PYTHON3ARCHLIB lib/python3)
  
  set( C_INCLUDE		include)

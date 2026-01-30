@@ -1,4 +1,4 @@
-From d0730d7f936f21fa4979f5ac25e95dbc4d939e7a Mon Sep 17 00:00:00 2001
+From a1cfd542b775ad3b066a5783ec129b5c0b3c86c5 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 01/13] cmake: don't build daemons
@@ -13,7 +13,7 @@ we don't need them for conda environments
  5 files changed, 44 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index c62608a1ed..b10cef0f4e 100644
+index d99f77ef77..4f91b99cbb 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -18,32 +18,22 @@
@@ -96,10 +96,10 @@ index b9de112230..dd49ba2fd2 100644
  
  set( PROCD_CLIENT_UTIL_SRCS "${ProcClientElements}" PARENT_SCOPE )
 diff --git a/src/condor_schedd.V6/CMakeLists.txt b/src/condor_schedd.V6/CMakeLists.txt
-index 085d2e211d..9e2a2be070 100644
+index fd012e93d1..e4a4fb5ec2 100644
 --- a/src/condor_schedd.V6/CMakeLists.txt
 +++ b/src/condor_schedd.V6/CMakeLists.txt
-@@ -49,7 +49,4 @@ schedd_stats.cpp
+@@ -50,7 +50,4 @@ schedd_stats.cpp
  transfer_queue.cpp
  )
  
@@ -129,7 +129,7 @@ index 4a75dc98d2..86555ee040 100644
  
      install ( FILES condor_qsub DESTINATION ${C_BIN} PERMISSIONS ${CONDOR_SCRIPT_PERMS} )
 diff --git a/src/condor_tools/CMakeLists.txt b/src/condor_tools/CMakeLists.txt
-index ed710c7201..062df38a4b 100644
+index bc38b012f4..8c384652db 100644
 --- a/src/condor_tools/CMakeLists.txt
 +++ b/src/condor_tools/CMakeLists.txt
 @@ -20,13 +20,8 @@ condor_exe(condor_manifest "manifest.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
@@ -146,7 +146,7 @@ index ed710c7201..062df38a4b 100644
  condor_exe(condor_config_val "config_val.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_userprio "user_prio.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_transform_ads "transform_ads.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
-@@ -69,11 +64,6 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
+@@ -73,11 +68,6 @@ condor_exe(condor_transfer_data "transfer_data.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS
  condor_exe(condor_version "version.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_wait "wait.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)
  condor_exe(condor_history "history.cpp" ${C_BIN} "${CONDOR_TOOL_LIBS}" OFF)

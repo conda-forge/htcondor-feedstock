@@ -1,4 +1,4 @@
-From b9454190f85465cfea50372862c6a1401383cd78 Mon Sep 17 00:00:00 2001
+From 815358df9373d99a0a615a9bda3020e13acf721b Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:50:32 +0000
 Subject: [PATCH 06/13] python: link against libcondor_utils and libclassad as

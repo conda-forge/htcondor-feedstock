@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "25.0.5" %}
+{% set version = "25.0.6" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://htcss-downloads.chtc.wisc.edu/tarball/25.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: ec272553637a3f9e785a5b868d93af1ada78f2ff12d62e842ea97d1215bffd58
+  sha256: 7cb09f31cc7afce6e146c884e3a271c0dd83064ef7fa369db63e5d361dae64c6
   patches:
     # to update the patches for a new release:
     #

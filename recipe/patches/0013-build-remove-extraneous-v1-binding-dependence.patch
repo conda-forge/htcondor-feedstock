@@ -1,4 +1,4 @@
-From 3a3f71d95ca5aa0258759f59014cc6a3380da16f Mon Sep 17 00:00:00 2001
+From c0996f0f6468e5e2ea46a26ed1c264b2dd76897a Mon Sep 17 00:00:00 2001
 From: Tim Theisen <tim@cs.wisc.edu>
 Date: Tue, 20 Jan 2026 16:30:00 -0600
 Subject: [PATCH 13/13] build: remove extraneous v1 binding dependence
@@ -9,10 +9,10 @@ Error in upstream tarball, will push this patch upstream
  1 file changed, 4 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index 3110dfecb6..5b955427e4 100644
+index d1eeac2aeb..98ce298729 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
-@@ -111,7 +111,6 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
+@@ -112,7 +112,6 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
      endif()
  
      if (WINDOWS AND DEFINED PYTHON3_VERSION_STRING)
@@ -20,7 +20,7 @@ index 3110dfecb6..5b955427e4 100644
          if (NOT DEFINED PYTHON_VERSION_STRING) # make sure Windows has a Python executable even if building Python 3 only
              set(PYTHON_EXECUTABLE ${PYTHON3_EXECUTABLE})
          endif()
-@@ -169,9 +168,6 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
+@@ -170,9 +169,6 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
      if (NOT WINDOWS AND PYTHON3LIBS_FOUND)
          set(TIMESTAMP3_FILE "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp3")
  		set (DEPENDENT_MODULES "")

@@ -1,7 +1,7 @@
-From 79ea1333d60c14f7bc5ff74695df626cbc363fd7 Mon Sep 17 00:00:00 2001
+From 7d1d6c83215b9884f582295e8e57c5a209594ec6 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:46:13 +0000
-Subject: [PATCH 08/13] osx: don't run macosx_rewrite_libs
+Subject: [PATCH 08/12] osx: don't run macosx_rewrite_libs
 
 conda-build handles this for us
 ---
@@ -11,10 +11,10 @@ conda-build handles this for us
  3 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index ea3a65c66c..3110dfecb6 100644
+index 4cf12d388e..5b955427e4 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
-@@ -195,7 +195,7 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
+@@ -191,7 +191,7 @@ if (WITH_PYTHON_BINDINGS OR WITH_PYTHON_BINDINGS_V2 OR WITH_PYTHON_BINDINGS_V3)
                      message( FATAL_ERROR \"\${_err}\" )
                  endif()
          ")

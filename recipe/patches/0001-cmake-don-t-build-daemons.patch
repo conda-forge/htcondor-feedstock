@@ -1,7 +1,7 @@
-From d2a9e7fae7e70dcd1cfba690a4e5db6281c780a4 Mon Sep 17 00:00:00 2001
+From d201b36e5b9b79d1c454e1a8416e6cfa9b89cf8b Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
-Subject: [PATCH 01/13] cmake: don't build daemons
+Subject: [PATCH 01/12] cmake: don't build daemons
 
 we don't need them for conda environments
 ---

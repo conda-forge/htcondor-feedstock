@@ -1,14 +1,14 @@
-From 70ffa73e61bb9ad7eb94b414161ce3e6d66d3553 Mon Sep 17 00:00:00 2001
+From 5ace16e6f0acd9145262b7d3d696a7a5478a05c6 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:08 +0000
-Subject: [PATCH 04/13] man: set section 7 for classads man page
+Subject: [PATCH 04/12] man: set section 7 for classads man page
 
 ---
  docs/conf.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/docs/conf.py b/docs/conf.py
-index 601780722e..dcb2e23106 100644
+index 6d8d8028e3..2297f74449 100644
 --- a/docs/conf.py
 +++ b/docs/conf.py
 @@ -125,7 +125,7 @@ pygments_style = 'colorful'

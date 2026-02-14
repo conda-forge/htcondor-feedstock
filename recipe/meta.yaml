@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "25.0.6" %}
+{% set version = "25.0.7" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://htcss-downloads.chtc.wisc.edu/tarball/25.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 7cb09f31cc7afce6e146c884e3a271c0dd83064ef7fa369db63e5d361dae64c6
+  sha256: d74ca6b76be0fe34712954e0c68e1acd3d3f3656d4a8ca97035d0012b36f238d
   patches:
     # to update the patches for a new release:
     #
@@ -56,8 +56,6 @@ source:
     - patches/0011-python-fix-cross-compiling-configuration.patch
     # revert htcondor/htcondor@90b5a42
     - patches/0012-Revert-HTCONDOR-1146-force-mac-build-to-always-use-u.patch
-    # remove extraneous dependency on v1 bindings
-    - patches/0013-build-remove-extraneous-v1-binding-dependence.patch
 
 build:
   error_overlinking: true

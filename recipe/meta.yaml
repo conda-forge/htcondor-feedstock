@@ -59,7 +59,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -74,7 +74,6 @@ requirements:
     - pkg-config  # [unix]
     - sphinx
   host:
-    - {{ cdt('libselinux') }}  # [linux]
     - libboost-devel
     - expat
     - krb5
@@ -196,7 +195,6 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
       host:
-        - {{ cdt('libselinux') }}  # [linux]
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl

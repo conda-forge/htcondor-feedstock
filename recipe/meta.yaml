@@ -61,7 +61,7 @@ source:
 
 build:
   error_overlinking: true
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -76,7 +76,6 @@ requirements:
     - pkg-config  # [unix]
     - sphinx
   host:
-    - {{ cdt('libselinux') }}  # [linux]
     - krb5
     - libcurl
     - libuuid  # [linux]
@@ -192,7 +191,6 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
       host:
-        - {{ cdt('libselinux') }}  # [linux]
         - {{ pin_subpackage("htcondor-classads", exact=True) }}
         - {{ pin_subpackage("libcondor_utils", exact=True) }}
         - libcurl

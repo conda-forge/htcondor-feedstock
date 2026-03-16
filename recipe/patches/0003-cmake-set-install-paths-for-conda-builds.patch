@@ -1,7 +1,7 @@
-From ecc2817288daa2837413db8e3623c681fbaf66af Mon Sep 17 00:00:00 2001
+From 8eb89e20c2b0136fc0a2795d390e5fa55c620b1b Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
-Subject: [PATCH 03/13] cmake: set install paths for conda builds
+Subject: [PATCH 03/12] cmake: set install paths for conda builds
 
 ---
  build/cmake/CondorPackageConfig.cmake | 12 ++++++------

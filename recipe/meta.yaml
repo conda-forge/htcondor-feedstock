@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "25.0.9" %}
+{% set version = "25.0.10" %}
 {% set major_version = version.split(".", maxsplit=1)[0] %}
 
 package:

@@ -155,31 +155,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `htcondor, htcondor-classads, htcondor-cli, htcondor-utils, libcondor_utils, python-htcondor` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install htcondor htcondor-classads htcondor-cli htcondor-utils libcondor_utils python-htcondor
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install htcondor htcondor-classads htcondor-cli htcondor-utils libcondor_utils python-htcondor
 ```
 
-It is possible to list all of the versions of `htcondor` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add htcondor htcondor-classads htcondor-cli htcondor-utils libcondor_utils python-htcondor
+# for installing globally
+pixi global install htcondor htcondor-classads htcondor-cli htcondor-utils libcondor_utils python-htcondor
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `htcondor` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search htcondor --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search htcondor --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search htcondor --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -191,6 +233,8 @@ mamba repoquery whoneeds htcondor --channel conda-forge
 # List dependencies of `htcondor`:
 mamba repoquery depends htcondor --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge

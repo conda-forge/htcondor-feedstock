@@ -1,4 +1,4 @@
-From ca9700a117abeff19ebf1d869ceec98998c14a17 Mon Sep 17 00:00:00 2001
+From 369637c9a2d5157fc5031c5fdea03019fdb40f4c Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:37:08 +0000
 Subject: [PATCH 04/12] man: set section 7 for classads man page
@@ -8,7 +8,7 @@ Subject: [PATCH 04/12] man: set section 7 for classads man page
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/docs/conf.py b/docs/conf.py
-index a9fa2098e9..31371be81c 100644
+index 039356ec65..5788e8f88f 100644
 --- a/docs/conf.py
 +++ b/docs/conf.py
 @@ -157,7 +157,7 @@ pygments_style = 'colorful'
@@ -19,7 +19,7 @@ index a9fa2098e9..31371be81c 100644
 +        ('classads', 7),
          ('condor_adstash', 1),
          ('condor_advertise', 1),
-         ('condor_check_password', 1),
+         ('condor_check_userlogs', 1),
 -- 
 2.43.0
 

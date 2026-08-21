@@ -1,4 +1,4 @@
-From 737db1d82f7fc3b3f10bb0c9f0ed8396969beed3 Mon Sep 17 00:00:00 2001
+From 793d70799ab2dd59680394da627a73c809c37dc2 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Thu, 15 Feb 2024 18:19:08 +0000
 Subject: [PATCH 11/12] python: fix cross compiling configuration

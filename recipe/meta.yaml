@@ -263,6 +263,7 @@ outputs:
       host:
         - {{ pin_subpackage('libcondor_utils', exact=True) }}
         - {{ pin_subpackage('htcondor-classads', exact=True) }}
+        - libpython
         - libuuid  # [linux]
         - munge  # [linux]
         - pcre2

@@ -252,9 +252,9 @@ outputs:
     build:
       ignore_run_exports:
         - libboost
+        - libpython
         - libuuid  # [linux]
         - pcre2
-        - python
       skip: true  # [python_impl != 'cpython']
     requirements:
       build:

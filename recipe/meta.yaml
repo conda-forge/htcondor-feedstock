@@ -1,5 +1,5 @@
 {% set name = "htcondor" %}
-{% set version = "24.0.23" %}
+{% set version = "24.0.24" %}
 
 package:
   # the top-level package should be called `htcondor`, but
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://htcss-downloads.chtc.wisc.edu/tarball/24.0/{{ version }}/release/condor-{{ version }}-src.tar.gz
-  sha256: 6bfa1d84ef366983051542358b6faa94c60babad37c6291302396c2804780949
+  sha256: ccd8b7de33c361f9c00e44833873b62fca523e422662baedbbc534297e0a5897
   patches:
     # to update the patches for a new release:
     #
@@ -59,7 +59,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:

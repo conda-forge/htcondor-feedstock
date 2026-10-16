@@ -1,4 +1,4 @@
-From 4351bda944725ab3797c50890d89067e2a15071d Mon Sep 17 00:00:00 2001
+From cb19518bba51f33f0d10cc4c4ed965b3fa697204 Mon Sep 17 00:00:00 2001
 From: "duncan.macleod" <duncan.macleod@ligo.org>
 Date: Fri, 15 Jul 2022 18:19:10 +0100
 Subject: [PATCH 01/12] cmake: don't build daemons
@@ -108,7 +108,7 @@ index 3086294fe9..821c568cc3 100644
 -
  set( QMGMT_UTIL_SRCS "${qmgmtElements};${CMAKE_CURRENT_SOURCE_DIR}/qmgmt_common.cpp" PARENT_SCOPE )
 diff --git a/src/condor_scripts/CMakeLists.txt b/src/condor_scripts/CMakeLists.txt
-index a59f5c6597..cef2dedc89 100644
+index 4f28225c72..7c93d7083c 100644
 --- a/src/condor_scripts/CMakeLists.txt
 +++ b/src/condor_scripts/CMakeLists.txt
 @@ -41,7 +41,6 @@ if (NOT WINDOWS)

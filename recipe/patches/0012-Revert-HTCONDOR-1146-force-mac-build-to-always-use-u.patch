@@ -1,4 +1,4 @@
-From a91696e0c5aabf284290988757d68bbb826dbe92 Mon Sep 17 00:00:00 2001
+From 4fe969c53e739de1f58eb9305b7b7c898d93074f Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <macleoddm@cardiff.ac.uk>
 Date: Mon, 14 Oct 2024 12:39:07 +0100
 Subject: [PATCH 12/12] Revert "HTCONDOR-1146 force mac build to always use
@@ -10,7 +10,7 @@ This reverts commit 90b5a42115cc0035d5cb08eabb576584bfa7dbbf.
  1 file changed, 10 deletions(-)
 
 diff --git a/build/cmake/CondorConfigure.cmake b/build/cmake/CondorConfigure.cmake
-index b76b81c4b0..35765b6531 100644
+index fc644565f6..79b8a0f26b 100644
 --- a/build/cmake/CondorConfigure.cmake
 +++ b/build/cmake/CondorConfigure.cmake
 @@ -103,11 +103,6 @@ if(NOT WINDOWS)

@@ -1,4 +1,4 @@
-From e1c52651937dba297fda2e70c88f6002f08b2983 Mon Sep 17 00:00:00 2001
+From 10a0ab74a47e0308e862b5ba2354754f390a00ca Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Fri, 14 Jan 2022 11:35:24 +0000
 Subject: [PATCH 03/12] cmake: set install paths for conda builds
@@ -8,7 +8,7 @@ Subject: [PATCH 03/12] cmake: set install paths for conda builds
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/build/cmake/CondorPackageConfig.cmake b/build/cmake/CondorPackageConfig.cmake
-index 018083d9d2..16394722dc 100644
+index 97b1740c17..0e3c90205f 100644
 --- a/build/cmake/CondorPackageConfig.cmake
 +++ b/build/cmake/CondorPackageConfig.cmake
 @@ -125,7 +125,7 @@ set( C_BIN			bin)
@@ -20,7 +20,7 @@ index 018083d9d2..16394722dc 100644
  set( C_LIBEXEC_BLAHP		libexec/blahp )
  set( C_SBIN			sbin)
  
-@@ -134,20 +134,20 @@ set( C_PYTHON3ARCHLIB lib/python3)
+@@ -134,21 +134,21 @@ set( C_PYTHON3ARCHLIB lib/python3)
  
  set( C_INCLUDE		include)
  set( C_INCLUDE_PUBLIC		include)
@@ -35,6 +35,7 @@ index 018083d9d2..16394722dc 100644
 +set( C_ETC			etc/examples/condor )
  set( C_CONFIGD		etc/condor/config.d )
  set( C_GANGLIAD		etc/condor/ganglia.d )
+ set( C_METRICD		etc/condor/metrics.d )
  set( C_SYSCONFIG	etc/sysconfig )
  
 -set( C_ETC_EXAMPLES etc/examples )

@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 c_compiler:
 - gcc
 c_compiler_version:
@@ -33,7 +35,7 @@ libxml2_devel:
 openssl:
 - '3.5'
 pcre2:
-- '10.47'
+- '10.49'
 perl:
 - 5.32.1
 pin_run_as_build:

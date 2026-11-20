@@ -1,8 +1,8 @@
 bot:
   abi_migration_branches:
-    - v24.0.x
-    - v24.12.x
-    - v25.0.x
+  - v24.0.x
+  - v24.12.x
+  - v25.0.x
 build_platform:
   linux_ppc64le: linux_64
 conda_build:
